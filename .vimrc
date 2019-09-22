@@ -14,6 +14,8 @@ set backspace=indent,eol,start        "Make backspace behave like every other ed
 let mapleader = ','                   "The default leader is \, but a comma is much better
 set number                            "Let's active line number
 set laststatus=2                      "Always display the status line
+set autowriteall                      "Automatically write the file when switching buffer
+set complete=.,w,b,u                  "Set our desired autocompletion matching"
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -29,9 +31,9 @@ map <C-n> :NERDTreeToggle<cr>
 nmap <S-x> :quit<cr>
 
 "--------------visuals--------------"
-
-set t_CO=256                                    "use 256 colors.
 colorscheme elflord
+set t_CO=256                                    "use 256 colors.
+set guioptions-=e
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
