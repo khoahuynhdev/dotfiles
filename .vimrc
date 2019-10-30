@@ -48,6 +48,10 @@ map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
 
+nnoremap <C-S-n> :m+<CR>
+nnoremap <C-S-m> :m-2<CR>
+"move a line up/down
+
 "--------------FloatingWindows--------------"
 if has('nvim')
   function! OpenFloatTerm()
