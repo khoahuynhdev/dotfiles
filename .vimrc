@@ -101,6 +101,12 @@ if has('nvim')
   endfunction
 endif
 "--------------visuals--------------"
+"Git blamer
+" nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+let g:blamer_enabled = 1
+let g:blamer_delay = 1000
+let g:blamer_prefix = '👉🏻  '
+
 "joshdick/onedark.vim
 colorscheme onedark
 hi Comment guifg=#808080
