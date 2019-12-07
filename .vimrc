@@ -1,5 +1,4 @@
-
-set nocompatible			                "We want the latest vim settings/options, it must be first because it changes other options as a side effect
+set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
 " Initialisation de pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -19,10 +18,10 @@ set relativenumber                    "look to your left screen
 set laststatus=2                      "Always display the status line
 set autowriteall                      "Automatically write the file when switching buffer
 set complete=.,w,b,u                  "Set our desired autocompletion matching"
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set expandtab
 set clipboard=unnamed
 set autoindent
 set splitright
@@ -32,6 +31,36 @@ set hidden
 set encoding=UTF-8
 set conceallevel=1                  "Concealing Characters
 
+" yaml indentation
+au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType eruby setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
+au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+
+"-------------VISTA_VIM-------------"
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+
+"-------------INDENTGUIDES-------------"
+let g:indentguides_spacechar = '┆'
+let g:indentguides_tabchar = '|'
 " Ignore compiled files
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
@@ -39,7 +68,7 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 "-------------Mapping-------------"
 nnoremap <Leader>ev :tabedit ~/.vimrc<cr>
 " Add simple hightlight removal
-nmap <Leader><space> :nohlsearch<cr>
+nmap <ESC><ESC> :nohlsearch<cr>
 nnoremap <Leader>qq :bd<CR>
 nnoremap <C-s> :tabn<cr>
 nnoremap <C-a> :tabN<cr>
@@ -49,21 +78,23 @@ map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
 
 " Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
-noremap <leader>tn :tabnext<cr>
-noremap <leader>tp :tabprevious<cr>
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 :tablast<cr>
+nnoremap <leader>tn :tabnext<cr>
+nnoremap <leader>tp :tabprevious<cr>
 " nnoremap <C-S-n> :m+<CR>
 " nnoremap <C-S-m> :m-2<CR>
 "move a line up/down
+
+nnoremap <CR> G
 
 "--------------FloatingWindows--------------"
 if has('nvim')
@@ -105,7 +136,7 @@ endif
 " nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 let g:blamer_enabled = 1
 let g:blamer_delay = 1000
-let g:blamer_prefix = '👉🏻  '
+let g:blamer_prefix = '💻 '
 
 "joshdick/onedark.vim
 colorscheme onedark
@@ -268,7 +299,6 @@ set incsearch
 set rtp+=/usr/local/opt/fzf
 
 "--------------NERDTree--------------"
-
 let NERDTreeShowHidden = 1
 let NERDTReeMinimalUI = 1
 let NERDTreeDirArrows = 1
