@@ -47,7 +47,7 @@ au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabsto
 
 "-------------VISTA_VIM-------------"
 function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
+	return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
@@ -94,42 +94,59 @@ nnoremap <leader>tp :tabprevious<cr>
 " nnoremap <C-S-m> :m-2<CR>
 "move a line up/down
 
-nnoremap <CR> G
+nnoremap <CR> G     "Go to line G
+" Open terminal
+nnoremap <Leader>at :call OpenFloatTerm()<CR>
+" Open node REPL
+nnoremap <Leader>an :call OpenFloatTerm('"node"')<CR>
 
 "--------------FloatingWindows--------------"
 if has('nvim')
-  function! OpenFloatTerm()
-    let height = float2nr((&lines - 2) / 1.5)
-    let row = float2nr((&lines - height) / 2)
-    let width = float2nr(&columns / 1.5)
-    let col = float2nr((&columns - width) / 2)
-    " Border Window
-    let border_opts = {
-      \ 'relative': 'editor',
-      \ 'row': row - 1,
-      \ 'col': col - 2,
-      \ 'width': width + 4,
-      \ 'height': height + 2,
-      \ 'style': 'minimal'
-      \ }
-    let border_buf = nvim_create_buf(v:false, v:true)
-    let s:border_win = nvim_open_win(border_buf, v:true, border_opts)
-    " Main Window
-    let opts = {
-      \ 'relative': 'editor',
-      \ 'row': row,
-      \ 'col': col,
-      \ 'width': width,
-      \ 'height': height,
-      \ 'style': 'minimal'
-      \ }
-    let buf = nvim_create_buf(v:false, v:true)
-    let win = nvim_open_win(buf, v:true, opts)
-    terminal
-    startinsert
-    " Hook up TermClose event to close both terminal and border windows
-    autocmd TermClose * ++once :q | call nvim_win_close(s:border_win, v:true)
-  endfunction
+	function! OpenFloatTerm(...)
+		" Configuration
+		let height = float2nr((&lines - 2) * 0.6)
+		let row = float2nr((&lines - height) / 2)
+		let width = float2nr(&columns * 0.6)
+		let col = float2nr((&columns - width) / 2)
+		" Border Window
+		let border_opts = {
+					\ 'relative': 'editor',
+					\ 'row': row - 1,
+					\ 'col': col - 2,
+					\ 'width': width + 4,
+					\ 'height': height + 2,
+					\ 'style': 'minimal'
+					\ }
+		" Terminal Window
+		let opts = {
+					\ 'relative': 'editor',
+					\ 'row': row,
+					\ 'col': col,
+					\ 'width': width,
+					\ 'height': height,
+					\ 'style': 'minimal'
+					\ }
+		let top = "╭" . repeat("─", width + 2) . "╮"
+		let mid = "│" . repeat(" ", width + 2) . "│"
+		let bot = "╰" . repeat("─", width + 2) . "╯"
+		let lines = [top] + repeat([mid], height) + [bot]
+		let bbuf = nvim_create_buf(v:false, v:true)
+		call nvim_buf_set_lines(bbuf, 0, -1, v:true, lines)
+		let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
+		let buf = nvim_create_buf(v:false, v:true)
+		let s:float_term_win = nvim_open_win(buf, v:true, opts)
+		" Styling
+		call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Normal')
+		call setwinvar(s:float_term_win, '&winhl', 'Normal:Normal')
+		if a:0 == 0
+			terminal
+		else
+			call termopen(a:1)
+		endif
+		startinsert
+		" Close border window when terminal window close
+		autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
+	endfunction
 endif
 "--------------visuals--------------"
 "Git blamer
@@ -156,7 +173,7 @@ let g:airline_theme='ayu_mirage'
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 
 " unicode symbols
@@ -187,7 +204,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 "--------------Mouse--------------"
 if has('mouse')
-  set mouse=a
+	set mouse=a
 endif
 " mhinz/vim-startify
 
@@ -234,63 +251,63 @@ endif
 
 
 let g:startify_custom_header=[
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0kkOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKkdlc:::ldkKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0xoc::::::::::cox0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKkdlc::::::cllc:::::::ldOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0xoc:::::::ldkKXXKkdl:::::::cox0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKOdlc::::::coxOXWMMMMMMWXOxoc::::::cldOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMWX0koc:::::::ldkKNWMMMMMMMMMMMMWNKkdl:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMNKOdlc::::::coxOXWMMMMMMMMMMMMMMMMMMMWNXOxoc::::::cldOKNMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMWN0koc:::::::ldk0NWMMMMMMMMMMMMMMMMMMMMMMMMMMWN0kdl:::::::cd0WMMWWNNNWMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMWNXOxlc::::::clxOXWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOxlc:::lkXWX0kdooodx0XWMMMMMMMM ',
-    \ ' MMMMMMMMMMMWN0kdl:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0kod0WNOoc::::::::oONMMMMMMM ',
-    \ ' MMMMMMMMWXOxoc::::::clxOKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNWNkc::cokOkdc::ckNMMMMMM ',
-    \ ' MMMMMMMMXd:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMKo:::dXWMMXd:::oKMMMMMM ',
-    \ ' MMMMMMMMKo::::cdOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXd:::o0WWWKo:::oXMMMMMM ',
-    \ ' MMMMMMMMKo::::l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNxc:::ldxdl:::lOWMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc::::::::::lxKWMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc:::lxOkxxxk0XWMMMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOoc::clkXWMMWWWWNKKNMMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc::cokXWMMMMKdlc:;c0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc::coONWMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxl:::cd0NMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKxl:::cd0NMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc:::lxKWMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKKKKKXWWWNOdc:::lxKWMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdlcccccldkkoc:::lkXWMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMW0oc:::cccc::::::coOXWMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::lKMMMMMMMMMMMMMMMMMMMMMMMMMMMKo:::oO0KK0dc:::lONWMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMWOc::cOWMMMMKo:::xNMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMKo::::oKMMMMMMMMMMMMMMMMMMMMWNXKOkxl::::o0KXXKxc::ckWMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMXxxkO0KNMMMMMMMMMMMMMWNXK0Oxdolc:::::::::ccllc:::cxNMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMWWWNXXKXNWMMMMMWNX0Okxolcc:::::ccodxkOkolc::::cox0NMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMMNKkdlcccldk00kxdocc::::::cloxkO0XNWWMMMNX00000KNWMMMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMMXxc::::cc::::::::::clodxO0KXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
-    \ ' MMMMMMNxc::cx0K0xc:::coxkOKXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXx;,,,,:0MMMMMMMM ',
-    \ ' MMMMMMKo:::xNMMMXd:::oKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKko:,,,,,::0MMMMMMMM ',
-    \ ' MMMMMMXd:::oOXNXOl:::dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:xXMMMMMMMM ',
-    \ ' MMMMMMWKo:::clolc::coKWWXOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKko:,,,,,,,,;lx0NWMMMMMMMMM ',
-    \ ' MMMMMMMWXkol:::::coOXWW0c,;lx0NWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:okKWMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMNX0OOO0XNWMXd;,,,,,,:okKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkd:,,,,,,,,;lx0NWMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMXko:,,,,,,,,;lx0NWMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:okKWMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMWX0dc;,,,,,,,,:dOXWMMMMMMMMMMMMMMMMWXOdc,,,,,,,,;cd0XWMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMNKko:,,,,,,,,;lx0NWMMMMMMMMMNKxl;,,,,,,,,:okKWMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc,,,,,,,,,cdOXWMMWXOdc,,,,,,,,,cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNKko:,,,,,,,,;lddl;,,,,,,,,;lkKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc,,,,,,,,,,,,,,,,cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNKkl;,,,,,,,,;lx0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc;;cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNXXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
-    \ ]
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0kkOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKkdlc:::ldkKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0xoc::::::::::cox0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKkdlc::::::cllc:::::::ldOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0xoc:::::::ldkKXXKkdl:::::::cox0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKOdlc::::::coxOXWMMMMMMWXOxoc::::::cldOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMWX0koc:::::::ldkKNWMMMMMMMMMMMMWNKkdl:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMNKOdlc::::::coxOXWMMMMMMMMMMMMMMMMMMMWNXOxoc::::::cldOKNMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMWN0koc:::::::ldk0NWMMMMMMMMMMMMMMMMMMMMMMMMMMWN0kdl:::::::cd0WMMWWNNNWMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMWNXOxlc::::::clxOXWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOxlc:::lkXWX0kdooodx0XWMMMMMMMM ',
+			\ ' MMMMMMMMMMMWN0kdl:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0kod0WNOoc::::::::oONMMMMMMM ',
+			\ ' MMMMMMMMWXOxoc::::::clxOKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNWNkc::cokOkdc::ckNMMMMMM ',
+			\ ' MMMMMMMMXd:::::::cok0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMKo:::dXWMMXd:::oKMMMMMM ',
+			\ ' MMMMMMMMKo::::cdOKNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXd:::o0WWWKo:::oXMMMMMM ',
+			\ ' MMMMMMMMKo::::l0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNxc:::ldxdl:::lOWMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc::::::::::lxKWMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc:::lxOkxxxk0XWMMMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOoc::clkXWMMWWWWNKKNMMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc::cokXWMMMMKdlc:;c0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkoc::coONWMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxl:::cd0NMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKxl:::cd0NMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN0dc:::lxKWMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKKKKKXWWWNOdc:::lxKWMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdlcccccldkkoc:::lkXWMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMMW0oc:::cccc::::::coOXWMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::lKMMMMMMMMMMMMMMMMMMMMMMMMMMMKo:::oO0KK0dc:::lONWMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::l0MMMMMMMMMMMMMMMMMMMMMMMMMMWOc::cOWMMMMKo:::xNMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMKo::::oKMMMMMMMMMMMMMMMMMMMMWNXKOkxl::::o0KXXKxc::ckWMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMXxxkO0KNMMMMMMMMMMMMMWNXK0Oxdolc:::::::::ccllc:::cxNMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMWWWNXXKXNWMMMMMWNX0Okxolcc:::::ccodxkOkolc::::cox0NMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMMNKkdlcccldk00kxdocc::::::cloxkO0XNWWMMMNX00000KNWMMMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMMXxc::::cc::::::::::clodxO0KXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM0:,,,,:0MMMMMMMM ',
+			\ ' MMMMMMNxc::cx0K0xc:::coxkOKXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXx;,,,,:0MMMMMMMM ',
+			\ ' MMMMMMKo:::xNMMMXd:::oKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKko:,,,,,::0MMMMMMMM ',
+			\ ' MMMMMMXd:::oOXNXOl:::dXMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:xXMMMMMMMM ',
+			\ ' MMMMMMWKo:::clolc::coKWWXOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKko:,,,,,,,,;lx0NWMMMMMMMMM ',
+			\ ' MMMMMMMWXkol:::::coOXWW0c,;lx0NWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:okKWMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMNX0OOO0XNWMXd;,,,,,,:okKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXkd:,,,,,,,,;lx0NWMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMXko:,,,,,,,,;lx0NWMMMMMMMMMMMMMMMMMMMMMMWN0xl;,,,,,,,,:okKWMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMWX0dc;,,,,,,,,:dOXWMMMMMMMMMMMMMMMMWXOdc,,,,,,,,;cd0XWMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMNKko:,,,,,,,,;lx0NWMMMMMMMMMNKxl;,,,,,,,,:okKWMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc,,,,,,,,,cdOXWMMWXOdc,,,,,,,,,cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNKko:,,,,,,,,;lddl;,,,,,,,,;lkKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc,,,,,,,,,,,,,,,,cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNKkl;,,,,,,,,;lx0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdc;;cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNXXNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
+			\ ]
 
 let g:startify_lists = [
-      \ { 'type': 'sessions',  'header': ['   Sessions']       },
-      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-      \ { 'type': 'commands',  'header': ['   Commands']       },
-      \ ]
+			\ { 'type': 'sessions',  'header': ['   Sessions']       },
+			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+			\ { 'type': 'commands',  'header': ['   Commands']       },
+			\ ]
 hi StartifyHeader guifg=#FFD700
 
 "--------------Searching--------------"
@@ -355,9 +372,9 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 " Disable inherited syntastic
 let g:syntastic_mode_map = {
-  \ "mode": "passive",
-  \ "active_filetypes": [],
-  \ "passive_filetypes": [] }
+			\ "mode": "passive",
+			\ "active_filetypes": [],
+			\ "passive_filetypes": [] }
 
 "--------------ALE--------------"
 let g:ale_sign_error = '😡'
@@ -368,6 +385,6 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 "-------------Auto-Commands-------------
 "Automatically source the Vimrc file on save.
 augroup autosourcing
-  autocmd!
-  autocmd BufWritePost .vimrc source %
+	autocmd!
+	autocmd BufWritePost .vimrc source %
 augroup END
