@@ -380,6 +380,9 @@ let g:syntastic_mode_map = {
 "--------------ALE--------------"
 let g:ale_sign_error = '😡'
 let g:ale_sign_warning = '🤧'
+let g:ale_fixers = {
+			\ 'javascript': ['eslint'],
+			\}
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
