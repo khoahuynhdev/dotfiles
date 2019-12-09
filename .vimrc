@@ -35,6 +35,7 @@ set conceallevel=1                  "Concealing Characters
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
