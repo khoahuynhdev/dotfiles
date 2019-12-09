@@ -1,5 +1,5 @@
 total 0
-drwxr-xr-x  32 macintosh  staff   1.0K Dec  9 10:52 .
+drwxr-xr-x  33 macintosh  staff   1.0K Dec  9 18:18 .
 drwxr-xr-x   7 macintosh  staff   224B Dec  7 12:22 ..
 drwxr-xr-x  23 macintosh  staff   736B Oct 27 16:54 ale
 drwxr-xr-x   7 macintosh  staff   224B Sep  6 13:07 auto-pairs
@@ -11,6 +11,7 @@ drwxr-xr-x  15 macintosh  staff   480B Aug 29 11:01 nerdtree
 drwxr-xr-x   5 macintosh  staff   160B Sep 16 20:55 nerdtree-git-plugin
 drwxr-xr-x  10 macintosh  staff   320B Dec  9 10:52 nginx.vim
 drwxr-xr-x  15 macintosh  staff   480B Oct  7 22:23 onedark.vim
+drwxr-xr-x  10 macintosh  staff   320B Dec  9 18:18 scss-syntax
 drwxr-xr-x   9 macintosh  staff   288B Sep 22 15:56 supertab
 drwxr-xr-x  12 macintosh  staff   384B Sep  4 17:31 syntastic
 drwxr-xr-x  16 macintosh  staff   512B Oct 27 10:14 vim-airline
