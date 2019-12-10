@@ -46,6 +46,9 @@ au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
 au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
+"-------------VIM_VUE-------------"
+let g:vue_pre_processors = ['scss']
+let g:vue_pre_processors = 'detect_on_enter'
 "-------------VISTA_VIM-------------"
 function! NearestMethodOrFunction() abort
 	return get(b:, 'vista_nearest_method_or_function', '')
