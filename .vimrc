@@ -179,25 +179,18 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 let g:airline_theme='ayu_mirage'
 let g:airline_powerline_fonts = 1
 
+" Do not draw separators for empty sections (only for the active window) >
+let g:airline_skip_empty_sections = 1
+" You must define the dictionary first before setting values.
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
+" powerline symbols
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
@@ -205,9 +198,26 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+let g:airline_symbols.dirty='⚡'
 
 "--------------vim_airline/vim_airline--------------"
 let g:airline#extensions#tabline#enabled = 1
+
+" airline-ale
+" ale error_symbol
+let airline#extensions#ale#error_symbol = 'E:'
+
+" ale warning
+let airline#extensions#ale#warning_symbol = 'W:'
+
+" ale show_line_numbers
+let airline#extensions#ale#show_line_numbers = 1
+
+" ale open_lnum_symbol
+let airline#extensions#ale#open_lnum_symbol = '(L'
+
+" ale close_lnum_symbol
+let airline#extensions#ale#close_lnum_symbol = ')'
 
 "--------------Mouse--------------"
 if has('mouse')
