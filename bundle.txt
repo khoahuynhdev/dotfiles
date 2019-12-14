@@ -1,6 +1,6 @@
 total 0
-drwxr-xr-x  33 macintosh  staff   1.0K Dec  9 18:18 .
-drwxr-xr-x   7 macintosh  staff   224B Dec  7 12:22 ..
+drwxr-xr-x  34 macintosh  staff   1.1K Dec 14 13:25 .
+drwxr-xr-x   7 macintosh  staff   224B Dec  9 22:54 ..
 drwxr-xr-x  23 macintosh  staff   736B Oct 27 16:54 ale
 drwxr-xr-x   7 macintosh  staff   224B Sep  6 13:07 auto-pairs
 drwxr-xr-x   7 macintosh  staff   224B Dec  5 09:38 blamer.nvim
@@ -30,5 +30,6 @@ drwxr-xr-x  12 macintosh  staff   384B Dec  7 12:08 vim-jsx-pretty
 drwxr-xr-x  19 macintosh  staff   608B Oct 17 16:23 vim-node
 drwxr-xr-x  21 macintosh  staff   672B Dec  5 14:13 vim-ruby
 drwxr-xr-x  14 macintosh  staff   448B Oct  7 23:18 vim-startify
+drwxr-xr-x  10 macintosh  staff   320B Dec 14 13:25 vim-syntax-christmas-tree
 drwxr-xr-x  14 macintosh  staff   448B Sep 10 11:24 vim-vue
 drwxr-xr-x  15 macintosh  staff   480B Dec  7 10:17 vista.vim
