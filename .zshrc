@@ -9,19 +9,28 @@ export ZSH="/Users/macintosh/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# Add the custom Apple icon prompt segment
-
 # Customise the Powerlevel9k prompts
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   custom_apple
-  #custom_javascript
+  custom_vim
+  custom_node
+  custom_ruby
+  custom_javascript
+  custom_wifi_signal
   dir
   vcs
   newline
   status
 )
+# Add the custom Vim icon prompt segment
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_APPLE="echo -n $'\uE711'"
+POWERLEVEL9K_CUSTOM_VIM="echo -n $'\uE7C5'"
+POWERLEVEL9K_CUSTOM_VIM_FOREGROUND="green"
+POWERLEVEL9K_CUSTOM_VIM_BACKGROUND="gray"
+
+# Add the custom Apple icon prompt segment
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
+POWERLEVEL9K_CUSTOM_APPLE="echo -n Khoa $'\uE711'"
 POWERLEVEL9K_CUSTOM_APPLE_FOREGROUND="white"
 POWERLEVEL9K_CUSTOM_APPLE_BACKGROUND="black"
 
@@ -29,6 +38,41 @@ POWERLEVEL9K_CUSTOM_APPLE_BACKGROUND="black"
 POWERLEVEL9K_CUSTOM_JAVASCRIPT="echo -n $'\ue781'"
 POWERLEVEL9K_CUSTOM_JAVASCRIPT_FOREGROUND="black"
 POWERLEVEL9K_CUSTOM_JAVASCRIPT_BACKGROUND="yellow"
+
+# Add the custom Ruby icon prompt segment
+POWERLEVEL9K_CUSTOM_RUBY="echo -n $'\ue791'"
+POWERLEVEL9K_CUSTOM_RUBY_FOREGROUND="red"
+POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND="black"
+
+# Add the custom NodeJs icon prompt segment
+POWERLEVEL9K_CUSTOM_NODE="echo -n $'\uf898'"
+POWERLEVEL9K_CUSTOM_NODE_FOREGROUND="green"
+POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
+
+# MacOS only
+# Add the custom WIFI icon prompt segment
+POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
+POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
+POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
+zsh_wifi_signal(){
+        local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
+        local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
+
+        if [ "$airport" = "Off" ]; then
+                local color='%F{yellow}'
+                echo -n "%{$color%}Wifi Off"
+        else
+                local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
+                local speed=$(echo $output | grep 'lastTxRate' | awk -F': ' '{print $2}')
+                local color='%F{yellow}'
+
+                [[ $speed -gt 100 ]] && color='%F{green}'
+                [[ $speed -lt 50 ]] && color='%F{red}'
+
+                echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
+        fi
+}
+# MacOS only
 ZSH_THEME="powerlevel9k/powerlevel9k"
 # ZSH_THEME="agnoster"
 
@@ -90,7 +134,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git osx ruby node tig)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,8 +146,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+# if [[ -n $SSH_CONNECTION ]]; then export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -125,3 +168,8 @@ if type nvim > /dev/null 2>&1; then
   alias vim="nvim"
 fi
 alias ll="ls -lG"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
