@@ -46,6 +46,12 @@ au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
 au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
 "-------------VIM_VUE-------------"
 let g:vue_pre_processors = ['scss']
 let g:vue_pre_processors = 'detect_on_enter'
