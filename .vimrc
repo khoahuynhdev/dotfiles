@@ -71,8 +71,17 @@ autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 "-------------INDENTGUIDES-------------"
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
+
 " Ignore compiled files
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
 
 "Make it easy to edit the vimrc file.
 "-------------Mapping-------------"
