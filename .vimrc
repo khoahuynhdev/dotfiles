@@ -34,6 +34,7 @@ set conceallevel=1                  "Concealing Characters
 " yaml indentation
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -57,7 +58,7 @@ let g:vue_pre_processors = ['scss']
 let g:vue_pre_processors = 'detect_on_enter'
 "-------------VISTA_VIM-------------"
 function! NearestMethodOrFunction() abort
-	return get(b:, 'vista_nearest_method_or_function', '')
+  return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
@@ -123,51 +124,51 @@ nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
 
 "--------------FloatingWindows--------------"
 if has('nvim')
-	function! OpenFloatTerm(...)
-		" Configuration
-		let height = float2nr((&lines - 2) * 0.6)
-		let row = float2nr((&lines - height) / 2)
-		let width = float2nr(&columns * 0.6)
-		let col = float2nr((&columns - width) / 2)
-		" Border Window
-		let border_opts = {
-					\ 'relative': 'editor',
-					\ 'row': row - 1,
-					\ 'col': col - 2,
-					\ 'width': width + 4,
-					\ 'height': height + 2,
-					\ 'style': 'minimal'
-					\ }
-		" Terminal Window
-		let opts = {
-					\ 'relative': 'editor',
-					\ 'row': row,
-					\ 'col': col,
-					\ 'width': width,
-					\ 'height': height,
-					\ 'style': 'minimal'
-					\ }
-		let top = "╭" . repeat("─", width + 2) . "╮"
-		let mid = "│" . repeat(" ", width + 2) . "│"
-		let bot = "╰" . repeat("─", width + 2) . "╯"
-		let lines = [top] + repeat([mid], height) + [bot]
-		let bbuf = nvim_create_buf(v:false, v:true)
-		call nvim_buf_set_lines(bbuf, 0, -1, v:true, lines)
-		let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
-		let buf = nvim_create_buf(v:false, v:true)
-		let s:float_term_win = nvim_open_win(buf, v:true, opts)
-		" Styling
-		call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Normal')
-		call setwinvar(s:float_term_win, '&winhl', 'Normal:Normal')
-		if a:0 == 0
-			terminal
-		else
-			call termopen(a:1)
-		endif
-		startinsert
-		" Close border window when terminal window close
-		autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
-	endfunction
+  function! OpenFloatTerm(...)
+    " Configuration
+    let height = float2nr((&lines - 2) * 0.6)
+    let row = float2nr((&lines - height) / 2)
+    let width = float2nr(&columns * 0.6)
+    let col = float2nr((&columns - width) / 2)
+    " Border Window
+    let border_opts = {
+          \ 'relative': 'editor',
+          \ 'row': row - 1,
+          \ 'col': col - 2,
+          \ 'width': width + 4,
+          \ 'height': height + 2,
+          \ 'style': 'minimal'
+          \ }
+    " Terminal Window
+    let opts = {
+          \ 'relative': 'editor',
+          \ 'row': row,
+          \ 'col': col,
+          \ 'width': width,
+          \ 'height': height,
+          \ 'style': 'minimal'
+          \ }
+    let top = "╭" . repeat("─", width + 2) . "╮"
+    let mid = "│" . repeat(" ", width + 2) . "│"
+    let bot = "╰" . repeat("─", width + 2) . "╯"
+    let lines = [top] + repeat([mid], height) + [bot]
+    let bbuf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(bbuf, 0, -1, v:true, lines)
+    let s:float_term_border_win = nvim_open_win(bbuf, v:true, border_opts)
+    let buf = nvim_create_buf(v:false, v:true)
+    let s:float_term_win = nvim_open_win(buf, v:true, opts)
+    " Styling
+    call setwinvar(s:float_term_border_win, '&winhl', 'Normal:Normal')
+    call setwinvar(s:float_term_win, '&winhl', 'Normal:Normal')
+    if a:0 == 0
+      terminal
+    else
+      call termopen(a:1)
+    endif
+    startinsert
+    " Close border window when terminal window close
+    autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
+  endfunction
 endif
 "--------------visuals--------------"
 
@@ -198,7 +199,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 " You must define the dictionary first before setting values.
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 
 " powerline symbols
@@ -236,27 +237,27 @@ let airline#extensions#ale#close_lnum_symbol = ')'
 
 "--------------Mouse--------------"
 if has('mouse')
-	set mouse=a
+  set mouse=a
 endif
 
 " mhinz/vim-startify
 let g:startify_custom_header = [
-			\ ' #    #                      ',
-			\ ' #   #  #    #  ####    ##    ',
-			\ ' #  #   #    # #    #  #  #   ',
-			\ ' ###    ###### #    # #    #  ',
-			\ ' #  #   #    # #    # ######  ',
-			\ ' #   #  #    # #    # #    #  ',
-			\ ' #    # #    #  ####  #    #  ',
-			\ '                              ',
-			\ ' #     #                             ',
-			\ ' #     # #    # #   # #    # #    #  ',
-			\ ' #     # #    #  # #  ##   # #    #  ',
-			\ ' ####### #    #   #   # #  # ######  ',
-			\ ' #     # #    #   #   #  # # #    #  ',
-			\ ' #     # #    #   #   #   ## #    #  ',
-			\ ' #     #  ####    #   #    # #    # ',
-			\ ]
+      \ ' #    #                      ',
+      \ ' #   #  #    #  ####    ##    ',
+      \ ' #  #   #    # #    #  #  #   ',
+      \ ' ###    ###### #    # #    #  ',
+      \ ' #  #   #    # #    # ######  ',
+      \ ' #   #  #    # #    # #    #  ',
+      \ ' #    # #    #  ####  #    #  ',
+      \ '                              ',
+      \ ' #     #                             ',
+      \ ' #     # #    # #   # #    # #    #  ',
+      \ ' #     # #    #  # #  ##   # #    #  ',
+      \ ' ####### #    #   #   # #  # ######  ',
+      \ ' #     # #    #   #   #  # # #    #  ',
+      \ ' #     # #    #   #   #   ## #    #  ',
+      \ ' #     #  ####    #   #    # #    # ',
+      \ ]
 
 " let g:startify_custom_header=[
 "       \ ' *********************************************************************///((((##((((((((////////****, ',
@@ -368,11 +369,16 @@ let g:startify_custom_header = [
 " highlight StartifySpecial ctermfg=240
 
 "--------------Searching--------------"
-set hlsearch
-set incsearch
+
+set incsearch       " Find the next match as we type the search
+set hlsearch        " Highlight searches by default
+set ignorecase      " Ignore case when searching...
+set smartcase       " ...unless we type a capital
+
 set rtp+=/usr/local/opt/fzf
 
 "--------------NERDTree--------------"
+
 let NERDTreeShowHidden = 1
 let NERDTReeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -384,17 +390,20 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------Split Management--------------"
+
 nmap <C-J> <C-W><C-J>
 nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
 "--------------vim_devicons--------------"
+
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
 let g:DevIconsDefaultFolderOpenSymbol = ' '
 
 "--------------coc-prettier--------------"
+
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "--------------autopairs--------------"
@@ -429,16 +438,16 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 " Disable inherited syntastic
 let g:syntastic_mode_map = {
-			\ "mode": "passive",
-			\ "active_filetypes": [],
-			\ "passive_filetypes": [] }
+      \ "mode": "passive",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": [] }
 
 "--------------ALE--------------"
 let g:ale_sign_error = '😡'
 let g:ale_sign_warning = '🤧'
 let g:ale_fixers = {
-			\ 'javascript': ['eslint'],
-			\}
+      \ 'javascript': ['eslint'],
+      \}
 
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
@@ -455,37 +464,37 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " Whether the .jsx extension is required.
 if !exists('g:jsx_ext_required')
-	let g:jsx_ext_required = 0
+  let g:jsx_ext_required = 0
 endif
 
 " Whether the @jsx pragma is required.
 if !exists('g:jsx_pragma_required')
-	let g:jsx_pragma_required = 0
+  let g:jsx_pragma_required = 0
 endif
 
 let s:jsx_pragma_pattern = '\%^\_s*\/\*\*\%(\_.\%(\*\/\)\@!\)*@jsx\_.\{-}\*\/'
 
 " Whether to set the JSX filetype on *.js files.
 fu! <SID>EnableJSX()
-	if g:jsx_pragma_required && !exists('b:jsx_ext_found')
-		" Look for the @jsx pragma.  It must be included in a docblock comment
-		" before anything else in the file (except whitespace).
-		let b:jsx_pragma_found = search(s:jsx_pragma_pattern, 'npw')
-	endif
+  if g:jsx_pragma_required && !exists('b:jsx_ext_found')
+    " Look for the @jsx pragma.  It must be included in a docblock comment
+    " before anything else in the file (except whitespace).
+    let b:jsx_pragma_found = search(s:jsx_pragma_pattern, 'npw')
+  endif
 
-	if g:jsx_pragma_required && !b:jsx_pragma_found | return 0 | endif
-	if g:jsx_ext_required && !exists('b:jsx_ext_found') | return 0 | endif
-	return 1
+  if g:jsx_pragma_required && !b:jsx_pragma_found | return 0 | endif
+  if g:jsx_ext_required && !exists('b:jsx_ext_found') | return 0 | endif
+  return 1
 endfu
 
 autocmd BufNewFile,BufRead *.jsx let b:jsx_ext_found = 1
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.js
-			\ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+      \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
 
 "-------------Auto-Commands-------------
 "Automatically source the Vimrc file on save.
 augroup autosourcing
-	autocmd!
-	autocmd BufWritePost .vimrc source %
+  autocmd!
+  autocmd BufWritePost .vimrc source %
 augroup END
