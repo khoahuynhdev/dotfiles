@@ -498,3 +498,7 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
+
+" Vim tips and trick
+" I to go to the start of editing line
+" Read from anything with :read
