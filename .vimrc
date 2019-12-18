@@ -500,5 +500,6 @@ augroup autosourcing
 augroup END
 
 " Vim tips and trick
-" I to go to the start of editing line
+" I add to start of the line
+" A add to end of the line
 " Read from anything with :read
