@@ -241,7 +241,7 @@ if has('mouse')
 endif
 
 " mhinz/vim-startify
-let g:startify_custom_header = [
+let g:startify_custom_header = startify#center([
       \ ' #    #                      ',
       \ ' #   #  #    #  ####    ##    ',
       \ ' #  #   #    # #    #  #  #   ',
@@ -257,7 +257,7 @@ let g:startify_custom_header = [
       \ ' #     # #    #   #   #  # # #    #  ',
       \ ' #     # #    #   #   #   ## #    #  ',
       \ ' #     #  ####    #   #    # #    # ',
-      \ ]
+      \ ])
 
 " let g:startify_custom_header=[
 "       \ ' *********************************************************************///((((##((((((((////////****, ',
@@ -498,8 +498,3 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
-
-" Vim tips and trick
-" I add to start of the line
-" A add to end of the line
-" Read from anything with :read
