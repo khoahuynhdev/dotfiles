@@ -19,10 +19,10 @@ set relativenumber                    "look to your left screen
 set laststatus=2                      "Always display the status line
 set autowriteall                      "Automatically write the file when switching buffer
 set complete=.,w,b,u                  "Set our desired autocompletion matching"
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=2
+" set softtabstop=2
+" set shiftwidth=2
+" set expandtab
 set clipboard=unnamed
 set autoindent
 set splitright
@@ -32,6 +32,27 @@ set hidden
 set encoding=UTF-8
 set conceallevel=1                  "Concealing Characters
 
+" yaml indentation
+au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType eruby setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
+au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
+au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+
+" ================ Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
 
 "Make it easy to edit the vimrc file.
 "-------------Mapping-------------"
