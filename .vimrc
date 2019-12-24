@@ -101,7 +101,7 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
-map <leader>tt :tabnext<cr>
+map <leader>t<leader> :tabnext<cr>
 
 " Go to tab by number
 nnoremap <leader>1 1gt
@@ -114,7 +114,6 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
-nnoremap <leader>tn :tabnext<cr>
 nnoremap <leader>tp :tabprevious<cr>
 " nnoremap <C-S-n> :m+<CR>
 " nnoremap <C-S-m> :m-2<CR>
