@@ -85,6 +85,7 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 "Make it easy to edit the vimrc file.
+
 "-------------Mapping-------------"
 nnoremap <Leader>ev :tabedit ~/.vimrc<cr>
 " Add simple hightlight removal
@@ -192,7 +193,7 @@ set title
 autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='ayu_mirage'
+let g:airline_theme='onedark' "ayu_mirage
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
@@ -498,3 +499,10 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
+
+" Folding cheat sheet
+" zR    open all folds
+" zM    close all folds
+" za    toggle folds at cursor position
+" zj    move down to start of next fold
+" zk    move up to end of previous fold
