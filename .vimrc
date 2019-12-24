@@ -181,6 +181,9 @@ let g:blamer_prefix = ' '
 
 "joshdick/onedark.vim
 colorscheme onedark
+if has("nvim")
+  set termguicolors
+endif
 hi Comment guifg=#808080
 set t_Co=256                                    "use 256 colors.
 set guioptions-=e
