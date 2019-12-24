@@ -91,12 +91,17 @@ nnoremap <Leader>ev :tabedit ~/.vimrc<cr>
 " Add simple hightlight removal
 nmap <ESC><ESC> :nohlsearch<cr>
 nnoremap <Leader>qq :bd<CR>
-nnoremap <C-s> :tabn<cr>
-nnoremap <C-a> :tabN<cr>
 nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
+
+" Mapping for managing tab
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove<cr>
+map <leader>tt :tabnext<cr>
 
 " Go to tab by number
 nnoremap <leader>1 1gt
@@ -194,6 +199,9 @@ set guioptions-=R
 set cursorline                                  "highlight current line
 set title
 autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 
 "--------------vim_airline/vim_airline_themes--------------"
 let g:airline_theme='onedark' "ayu_mirage
