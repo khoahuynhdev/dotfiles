@@ -2,22 +2,34 @@ set nocompatible                      "We want the latest vim settings/options, 
 " Initialisation de pathogen
 call pathogen#infect()
 call pathogen#helptags()
-syntax on                             "Enable syntax highlighting
-syntax enable
-filetype plugin indent on             "Detech files type
 
 "-------------COMMENTARY-------------"
 autocmd FileType apache setlocal commentstring=#\ %s
 
+"-------------COMMON_SETTING-------------"
+filetype indent on                    " Detect files type
+filetype plugin on                    " Detect files type
+set backspace=indent,eol,start        " Make backspace behave like every other editor
+set t_Co=256                          " use 256 colors.
+syntax on                             " Enable syntax highlighting
+syntax enable
+set history=200                       " Keep 200 lines of command line history
+set incsearch                         " Find the next match as we type the search
+set hlsearch                          " Highlight searches by default
+set ignorecase                        " Ignore case when searching...
+set smartcase                         " ...unless we type a capital
+set listchars=""                      " Empty the listchars
+set listchars=tab:>.                  " A tab will be displayed as >...
+set listchars+=trail:.                " Trailing white spaces will be displayed as .
+
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
-set backspace=indent,eol,start        "Make backspace behave like every other editor
-let mapleader = ','                   "The default leader is \, but a comma is much better
-set number                            "Let's active line number
-set relativenumber                    "look to your left screen
-set laststatus=2                      "Always display the status line
-set autowriteall                      "Automatically write the file when switching buffer
-set complete=.,w,b,u                  "Set our desired autocompletion matching"
+let mapleader = ','                   " The default leader is \, but a comma is much better
+set number                            " Let's active line number
+set relativenumber                    " look to your left screen
+set laststatus=2                      " Always display the status line
+set autowriteall                      " Automatically write the file when switching buffer
+set complete=.,w,b,u                  " Set our desired autocompletion matching"
 " set tabstop=2
 " set softtabstop=2
 " set shiftwidth=2
@@ -29,7 +41,7 @@ set splitbelow
 set si                                "smart indent
 set hidden
 set encoding=UTF-8
-set conceallevel=1                  "Concealing Characters
+" set conceallevel=0                  "Concealing Characters
 
 " yaml indentation
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -90,7 +102,7 @@ set wildignore+=*.png,*.jpg,*.gif
 nnoremap <Leader>ev :tabedit ~/.vimrc<cr>
 " Add simple hightlight removal
 nmap <ESC><ESC> :nohlsearch<cr>
-nnoremap <Leader>qq :bd<CR>
+" nnoremap <Leader>qq :bd<CR>
 nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
@@ -101,7 +113,8 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
-map <leader>t<leader> :tabnext<cr>
+map <leader>tt :tabnext<cr>
+map <leader>tp :tabprevious<cr>
 
 " Go to tab by number
 nnoremap <leader>1 1gt
@@ -114,10 +127,16 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
-nnoremap <leader>tp :tabprevious<cr>
 " nnoremap <C-S-n> :m+<CR>
 " nnoremap <C-S-m> :m-2<CR>
 " move a line up/down
+
+" Buffer management
+" Close the current buffer
+map <leader>bd :Bclose<cr>:tabclose<cr>gT
+" Next/Previous between buffers
+map <leader>l :bnext<cr>
+map <leader>h :bprevious<cr>
 
 nnoremap <CR> G
 " Open terminal
@@ -189,7 +208,6 @@ if has("nvim")
   set termguicolors
 endif
 hi Comment guifg=#808080
-set t_Co=256                                    "use 256 colors.
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
@@ -380,11 +398,6 @@ let g:startify_custom_header = startify#center([
 " highlight StartifySpecial ctermfg=240
 
 "--------------Searching--------------"
-
-set incsearch       " Find the next match as we type the search
-set hlsearch        " Highlight searches by default
-set ignorecase      " Ignore case when searching...
-set smartcase       " ...unless we type a capital
 
 set rtp+=/usr/local/opt/fzf
 
