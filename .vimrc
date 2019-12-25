@@ -13,6 +13,8 @@ set backspace=indent,eol,start        " Make backspace behave like every other e
 set t_Co=256                          " use 256 colors.
 syntax on                             " Enable syntax highlighting
 syntax enable
+set autoread                          " Read open files again when changed outside Vim
+set autowrite                         " Write a modified buffer on each :next , ...
 set history=200                       " Keep 200 lines of command line history
 set incsearch                         " Find the next match as we type the search
 set hlsearch                          " Highlight searches by default
@@ -21,27 +23,33 @@ set smartcase                         " ...unless we type a capital
 set listchars=""                      " Empty the listchars
 set listchars=tab:>.                  " A tab will be displayed as >...
 set listchars+=trail:.                " Trailing white spaces will be displayed as .
+set nobackup                          " Don't constantly write backup files
+set noswapfile                        " Ain't nobody got time for swap files
+set noerrorbells                      " Don't beep
+set nowrap                            " Do not wrap lines
+set showcmd                           " Display incomplete commands in the bottom line of the screen
+set visualbell                        " Visual bell instead of beeping
+set laststatus=2                      " Always display the status line
+set encoding=UTF-8
+set clipboard=unnamed
+set splitright
+set splitbelow
+set autoindent
+set si                                "smart indent
+set hidden
+" set conceallevel=0                  "Concealing Characters
+" set autowriteall                      " Automatically write the file when switching buffer
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
-let mapleader = ','                   " The default leader is \, but a comma is much better
+let mapleader=','                   " The default leader is \, but a comma is much better
 set number                            " Let's active line number
 set relativenumber                    " look to your left screen
-set laststatus=2                      " Always display the status line
-set autowriteall                      " Automatically write the file when switching buffer
 set complete=.,w,b,u                  " Set our desired autocompletion matching"
 " set tabstop=2
 " set softtabstop=2
 " set shiftwidth=2
 " set expandtab
-set clipboard=unnamed
-set autoindent
-set splitright
-set splitbelow
-set si                                "smart indent
-set hidden
-set encoding=UTF-8
-" set conceallevel=0                  "Concealing Characters
 
 " yaml indentation
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
