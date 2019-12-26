@@ -37,7 +37,7 @@ set splitbelow
 set autoindent
 set si                                "smart indent
 set hidden
-set shell=bash
+" set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
 
@@ -136,9 +136,25 @@ nnoremap <leader>7 7gt
 nnoremap <leader>8 8gt
 nnoremap <leader>9 9gt
 nnoremap <leader>0 :tablast<cr>
-" nnoremap <C-S-n> :m+<CR>
-" nnoremap <C-S-m> :m-2<CR>
+
 " move a line up/down
+" move line mappings
+" ∆ is <A-j> on macOS
+" ˚ is <A-k> on macOS
+nnoremap ∆ :m .+1<cr>==
+nnoremap ˚ :m .-2<cr>==
+inoremap ∆ <Esc>:m .+1<cr>==gi
+inoremap ˚ <Esc>:m .-2<cr>==gi
+vnoremap ∆ :m '>+1<cr>gv=gv
+vnoremap ˚ :m '<-2<cr>gv=gv
+
+vnoremap $( <esc>`>a)<esc>`<i(<esc>
+vnoremap $[ <esc>`>a]<esc>`<i[<esc>
+vnoremap ${ <esc>`>a}<esc>`<i{<esc>
+vnoremap $" <esc>`>a"<esc>`<i"<esc>
+vnoremap $' <esc>`>a'<esc>`<i'<esc>
+vnoremap $\ <esc>`>o*/<esc>`<O/*<esc>
+vnoremap $< <esc>`>a><esc>`<i<<esc>
 
 " Buffer management
 " Close the current buffer
