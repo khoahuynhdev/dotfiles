@@ -37,6 +37,7 @@ set splitbelow
 set autoindent
 set si                                "smart indent
 set hidden
+set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
 
@@ -433,7 +434,11 @@ nmap <C-L> <C-W><C-L>
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
 let g:DevIconsDefaultFolderOpenSymbol = ' '
-
+" adding to vim-startify screen
+let g:webdevicons_enable_startify = 1
+if has('macunix')
+  let g:WebDevIconsOS = 'Darwin'
+endif
 "--------------coc-prettier--------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
