@@ -57,6 +57,7 @@ au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
@@ -228,6 +229,7 @@ let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 
 "joshdick/onedark.vim
+" set background=dark
 colorscheme onedark
 if has("nvim")
   set termguicolors
@@ -295,23 +297,57 @@ if has('mouse')
 endif
 
 " mhinz/vim-startify
+
 let g:startify_custom_header = startify#center([
-      \ ' #    #                      ',
-      \ ' #   #  #    #  ####    ##    ',
-      \ ' #  #   #    # #    #  #  #   ',
-      \ ' ###    ###### #    # #    #  ',
-      \ ' #  #   #    # #    # ######  ',
-      \ ' #   #  #    # #    # #    #  ',
-      \ ' #    # #    #  ####  #    #  ',
-      \ '                              ',
-      \ ' #     #                             ',
-      \ ' #     # #    # #   # #    # #    #  ',
-      \ ' #     # #    #  # #  ##   # #    #  ',
-      \ ' ####### #    #   #   # #  # ######  ',
-      \ ' #     # #    #   #   #  # # #    #  ',
-      \ ' #     # #    #   #   #   ## #    #  ',
-      \ ' #     #  ####    #   #    # #    # ',
+      \ '$$\   $$\ $$\   $$\  $$$$$$\   $$$$$$\        $$\   $$\ $$\   $$\ $$\     $$\ $$\   $$\ $$\   $$\',
+      \ '$$ | $$  |$$ |  $$ |$$  __$$\ $$  __$$\       $$ |  $$ |$$ |  $$ |\$$\   $$  |$$$\  $$ |$$ |  $$ |',
+      \ '$$ |$$  / $$ |  $$ |$$ /  $$ |$$ /  $$ |      $$ |  $$ |$$ |  $$ | \$$\ $$  / $$$$\ $$ |$$ |  $$ |',
+      \ '$$$$$  /  $$$$$$$$ |$$ |  $$ |$$$$$$$$ |      $$$$$$$$ |$$ |  $$ |  \$$$$  /  $$ $$\$$ |$$$$$$$$ |',
+      \ '$$  $$<   $$  __$$ |$$ |  $$ |$$  __$$ |      $$  __$$ |$$ |  $$ |   \$$  /   $$ \$$$$ |$$  __$$ |',
+      \ '$$ |\$$\  $$ |  $$ |$$ |  $$ |$$ |  $$ |      $$ |  $$ |$$ |  $$ |    $$ |    $$ |\$$$ |$$ |  $$ |',
+      \ '$$ | \$$\ $$ |  $$ | $$$$$$  |$$ |  $$ |      $$ |  $$ |\$$$$$$  |    $$ |    $$ | \$$ |$$ |  $$ |',
+      \ '\__|  \__|\__|  \__| \______/ \__|  \__|      \__|  \__| \______/     \__|    \__|  \__|\__|  \__|',
+      \ '                                                                                                  ',
+      \  '__    __',
+      \ '/  |  /  |',
+      \ '$$ |  $$ |  ______    ______    ______   __    __',
+      \ '$$ |__$$ | /      \  /      \  /      \ /  |  /  |',
+      \ '$$    $$ | $$$$$$  |/$$$$$$  |/$$$$$$  |$$ |  $$ |',
+      \ '$$$$$$$$ | /    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |',
+      \ '$$ |  $$ |/$$$$$$$ |$$ |__$$ |$$ |__$$ |$$ \__$$ |',
+      \ '$$ |  $$ |$$    $$ |$$    $$/ $$    $$/ $$    $$ |',
+      \ '$$/   $$/  $$$$$$$/ $$$$$$$/  $$$$$$$/   $$$$$$$ |',
+      \ '                    $$ |      $$ |      /  \__$$ |',
+      \ '                    $$ |      $$ |      $$    $$/',
+      \ '                    $$/       $$/        $$$$$$/',
+      \  '__    __                                __      __',
+      \ '/  \  /  |                              /  \    /  |',
+      \ '$$  \ $$ |  ______   __   __   __       $$  \  /$$/   ______    ______    ______',
+      \ '$$$  \$$ | /      \ /  | /  | /  |       $$  \/$$/   /      \  /      \  /      \',
+      \ '$$$$  $$ |/$$$$$$  |$$ | $$ | $$ |        $$  $$/   /$$$$$$  | $$$$$$  |/$$$$$$  |',
+      \ '$$ $$ $$ |$$    $$ |$$ | $$ | $$ |         $$$$/    $$    $$ | /    $$ |$$ |  $$/',
+      \ '$$ |$$$$ |$$$$$$$$/ $$ \_$$ \_$$ |          $$ |    $$$$$$$$/ /$$$$$$$ |$$ |',
+      \ '$$ | $$$ |$$       |$$   $$   $$/           $$ |    $$       |$$    $$ |$$ |',
+      \ '$$/   $$/  $$$$$$$/  $$$$$/$$$$/            $$/      $$$$$$$/  $$$$$$$/ $$/',
       \ ])
+
+" let g:startify_custom_header = startify#center([
+"       \ ' #    #                      ',
+"       \ ' #   #  #    #  ####    ##    ',
+"       \ ' #  #   #    # #    #  #  #   ',
+"       \ ' ###    ###### #    # #    #  ',
+"       \ ' #  #   #    # #    # ######  ',
+"       \ ' #   #  #    # #    # #    #  ',
+"       \ ' #    # #    #  ####  #    #  ',
+"       \ '                              ',
+"       \ ' #     #                             ',
+"       \ ' #     # #    # #   # #    # #    #  ',
+"       \ ' #     # #    #  # #  ##   # #    #  ',
+"       \ ' ####### #    #   #   # #  # ######  ',
+"       \ ' #     # #    #   #   #  # # #    #  ',
+"       \ ' #     # #    #   #   #   ## #    #  ',
+"       \ ' #     #  ####    #   #    # #    # ',
+"       \ ])
 
 " let g:startify_custom_header=[
 "       \ ' *********************************************************************///((((##((((((((////////****, ',
@@ -353,7 +389,6 @@ let g:startify_custom_header = startify#center([
 "       \ ' ************************.%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.*****,, ',
 "       \ ' ************************(%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%.****,,, ',
 "       \ ]
-
 
 " let g:startify_custom_header=[
 " 			\ ' MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ',
@@ -409,10 +444,10 @@ let g:startify_custom_header = startify#center([
 " 			\ ]
 
 " let g:startify_lists = [
-" 			\ { 'type': 'sessions',  'header': ['   Sessions']       },
-" 			\ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-" 			\ { 'type': 'commands',  'header': ['   Commands']       },
-" 			\ ]
+"       \ { 'type': 'sessions',  'header': ['   Sessions']       },
+"       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+"       \ { 'type': 'commands',  'header': ['   Commands']       },
+"       \ ]
 
 " highlight StartifyBracket ctermfg=240
 " highlight StartifyFooter  ctermfg=240
