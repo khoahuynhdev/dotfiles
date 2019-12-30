@@ -580,6 +580,10 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufNewFile,BufRead *.js
       \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
 
+"-------------editor_config-------------
+" play nice with fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 "-------------Auto-Commands-------------
 "Automatically source the Vimrc file on save.
 augroup autosourcing
