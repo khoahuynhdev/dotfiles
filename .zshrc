@@ -167,7 +167,8 @@ if type nvim > /dev/null 2>&1; then
   alias vm="nvim"
   alias vim="nvim"
 fi
-alias ll="ls -lG"
+alias ll="ls -lGa | lolcat"
+alias sl="sl | lolcat"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
