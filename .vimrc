@@ -26,7 +26,7 @@ set listchars+=trail:.                " Trailing white spaces will be displayed 
 set nobackup                          " Don't constantly write backup files
 set noswapfile                        " Ain't nobody got time for swap files
 set noerrorbells                      " Don't beep
-set nowrap                            " Do not wrap lines
+" set nowrap                            " Do not wrap lines
 set showcmd                           " Display incomplete commands in the bottom line of the screen
 set visualbell                        " Visual bell instead of beeping
 set laststatus=2                      " Always display the status line
@@ -591,7 +591,7 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
-
+set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y%{'[Gotta\ Pokemon\:'.pokemon#getdaze().']'}\ %f%=%{fugitive#statusline()}%l,%c%V\ %P
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds
