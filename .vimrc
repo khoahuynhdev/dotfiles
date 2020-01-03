@@ -173,6 +173,11 @@ nnoremap <Leader>an :call OpenFloatTerm('"node"')<CR>
 " Open tig, yes TIG, A FLOATING TIGGGG!!!!!!
 nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
 
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
 "--------------FloatingWindows--------------"
 if has('nvim')
   function! OpenFloatTerm(...)
