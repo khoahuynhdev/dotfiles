@@ -137,7 +137,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git osx ruby node tig)
 
 source $ZSH/oh-my-zsh.sh
-
+source $HOME/.aliases
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
