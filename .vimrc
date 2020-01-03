@@ -110,7 +110,7 @@ set wildignore+=*.png,*.jpg,*.gif
 "Make it easy to edit the vimrc file.
 
 "-------------Mapping-------------"
-nnoremap <Leader>ev :tabedit ~/.vimrc<cr>
+nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nmap <ESC><ESC> :nohlsearch<cr>
 " nnoremap <Leader>qq :bd<CR>
