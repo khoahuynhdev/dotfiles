@@ -56,6 +56,7 @@ set complete=.,w,b,u                  " Set our desired autocompletion matching"
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
