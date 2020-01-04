@@ -610,6 +610,12 @@ autocmd BufNewFile,BufRead *.js
 " play nice with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 "-------------Auto-Commands-------------
 "Automatically source the Vimrc file on save.
 augroup autosourcing
