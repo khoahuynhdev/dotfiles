@@ -5,10 +5,18 @@ set nocompatible                      "We want the latest vim settings/options, 
 " call pathogen#helptags()
 
 " moving to vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
+endif
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'APZelos/blamer.nvim'
 Plug 'dense-analysis/ale'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 Plug '/usr/local/opt/fzf'
