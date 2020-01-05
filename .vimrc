@@ -1,7 +1,52 @@
 set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
+
 " Initialisation de pathogen
-call pathogen#infect()
-call pathogen#helptags()
+" call pathogen#infect()
+" call pathogen#helptags()
+
+" moving to vim-plug
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+Plug 'dense-analysis/ale'
+Plug 'jiangmiao/auto-pairs'
+Plug 'editorconfig/editorconfig-vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'chr4/nginx.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'alunny/pegjs-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'ervandew/supertab'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-commentary'
+Plug 'ap/vim-css-color'
+Plug 'jidn/vim-dbml'
+Plug 'ryanoasis/vim-devicons'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'johngrib/vim-game-code-break'
+Plug 'airblade/vim-gitgutter'
+Plug 'thaerkh/vim-indentguides'
+Plug 'pangloss/vim-javascript'
+Plug 'neoclide/vim-jsx-improve'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'moll/vim-node'
+Plug 'vim-ruby/vim-ruby'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-surround'
+Plug 'posva/vim-vue'
+Plug 'liuchengxu/vista.vim'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
 
 "-------------COMMENTARY-------------"
 autocmd FileType apache setlocal commentstring=#\ %s
@@ -47,10 +92,6 @@ let mapleader=','                   " The default leader is \, but a comma is mu
 set number                            " Let's active line number
 set relativenumber                    " look to your left screen
 set complete=.,w,b,u                  " Set our desired autocompletion matching"
-" set tabstop=2
-" set softtabstop=2
-" set shiftwidth=2
-" set expandtab
 
 " yaml indentation
 au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -485,7 +526,7 @@ let g:startify_custom_header = startify#center([
 
 "--------------Searching--------------"
 
-set rtp+=/usr/local/opt/fzf
+" set rtp+=/usr/local/opt/fzf
 
 "--------------NERDTree--------------"
 
@@ -528,33 +569,33 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 "let g:javascript_plugin_ngdoc = 1
 
 "--------------Syntastic--------------"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
-"let g:syntastic_vue_eslint_exec = './node_modules/.bin/eslint'
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
+""let g:syntastic_vue_eslint_exec = './node_modules/.bin/eslint'
 
-let g:syntastic_error_symbol = '😡'
-let g:syntastic_style_error_symbol = '🤬'
-let g:syntastic_warning_symbol = '🤧'
-let g:syntastic_style_warning_symbol = '💩'
+"let g:syntastic_error_symbol = '😡'
+"let g:syntastic_style_error_symbol = '🤬'
+"let g:syntastic_warning_symbol = '🤧'
+"let g:syntastic_style_warning_symbol = '💩'
 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+"highlight link SyntasticErrorSign SignColumn
+"highlight link SyntasticWarningSign SignColumn
+"highlight link SyntasticErrorSign SignColumn
+"highlight link SyntasticStyleWarningSign SignColumn
 
-" Disable inherited syntastic
-let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "active_filetypes": [],
-      \ "passive_filetypes": [] }
+"" Disable inherited syntastic
+"let g:syntastic_mode_map = {
+"      \ "mode": "passive",
+"      \ "active_filetypes": [],
+"      \ "passive_filetypes": [] }
 
 "--------------ALE--------------"
 let g:ale_sign_error = '😡'
@@ -622,7 +663,7 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
-set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y%{'[Gotta\ Pokemon\:'.pokemon#getdaze().']'}\ %f%=%{fugitive#statusline()}%l,%c%V\ %P
+
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds
