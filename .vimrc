@@ -20,7 +20,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'ervandew/supertab'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
@@ -567,35 +567,6 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 "--------------Vim_Javascript--------------"
 "let g:javascript_plugin_jsdoc = 1
 "let g:javascript_plugin_ngdoc = 1
-
-"--------------Syntastic--------------"
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_eslint_exec = './node_modules/.bin/eslint'
-""let g:syntastic_vue_eslint_exec = './node_modules/.bin/eslint'
-
-"let g:syntastic_error_symbol = '😡'
-"let g:syntastic_style_error_symbol = '🤬'
-"let g:syntastic_warning_symbol = '🤧'
-"let g:syntastic_style_warning_symbol = '💩'
-
-"highlight link SyntasticErrorSign SignColumn
-"highlight link SyntasticWarningSign SignColumn
-"highlight link SyntasticErrorSign SignColumn
-"highlight link SyntasticStyleWarningSign SignColumn
-
-"" Disable inherited syntastic
-"let g:syntastic_mode_map = {
-"      \ "mode": "passive",
-"      \ "active_filetypes": [],
-"      \ "passive_filetypes": [] }
 
 "--------------ALE--------------"
 let g:ale_sign_error = '😡'
