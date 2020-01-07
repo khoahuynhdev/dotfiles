@@ -51,7 +51,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 Plug 'liuchengxu/vista.vim'
-
+Plug 'pearofducks/ansible-vim'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 

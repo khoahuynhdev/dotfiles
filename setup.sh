@@ -4,7 +4,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_bak             # old dotfiles backup directory
-files=".bashrc .vimrc .vim .zshrc .oh-my-zsh"    # list of files/folders to symlink in homedir
+files=".vimrc .zshrc"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -29,8 +29,8 @@ install_zsh () {
 	# Test to see if zshell is installed.  If it is:
 	if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
 		# Clone my oh-my-zsh repository from GitHub only if it isn't already present
-		if [[ ! -d $dir/oh-my-zsh/ ]]; then
-			git clone http://github.com/robbyrussell/oh-my-zsh.git
+		if [[ ! -d $dir/.oh-my-zsh/ ]]; then
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 		fi
 		# Set the default shell to zsh if it isn't currently set to zsh
 		if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
