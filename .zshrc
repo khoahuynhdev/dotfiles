@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
+export TERMUX_USER="u0_a164"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -59,22 +60,27 @@ POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
 zsh_wifi_signal(){
-        local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
-        local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
+  if [[ `uname` == 'Darwin' ]]; then
+    local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
+    local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
 
-        if [ "$airport" = "Off" ]; then
-                local color='%F{yellow}'
-                echo -n "%{$color%}Wifi Off"
-        else
-                local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
-                local speed=$(echo $output | grep 'lastTxRate' | awk -F': ' '{print $2}')
-                local color='%F{yellow}'
+    if [ "$airport" = "Off" ]; then
+      local color='%F{yellow}'
+      echo -n "%{$color%}Wifi Off"
+    else
+      local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
+      local speed=$(echo $output | grep 'lastTxRate' | awk -F': ' '{print $2}')
+      local color='%F{yellow}'
 
-                [[ $speed -gt 100 ]] && color='%F{green}'
-                [[ $speed -lt 50 ]] && color='%F{red}'
+      [[ $speed -gt 100 ]] && color='%F{green}'
+      [[ $speed -lt 50 ]] && color='%F{red}'
 
-                echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
-        fi
+      echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
+    fi
+  else
+    echo -n $'\ue2a2'
+  fi
+
 }
 # MacOS only
 ZSH_THEME="powerlevel9k/powerlevel9k"
