@@ -122,6 +122,7 @@ au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
 au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
+au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 " ================ Folds ============================
 
 set foldmethod=indent   "fold based on indent
@@ -326,7 +327,7 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 set lazyredraw
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='onedark' "ayu_mirage
+let g:airline_theme='night_owl' " onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >

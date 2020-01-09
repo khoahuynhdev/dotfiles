@@ -144,10 +144,12 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx ruby node)
+plugins=(git osx ruby node brew)
 
 source $ZSH/oh-my-zsh.sh
-source $HOME/.aliases
+if [[ -f $HOME/.aliases ]]; then
+  source $HOME/.aliases
+fi
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
