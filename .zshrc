@@ -11,17 +11,21 @@ export TERM="xterm-256color"
 
 # Customise the Powerlevel9k prompts
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  custom_apple
-  custom_vim
-  custom_node
-  custom_ruby
-  custom_javascript
+  # custom_apple
+  # custom_vim
+  # custom_node
+  # custom_ruby
+  # custom_javascript
+  ssh
+  user
+  ip
   custom_wifi_signal
   dir
   vcs
   newline
   status
 )
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 # Add the custom Vim icon prompt segment
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_CUSTOM_VIM="echo -n $'\uE7C5'"
@@ -30,7 +34,7 @@ POWERLEVEL9K_CUSTOM_VIM_BACKGROUND="gray"
 
 # Add the custom Apple icon prompt segment
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_APPLE="echo -n Khoa $'\uE711'"
+POWERLEVEL9K_CUSTOM_APPLE="echo -n $'\uE711'"
 POWERLEVEL9K_CUSTOM_APPLE_FOREGROUND="white"
 POWERLEVEL9K_CUSTOM_APPLE_BACKGROUND="black"
 

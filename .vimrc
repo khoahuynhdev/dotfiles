@@ -106,6 +106,7 @@ au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType zsh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -309,7 +310,7 @@ colorscheme onedark
 if has("nvim")
   set termguicolors
 endif
-hi Comment guifg=#808080
+" hi Comment guifg=#808080
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
@@ -587,6 +588,13 @@ let g:ale_fixers = {
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+" Ansible
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+" let g:ansible_extra_keywords_highlight = 1
+let g:ansible_normal_keywords_highlight = 'Constant'
+let g:ansible_with_keywords_highlight = 'Constant'
+au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
 "Shamelessly copy from author with credit ^_^
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
