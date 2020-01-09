@@ -52,6 +52,8 @@ Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 Plug 'liuchengxu/vista.vim'
 Plug 'pearofducks/ansible-vim'
+
+Plug 'altercation/vim-colors-solarized'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
