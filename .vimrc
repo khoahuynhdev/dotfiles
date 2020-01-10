@@ -1,5 +1,5 @@
 set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
-
+" echo '(>^.^<)'
 " Initialisation de pathogen
 " call pathogen#infect()
 " call pathogen#helptags()
@@ -165,7 +165,7 @@ set wildignore+=*.png,*.jpg,*.gif
 "-------------Mapping-------------"
 nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
-nmap <ESC><ESC> :nohlsearch<cr>
+nnoremap <ESC><ESC> :nohlsearch<cr>
 " nnoremap <Leader>qq :bd<CR>
 nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
@@ -218,6 +218,9 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
+noremap <S-H> ^ " to the first none blank char of line
+noremap <S-L> $
+
 nnoremap <CR> G
 " Open terminal
 nnoremap <Leader>at :call OpenFloatTerm()<CR>
@@ -230,6 +233,12 @@ nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+
+inoremap jk <esc>
+" Operation mapping
+onoremap in( :<c-u>normal! f(vi(<cr>
+onoremap il( :<c-u>normal! F(vi(<cr>
+onoremap p i(
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
