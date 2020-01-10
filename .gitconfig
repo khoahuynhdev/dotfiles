@@ -4,8 +4,6 @@
 [alias]
   co = checkout
   gp = pull --rebase
-  c = commit -m
   cam = commit -am
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [core]
   editor = vim
