@@ -5,6 +5,7 @@ set nocompatible                      "We want the latest vim settings/options, 
 " call pathogen#helptags()
 
 " moving to vim-plug
+" Vim plug settings ------------------- {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -57,6 +58,7 @@ Plug 'altercation/vim-colors-solarized'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
+"}}}
 
 "-------------COMMENTARY-------------"
 autocmd FileType apache setlocal commentstring=#\ %s
@@ -658,11 +660,19 @@ autocmd BufReadPost *
      \ endif
 
 "-------------Auto-Commands-------------
+
 "Automatically source the Vimrc file on save.
 augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
+
+" Vimscript filetype settings ----------- {{{
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal foldmethod=marker foldenable
+augroup END
+" }}}
 
 " Folding cheat sheet
 " zR    open all folds
