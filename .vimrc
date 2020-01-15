@@ -173,6 +173,7 @@ nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
+nnoremap <leader>; mqA;<esc>`q
 
 " Mapping for managing tab
 map <leader>tn :tabnew<cr>
@@ -228,6 +229,7 @@ nnoremap <CR> G
 nnoremap <Leader>at :call OpenFloatTerm()<CR>
 " Open node REPL
 nnoremap <Leader>an :call OpenFloatTerm('"node"')<CR>
+nnoremap <Leader>ar :call OpenFloatTerm('"irb"')<CR>
 " Open tig, yes TIG, A FLOATING TIGGGG!!!!!!
 nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
 
@@ -262,7 +264,7 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-"--------------FloatingWindows--------------"
+"--------------FloatingWindows {{{
 if has('nvim')
   function! OpenFloatTerm(...)
     " Configuration
@@ -310,6 +312,8 @@ if has('nvim')
     autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
   endfunction
 endif
+"}}}
+
 "--------------visuals--------------"
 
 "Git blamer
