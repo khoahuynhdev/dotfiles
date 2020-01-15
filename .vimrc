@@ -173,7 +173,7 @@ nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
-nnoremap <leader>; mqA;<esc>`q
+nnoremap <leader>sc mqA;<esc>`q
 
 " Mapping for managing tab
 map <leader>tn :tabnew<cr>
