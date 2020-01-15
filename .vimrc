@@ -174,6 +174,7 @@ map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
 nnoremap <leader>sc mqA;<esc>`q
+nnoremap <leader>ss :source %<cr>
 
 " Mapping for managing tab
 map <leader>tn :tabnew<cr>
@@ -221,7 +222,8 @@ map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
-noremap <S-H> ^ " to the first none blank char of line
+" to the first none blank char of line
+noremap <S-H> ^
 noremap <S-L> $
 
 nnoremap <CR> G
@@ -232,6 +234,7 @@ nnoremap <Leader>an :call OpenFloatTerm('"node"')<CR>
 nnoremap <Leader>ar :call OpenFloatTerm('"irb"')<CR>
 " Open tig, yes TIG, A FLOATING TIGGGG!!!!!!
 nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
+" nnoremap <leader>g :silent execute "grep! -R" . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -312,7 +315,7 @@ if has('nvim')
     autocmd TermClose * ++once :bd! | call nvim_win_close(s:float_term_border_win, v:true)
   endfunction
 endif
-"}}}
+" }}}
 
 "--------------visuals--------------"
 
