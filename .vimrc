@@ -15,7 +15,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-denite'
+" Plug 'neoclide/coc-denite'
 
 Plug 'APZelos/blamer.nvim'
 Plug 'dense-analysis/ale'
@@ -253,7 +253,7 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F(vi(<cr>
 onoremap p i(
 
-function RenameFile()
+function! RenameFile()
   let old_name = expand("%")
   let new_name = input('New file Name:', expand('%'), 'file')
   if new_name !=# '' && new_name !=# old_name
