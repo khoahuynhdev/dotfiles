@@ -15,6 +15,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-denite'
+
 Plug 'APZelos/blamer.nvim'
 Plug 'dense-analysis/ale'
 
@@ -140,12 +142,13 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 set statusline+=%{NearestMethodOrFunction()}
-
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista_default_executive = 'ctags'
 
 "-------------INDENTGUIDES-------------"
 let g:indentguides_spacechar = '┆'
@@ -175,6 +178,9 @@ map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
 nnoremap <leader>sc mqA;<esc>`q
 nnoremap <leader>ss :source %<cr>
+
+" Don't use recording now
+map q <Nop>
 
 " Mapping for managing tab
 map <leader>tn :tabnew<cr>
@@ -246,6 +252,16 @@ inoremap jk <esc>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F(vi(<cr>
 onoremap p i(
+
+function RenameFile()
+  let old_name = expand("%")
+  let new_name = input('New file Name:', expand('%'), 'file')
+  if new_name !=# '' && new_name !=# old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -673,6 +689,9 @@ augroup autosourcing
   autocmd!
   autocmd BufWritePost .vimrc source %
 augroup END
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Vimscript filetype settings ----------- {{{
 augroup filetype_vim
