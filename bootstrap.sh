@@ -14,5 +14,5 @@ read -p 'Answer: '  reply
 
 if [[ $reply =~ ^[Yy]$ ]]
 then
-   bootstrapTerminal
+  bootstrapTerminal
 fi

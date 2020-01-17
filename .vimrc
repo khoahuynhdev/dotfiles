@@ -54,6 +54,8 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 Plug 'liuchengxu/vista.vim'
+
+Plug 'stephpy/vim-yaml'
 Plug 'pearofducks/ansible-vim'
 
 Plug 'altercation/vim-colors-solarized'
@@ -151,6 +153,7 @@ let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 
 "-------------INDENTGUIDES-------------"
+
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
 
@@ -565,7 +568,7 @@ let g:startify_custom_header = startify#center([
 
 " highlight StartifyBracket ctermfg=240
 " highlight StartifyFooter  ctermfg=240
-" highlight StartifyHeader  ctermfg=114
+" highlight StartifyHeader  ctermfg=115 ctermbg=117
 " highlight StartifyNumber  ctermfg=215
 " highlight StartifyPath    ctermfg=245
 " highlight StartifySlash   ctermfg=240
@@ -626,12 +629,12 @@ highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " Ansible
-let g:ansible_attribute_highlight = "ob"
+let g:ansible_attribute_highlight = "ab"
+let g:ansible_unindent_after_newline = 1
 let g:ansible_name_highlight = 'b'
 " let g:ansible_extra_keywords_highlight = 1
 let g:ansible_normal_keywords_highlight = 'Constant'
 let g:ansible_with_keywords_highlight = 'Constant'
-au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
 
 "Shamelessly copy from author with credit ^_^
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
