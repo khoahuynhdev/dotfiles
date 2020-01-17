@@ -607,6 +607,15 @@ let g:webdevicons_enable_startify = 1
 if has('macunix')
   let g:WebDevIconsOS = 'Darwin'
 endif
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
+
 "--------------coc-prettier--------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
