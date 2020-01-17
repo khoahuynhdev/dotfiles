@@ -364,7 +364,7 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 set lazyredraw
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='night_owl' " onedark
+let g:airline_theme='kolor' " night_owl onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
