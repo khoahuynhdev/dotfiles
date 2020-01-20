@@ -1,2 +1,16 @@
 # dotfiles
-My dotfiles, Mostly for MacOS and Iterm
+
+## Install
+
+### Homebrew
+
+```zsh
+xcode-select --install
+sudo xcodebuild -license
+
+sudo mkdir /usr/local
+sudo chown -R `whoami` /usr/local
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew doctor
+```
