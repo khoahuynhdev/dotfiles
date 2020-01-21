@@ -7,3 +7,7 @@
   cam = commit -am
 [core]
   editor = vim
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
