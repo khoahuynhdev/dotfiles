@@ -84,6 +84,7 @@ zsh_wifi_signal(){
 }
 # MacOS only
 ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
 # ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
