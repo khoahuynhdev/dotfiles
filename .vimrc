@@ -64,12 +64,8 @@ call plug#end()
 
 "}}}
 
-"-------------COMMENTARY-------------"
-autocmd FileType apache setlocal commentstring=#\ %s
-
 "-------------COMMON_SETTING-------------"
-filetype indent on                    " Detect files type
-filetype plugin on                    " Detect files type
+filetype plugin indent on                    " Detect files type
 set backspace=indent,eol,start        " Make backspace behave like every other editor
 set t_Co=256                          " use 256 colors.
 syntax on                             " Enable syntax highlighting
@@ -98,15 +94,14 @@ set splitbelow
 set autoindent
 set si                                "smart indent
 set hidden
+set number                            " Let's active line number
+set relativenumber                    " look to your left screen
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
-let mapleader=','                   " The default leader is \, but a comma is much better
-set number                            " Let's active line number
-set relativenumber                    " look to your left screen
 set complete=.,w,b,u                  " Set our desired autocompletion matching"
 
 " yaml indentation
@@ -127,13 +122,14 @@ au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
 au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
 au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-
+au FileType apache setlocal commentstring=#\ %s
 au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-" ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+" Fold --------------{{{
+augroup Filetype_javascript
+  au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
+augroup END
+" }}}
 
 "-------------VIM_VUE-------------"
 let g:vue_pre_processors = ['scss']
@@ -168,9 +164,8 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-"Make it easy to edit the vimrc file.
-
-"-------------Mapping-------------"
+" Mapping ------------- {{{
+let mapleader=','                   " The default leader is \, but a comma is much better
 nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nnoremap <ESC><ESC> :nohlsearch<cr>
@@ -255,7 +250,7 @@ inoremap jk <esc>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F(vi(<cr>
 onoremap p i(
-
+" }}}
 function! RenameFile()
   let old_name = expand("%")
   let new_name = input('New file Name:', expand('%'), 'file')
@@ -681,8 +676,8 @@ endfu
 
 autocmd BufNewFile,BufRead *.jsx let b:jsx_ext_found = 1
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-autocmd BufNewFile,BufRead *.js
-      \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+" autocmd BufNewFile,BufRead *.js
+"       \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
 
 "-------------editor_config-------------
 " play nice with fugitive
@@ -707,7 +702,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Vimscript filetype settings ----------- {{{
 augroup filetype_vim
-  autocmd!
   autocmd FileType vim setlocal foldmethod=marker foldenable
 augroup END
 " }}}
