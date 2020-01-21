@@ -104,31 +104,39 @@ set relativenumber                    " look to your left screen
 set omnifunc=syntaxcomplete#Complete
 set complete=.,w,b,u                  " Set our desired autocompletion matching"
 
-" yaml indentation
-au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType zsh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType eruby setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
-au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
-au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-au FileType apache setlocal commentstring=#\ %s
-au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup FileType_Local_tabwidth " {{{
+  au!
+  au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType zsh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType eruby setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
+  au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType apache setlocal commentstring=#\ %s
+  au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+augroup END
+" }}}
 
 " Fold --------------{{{
 augroup Filetype_javascript
   au!
   au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
+augroup END
+
+augroup Filetype_vim
+  au!
+  au FileType vim setlocal foldmethod=marker foldenable
 augroup END
 " }}}
 
@@ -263,24 +271,24 @@ function! RenameFile()
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+  let l:saved_reg = @"
+  execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-        call CmdLine("Ack \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("Ack \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+  let @/ = l:pattern
+  let @" = l:saved_reg
 endfunction
 "--------------FloatingWindows {{{
 if has('nvim')
@@ -408,8 +416,6 @@ if has('mouse')
   set mouse=a
 endif
 
-" mhinz/vim-startify
-
 let g:startify_custom_header = startify#center([
       \ '$$\   $$\ $$\   $$\  $$$$$$\   $$$$$$\        $$\   $$\ $$\   $$\ $$\     $$\ $$\   $$\ $$\   $$\',
       \ '$$ | $$  |$$ |  $$ |$$  __$$\ $$  __$$\       $$ |  $$ |$$ |  $$ |\$$\   $$  |$$$\  $$ |$$ |  $$ |',
@@ -421,28 +427,28 @@ let g:startify_custom_header = startify#center([
       \ '\__|  \__|\__|  \__| \______/ \__|  \__|      \__|  \__| \______/     \__|    \__|  \__|\__|  \__|',
       \ '                                                                                                  ',
       \ ])
-      " \  '__    __',
-      " \ '/  |  /  |',
-      " \ '$$ |  $$ |  ______    ______    ______   __    __',
-      " \ '$$ |__$$ | /      \  /      \  /      \ /  |  /  |',
-      " \ '$$    $$ | $$$$$$  |/$$$$$$  |/$$$$$$  |$$ |  $$ |',
-      " \ '$$$$$$$$ | /    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |',
-      " \ '$$ |  $$ |/$$$$$$$ |$$ |__$$ |$$ |__$$ |$$ \__$$ |',
-      " \ '$$ |  $$ |$$    $$ |$$    $$/ $$    $$/ $$    $$ |',
-      " \ '$$/   $$/  $$$$$$$/ $$$$$$$/  $$$$$$$/   $$$$$$$ |',
-      " \ '                    $$ |      $$ |      /  \__$$ |',
-      " \ '                    $$ |      $$ |      $$    $$/',
-      " \ '                    $$/       $$/        $$$$$$/',
-      " \  '__    __                                __      __',
-      " \ '/  \  /  |                              /  \    /  |',
-      " \ '$$  \ $$ |  ______   __   __   __       $$  \  /$$/   ______    ______    ______',
-      " \ '$$$  \$$ | /      \ /  | /  | /  |       $$  \/$$/   /      \  /      \  /      \',
-      " \ '$$$$  $$ |/$$$$$$  |$$ | $$ | $$ |        $$  $$/   /$$$$$$  | $$$$$$  |/$$$$$$  |',
-      " \ '$$ $$ $$ |$$    $$ |$$ | $$ | $$ |         $$$$/    $$    $$ | /    $$ |$$ |  $$/',
-      " \ '$$ |$$$$ |$$$$$$$$/ $$ \_$$ \_$$ |          $$ |    $$$$$$$$/ /$$$$$$$ |$$ |',
-      " \ '$$ | $$$ |$$       |$$   $$   $$/           $$ |    $$       |$$    $$ |$$ |',
-      " \ '$$/   $$/  $$$$$$$/  $$$$$/$$$$/            $$/      $$$$$$$/  $$$$$$$/ $$/',
-      " \ ])
+" \  '__    __',
+" \ '/  |  /  |',
+" \ '$$ |  $$ |  ______    ______    ______   __    __',
+" \ '$$ |__$$ | /      \  /      \  /      \ /  |  /  |',
+" \ '$$    $$ | $$$$$$  |/$$$$$$  |/$$$$$$  |$$ |  $$ |',
+" \ '$$$$$$$$ | /    $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |',
+" \ '$$ |  $$ |/$$$$$$$ |$$ |__$$ |$$ |__$$ |$$ \__$$ |',
+" \ '$$ |  $$ |$$    $$ |$$    $$/ $$    $$/ $$    $$ |',
+" \ '$$/   $$/  $$$$$$$/ $$$$$$$/  $$$$$$$/   $$$$$$$ |',
+" \ '                    $$ |      $$ |      /  \__$$ |',
+" \ '                    $$ |      $$ |      $$    $$/',
+" \ '                    $$/       $$/        $$$$$$/',
+" \  '__    __                                __      __',
+" \ '/  \  /  |                              /  \    /  |',
+" \ '$$  \ $$ |  ______   __   __   __       $$  \  /$$/   ______    ______    ______',
+" \ '$$$  \$$ | /      \ /  | /  | /  |       $$  \/$$/   /      \  /      \  /      \',
+" \ '$$$$  $$ |/$$$$$$  |$$ | $$ | $$ |        $$  $$/   /$$$$$$  | $$$$$$  |/$$$$$$  |',
+" \ '$$ $$ $$ |$$    $$ |$$ | $$ | $$ |         $$$$/    $$    $$ | /    $$ |$$ |  $$/',
+" \ '$$ |$$$$ |$$$$$$$$/ $$ \_$$ \_$$ |          $$ |    $$$$$$$$/ /$$$$$$$ |$$ |',
+" \ '$$ | $$$ |$$       |$$   $$   $$/           $$ |    $$       |$$    $$ |$$ |',
+" \ '$$/   $$/  $$$$$$$/  $$$$$/$$$$/            $$/      $$$$$$$/  $$$$$$$/ $$/',
+" \ ])
 
 " let g:startify_custom_header = startify#center([
 "       \ ' #    #                      ',
@@ -686,11 +692,9 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
-"-------------Auto-Commands-------------
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 "Automatically source the Vimrc file on save.
 augroup autosourcing
@@ -700,12 +704,6 @@ augroup END
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Vimscript filetype settings ----------- {{{
-augroup filetype_vim
-  autocmd FileType vim setlocal foldmethod=marker foldenable
-augroup END
-" }}}
 
 " Folding cheat sheet
 " zR    open all folds
