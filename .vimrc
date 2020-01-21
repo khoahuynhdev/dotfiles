@@ -127,6 +127,7 @@ au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " Fold --------------{{{
 augroup Filetype_javascript
+  au!
   au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
 augroup END
 " }}}
