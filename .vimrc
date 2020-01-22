@@ -353,11 +353,13 @@ let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 
 "joshdick/onedark.vim
-" set background=dark
-colorscheme papercolor " onedark
-if has("nvim")
-  set termguicolors
-endif
+set background=dark
+colorscheme PaperColor " onedark
+
+" if has("nvim")
+"   set termguicolors
+" endif
+
 " hi Comment guifg=#808080
 set guioptions-=e
 set guioptions-=l
@@ -571,14 +573,14 @@ let g:startify_custom_header = startify#center([
 "       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
 "       \ { 'type': 'commands',  'header': ['   Commands']       },
 "       \ ]
-
-" highlight StartifyBracket ctermfg=240
-" highlight StartifyFooter  ctermfg=240
-" highlight StartifyHeader  ctermfg=115 ctermbg=117
-" highlight StartifyNumber  ctermfg=215
-" highlight StartifyPath    ctermfg=245
-" highlight StartifySlash   ctermfg=240
-" highlight StartifySpecial ctermfg=240
+let g:startify_custom_footer = startify#center([ '© Khoa Huynh 2020'])
+highlight StartifyBracket ctermfg=17
+highlight StartifyFooter  ctermfg=54
+highlight StartifyHeader  ctermfg=53
+highlight StartifyNumber  ctermfg=215
+highlight StartifyPath    ctermfg=242
+highlight StartifySlash   ctermfg=18
+highlight StartifySpecial ctermfg=240
 
 "--------------Searching--------------"
 
