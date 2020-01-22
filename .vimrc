@@ -354,11 +354,11 @@ let g:blamer_prefix = ' '
 
 "joshdick/onedark.vim
 set background=dark
-colorscheme PaperColor " onedark
+colorscheme nord " onedark
 
-" if has("nvim")
-"   set termguicolors
-" endif
+if has("nvim")
+  set termguicolors
+endif
 
 " hi Comment guifg=#808080
 set guioptions-=e
@@ -374,7 +374,7 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 set lazyredraw
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='kolor' " night_owl onedark
+let g:airline_theme='nord' " kolor night_owl onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
