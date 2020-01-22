@@ -59,6 +59,10 @@ Plug 'stephpy/vim-yaml'
 Plug 'pearofducks/ansible-vim'
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'kjssad/quantum.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -350,7 +354,7 @@ let g:blamer_prefix = ' '
 
 "joshdick/onedark.vim
 " set background=dark
-colorscheme onedark
+colorscheme papercolor " onedark
 if has("nvim")
   set termguicolors
 endif
