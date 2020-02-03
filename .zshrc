@@ -78,7 +78,7 @@ zsh_wifi_signal(){
       echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
     fi
   else
-    echo -n $'\ue2a2'
+    echo -n $'\uf1eb'
   fi
 
 }
