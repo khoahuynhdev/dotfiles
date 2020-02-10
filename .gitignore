@@ -1,3 +1,5 @@
 plugged
 bundle
 .vscode
+*.log
+.tmux
