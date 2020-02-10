@@ -54,7 +54,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 
 Plug 'stephpy/vim-yaml'
 Plug 'pearofducks/ansible-vim'
@@ -149,18 +149,18 @@ augroup END
 let g:vue_pre_processors = ['scss']
 let g:vue_pre_processors = 'detect_on_enter'
 "-------------VISTA_VIM-------------"
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
+" function! NearestMethodOrFunction() abort
+"   return get(b:, 'vista_nearest_method_or_function', '')
+" endfunction
 
-set statusline+=%{NearestMethodOrFunction()}
+" set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-let g:vista_default_executive = 'ctags'
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" let g:vista_default_executive = 'ctags'
 
 "-------------INDENTGUIDES-------------"
 
@@ -349,7 +349,7 @@ endif
 
 "Git blamer
 " nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
-let g:blamer_enabled = 1
+" let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 
