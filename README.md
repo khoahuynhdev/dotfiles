@@ -14,3 +14,5 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew doctor
 ```
+### Tmux
+* Install tmux plugin manager: https://github.com/tmux-plugins/tpm
