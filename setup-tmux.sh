@@ -9,7 +9,7 @@ olddir=~/dotfiles_bak
 echo -n "Creating $olddir for backup any existing tmux files"
 mkdir -p $olddir
 
-files =".tmux.conf"
+files=".tmux.conf"
 for file in $files; do
   echo "Moving any existing dotfiles from ~ to $olddir"
   mv ~/$file $olddir/$file
