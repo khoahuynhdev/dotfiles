@@ -349,7 +349,7 @@ endif
 
 "Git blamer
 " nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
-" let g:blamer_enabled = 1
+let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 
