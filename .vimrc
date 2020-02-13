@@ -1,4 +1,4 @@
-set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
+" set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
 " echo '(>^.^<)'
 " Initialisation de pathogen
 " call pathogen#infect()
