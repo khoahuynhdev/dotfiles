@@ -179,7 +179,8 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
 " Mapping ------------- {{{
-let mapleader=','                   " The default leader is \, but a comma is much better
+let mapleader=','
+noremap <space> :
 nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nnoremap <ESC><ESC> :nohlsearch<cr>
