@@ -63,6 +63,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'kjssad/quantum.vim'
+Plug 'wlangstroth/vim-racket'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
