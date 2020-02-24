@@ -182,6 +182,8 @@ set wildignore+=*.png,*.jpg,*.gif
 " Mapping ------------- {{{
 let mapleader=','
 noremap <space> :
+" nnoremap j jzz
+" nnoremap k kzz
 nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nnoremap <ESC><ESC> :nohlsearch<cr>
