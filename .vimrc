@@ -65,6 +65,8 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'kjssad/quantum.vim'
 Plug 'wlangstroth/vim-racket'
 
+" Plugin development
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -722,3 +724,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " za    toggle folds at cursor position
 " zj    move down to start of next fold
 " zk    move up to end of previous fold
+"
+" ":p   print last executed command to the buffer
+" @=    reruns the last command
+" gv    select the previous visual mode
+" co .  copy the range to the current line, eg: co +3
