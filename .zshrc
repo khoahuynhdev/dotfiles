@@ -18,14 +18,14 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   # custom_javascript
   ssh
   user
-  ip
-  custom_wifi_signal
+  # ip
+  # custom_wifi_signal
   dir
   vcs
   newline
   status
 )
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
 # Add the custom Vim icon prompt segment
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
 POWERLEVEL9K_CUSTOM_VIM="echo -n $'\uE7C5'"
