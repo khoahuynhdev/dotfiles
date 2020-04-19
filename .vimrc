@@ -441,21 +441,21 @@ if has('mouse')
 endif
 " let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
 let g:startify_custom_header = startify#center([
-      \ '              ________ ++     ________    ',
-      \ '             /VVVVVVVV\++++  /VVVVVVVV\   ',
-      \ '             \VVVVVVVV/++++++\VVVVVVVV/   ',
-      \ '              |VVVVVV|++++++++/VVVVV/"    ',
-      \ '              |VVVVVV|++++++/VVVVV/"      ',
-      \ '             +|VVVVVV|++++/VVVVV/"+       ',
-      \ '           +++|VVVVVV|++/VVVVV/"+++++     ',
-      \ '         +++++|VVVVVV|/VVVVV/"+++++++++   ',
-      \ '           +++|VVVVVVVVVVV/"+++++++++     ',
-      \ '             +|VVVVVVVVV/"+++++++++       ',
-      \ '              |VVVVVVV/"+++++++++         ',
-      \ '              |VVVVV/"+++++++++           ',
-      \ '              |VVV/"+++++++++             ',
-      \ '              "V/"   ++++++               ',
-      \ '                       ++                 ',
+      \ "              ________ ++     ________    ",
+      \ "             /VVVVVVVV\++++  /VVVVVVVV\   ",
+      \ "             \VVVVVVVV/++++++\VVVVVVVV/   ",
+      \ "              |VVVVVV|++++++++/VVVVV/'    ",
+      \ "              |VVVVVV|++++++/VVVVV/'      ",
+      \ "             +|VVVVVV|++++/VVVVV/'+       ",
+      \ "           +++|VVVVVV|++/VVVVV/'+++++     ",
+      \ "         +++++|VVVVVV|/VVVVV/'+++++++++   ",
+      \ "           +++|VVVVVVVVVVV/'+++++++++     ",
+      \ "             +|VVVVVVVVV/'+++++++++       ",
+      \ "              |VVVVVVV/'+++++++++         ",
+      \ "              |VVVVV/'+++++++++           ",
+      \ "              |VVV/'+++++++++             ",
+      \ "              'V/'   ++++++               ",
+      \ "                       ++                 ",
       \ ])
 
 " let g:startify_lists = [
