@@ -7,6 +7,11 @@
   cam = commit -am
   unstage = reset HEAD -- #take file out of staged commit
   h = !git --no-pager log origin/master..HEAD --abbrev-commit --pretty=oneline #pretty oneline graph of what is different from origin/master
+  pom = !sh -c 'git h && echo Ready to push? ENTER && read && git push origin master' - #push current changes to master
+  pomt = !sh -c 'git h && echo Ready to push? ENTER && read && git push origin master && git push origin master --tags' -  #push to origin master with tags
+  purm = !sh -c 'test "$#" = 1 && git h && git checkout master && git pull --ff-only && git checkout \"$1\" && git rebase master && exit 0 || echo \"usage: git purm <branch>\" >&2 && exit 1' - #pull and rebase master
+  rem = !sh -c 'test "$#" = 1 && git h && git checkout master && git pull --ff-only && git checkout \"$1\" && git rebase master && git checkout master && git merge \"$1\" && echo Done and ready to do: git pom && exit 0 || echo \"usage: git rem <branch>\" >&2 && exit 1' - # merge current branch into master
+  rpom = !git pull --rebase && git pom # rebase and push to origin/master
   who = shortlog -n -s --no-merges # who has committed to this project
   get = !git pull --ff-only #better git pull
 [core]
