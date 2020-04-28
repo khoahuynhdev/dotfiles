@@ -1,0 +1,13 @@
+[user]
+  name = khoahuynhf
+  email = khoa0319@gmail.com
+[alias]
+  co = checkout
+  gp = pull --rebase
+  cam = commit -am
+[core]
+  editor = nvim
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
