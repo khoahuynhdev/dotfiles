@@ -181,6 +181,10 @@ if type nvim > /dev/null 2>&1; then
 fi
 alias ll="ls -lGa"
 alias sl="sl | lolcat"
+if type curl > /dev/null 2>&1;
+then
+  alias wt="curl wttr.in"
+fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

@@ -76,6 +76,8 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'kjssad/quantum.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
+
+Plug 'franbach/miramare'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -370,13 +372,14 @@ let g:blamer_enabled = 1
 let g:blamer_delay = 1000
 let g:blamer_prefix = ' '
 
-"joshdick/onedark.vim
-set background=dark
-colorscheme nord " onedark
-
 if has("nvim")
   set termguicolors
 endif
+
+"joshdick/onedark.vim
+set background=dark
+colorscheme miramare " nord onedark
+
 
 " hi Comment guifg=#808080
 set guioptions-=e
@@ -392,7 +395,7 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 set lazyredraw
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='nord' " kolor night_owl onedark
+let g:airline_theme='miramare' " nord kolor night_owl onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
