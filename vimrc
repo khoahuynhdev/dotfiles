@@ -394,8 +394,19 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+"--------------vim_gitgutter--------------"
+" highlight GitGutterAdd ctermfg=2
+" highlight GitGutterChange ctermfg=3
+" highlight GitGutterDelete ctermfg=1
+" highlight SignColumn ctermbg=0
+
+" Enable gitguter realtime upadating
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+set updatetime=250
+
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='miramare' " nord kolor night_owl onedark
+let g:airline_theme='behelit' " nord kolor night_owl onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
