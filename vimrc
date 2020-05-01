@@ -395,11 +395,6 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 set lazyredraw
 
 "--------------vim_gitgutter--------------"
-" highlight GitGutterAdd ctermfg=2
-" highlight GitGutterChange ctermfg=3
-" highlight GitGutterDelete ctermfg=1
-" highlight SignColumn ctermbg=0
-
 " Enable gitguter realtime upadating
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
