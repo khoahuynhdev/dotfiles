@@ -186,7 +186,14 @@ then
   alias wt="curl wttr.in"
 fi
 
+if type ag > /dev/null 2>&1;
+then
+  # Setting ag as the default source for fzf
+  export FZF_DEFAULT_COMMAND='ag -g ""'
+fi
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
