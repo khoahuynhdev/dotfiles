@@ -76,6 +76,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'kjssad/quantum.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
+Plug 'tpope/vim-rails'
 
 Plug 'franbach/miramare'
 " Plugin development
