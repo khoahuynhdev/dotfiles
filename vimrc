@@ -204,7 +204,7 @@ nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nnoremap <ESC><ESC> :nohlsearch<cr>
 " nnoremap <Leader>qq :bd<CR>
-nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
+" nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
