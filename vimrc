@@ -29,7 +29,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'do': 'CocInstall coc-tsserver'}
 " Plug 'neoclide/coc-denite'
 
-Plug 'APZelos/blamer.nvim'
+if has ("nvim")
+  Plug 'APZelos/blamer.nvim'
+  let g:blamer_enabled = 1
+  let g:blamer_delay = 1000
+  let g:blamer_prefix = ' '
+endif
 Plug 'dense-analysis/ale'
 
 Plug 'jiangmiao/auto-pairs'
@@ -264,6 +269,9 @@ map <leader>h :bprevious<cr>
 noremap <S-H> ^
 noremap <S-L> $
 
+" make Y consistent with C and D.
+nnoremap Y y$
+
 nnoremap <CR> G
 " Open terminal
 nnoremap <Leader>at :call OpenFloatTerm()<CR>
@@ -366,12 +374,6 @@ endif
 " }}}
 
 "--------------visuals--------------"
-
-"Git blamer
-" nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
-let g:blamer_enabled = 1
-let g:blamer_delay = 1000
-let g:blamer_prefix = ' '
 
 if has("nvim")
   set termguicolors
