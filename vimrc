@@ -159,6 +159,7 @@ augroup END
 augroup Filetype_javascript
   au!
   au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
+  au FileType javascript iab clg console.log()<left>
 augroup END
 
 augroup Filetype_vim
@@ -476,13 +477,13 @@ let g:startify_custom_header = startify#center([
 "       \ { 'type': 'commands',  'header': ['   Commands']       },
 "       \ ]
 let g:startify_custom_footer = startify#center([ '© Khoa Huynh 2020'])
-highlight StartifyBracket ctermfg=17
-highlight StartifyFooter  ctermfg=54
-highlight StartifyHeader  ctermfg=53
-highlight StartifyNumber  ctermfg=215
-highlight StartifyPath    ctermfg=242
-highlight StartifySlash   ctermfg=18
-highlight StartifySpecial ctermfg=240
+" highlight StartifyBracket guifg=17
+highlight StartifyFooter  guifg=#005f5f
+highlight StartifyHeader  guifg=#005f00
+highlight StartifyNumber  guifg=#5f0087
+highlight StartifyPath    guifg=#5fafd7
+" highlight StartifySlash   guifg=18
+" highlight StartifySpecial guifg=240
 
 "--------------Searching--------------"
 
