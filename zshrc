@@ -9,6 +9,7 @@ export TERM="xterm-256color"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+# POWERLEVEL9K-Configs {{{
 # Customise the Powerlevel9k prompts
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   # custom_apple
@@ -58,6 +59,9 @@ POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
+# }}}
+
+# MacOS only
 zsh_wifi_signal(){
   if [[ `uname` == 'Darwin' ]]; then
     local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
@@ -79,11 +83,10 @@ zsh_wifi_signal(){
   else
     echo -n ''
   fi
-
 }
-# MacOS only
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
+
+ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
+# POWERLEVEL9K_MODE='nerdfont-complete'
 # ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
