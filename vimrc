@@ -166,6 +166,12 @@ augroup Filetype_vim
   au!
   au FileType vim setlocal foldmethod=marker foldenable
 augroup END
+
+augroup Filetype_zsh
+  au!
+  au FileType zsh setlocal foldmethod=marker foldenable
+augroup END
+
 " }}}
 
 "-------------VIM_VUE-------------"
