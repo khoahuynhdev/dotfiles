@@ -31,7 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has ("nvim")
   Plug 'APZelos/blamer.nvim'
-  let g:blamer_enabled = 1
+  let g:blamer_enabled = 0
   let g:blamer_delay = 1000
   let g:blamer_prefix = ' '
 endif
