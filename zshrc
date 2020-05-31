@@ -85,9 +85,10 @@ zsh_wifi_signal(){
   fi
 }
 
+SPACESHIP_GIT_STATUS_COLOR=green
+SPACESHIP_PROMPT_ADD_NEWLINE=false
 ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
-# POWERLEVEL9K_MODE='nerdfont-complete'
-# ZSH_THEME="agnoster"
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -201,3 +202,4 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/python@3.8/bin:$PATH"
 export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/lib:$PATH"
