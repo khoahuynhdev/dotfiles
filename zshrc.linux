@@ -59,36 +59,13 @@ POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
+POWERLEVEL9K_MODE='nerdfont-complete'
 # }}}
 
-# MacOS only
-zsh_wifi_signal(){
-  if [[ `uname` == 'Darwin' ]]; then
-    local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
-    local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
-
-    if [ "$airport" = "Off" ]; then
-      local color='%F{yellow}'
-      echo -n "%{$color%}Wifi Off"
-    else
-      local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
-      local speed=$(echo $output | grep 'lastTxRate' | awk -F': ' '{print $2}')
-      local color='%F{yellow}'
-
-      [[ $speed -gt 100 ]] && color='%F{green}'
-      [[ $speed -lt 50 ]] && color='%F{red}'
-
-      echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
-    fi
-  else
-    echo -n ''
-  fi
-}
 
 SPACESHIP_GIT_STATUS_COLOR=green
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
-POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -195,11 +172,3 @@ then
   # Setting ag as the default source for fzf
   export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-# export PATH="/usr/local/sbin:$PATH"
-# export PATH="/usr/local/opt/node@12/bin:$PATH"
-# export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-# export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-# export PATH="/usr/local/opt/openssl@1.1/lib:$PATH"

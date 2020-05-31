@@ -59,6 +59,7 @@ POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
 POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
+POWERLEVEL9K_MODE='nerdfont-complete'
 # }}}
 
 # MacOS only
@@ -88,7 +89,6 @@ zsh_wifi_signal(){
 SPACESHIP_GIT_STATUS_COLOR=green
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
-POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
