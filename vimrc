@@ -1,3 +1,4 @@
+" ==================================================================================================================================================
 "    __/\\\________/\\\__/\\\\\\\\\\\__/\\\\____________/\\\\____/\\\\\\\\\____________/\\\\\\\\\_
 "     _\/\\\_______\/\\\_\/////\\\///__\/\\\\\\________/\\\\\\__/\\\///////\\\_______/\\\////////__
 "      _\//\\\______/\\\______\/\\\_____\/\\\//\\\____/\\\//\\\_\/\\\_____\/\\\_____/\\\/___________
@@ -54,7 +55,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
-Plug 'ryanoasis/vim-devicons'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -82,6 +82,7 @@ Plug 'kjssad/quantum.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-rails'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'franbach/miramare'
 " Plugin development
