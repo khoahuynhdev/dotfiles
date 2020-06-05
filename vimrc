@@ -32,7 +32,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has ("nvim")
   Plug 'APZelos/blamer.nvim'
-  let g:blamer_enabled = 0
   let g:blamer_delay = 1000
   let g:blamer_prefix = ' '
 endif
@@ -219,7 +218,8 @@ nnoremap <ESC><ESC> :nohlsearch<cr>
 " nnoremap <Leader>qq :bd<CR>
 " nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
-map <Leader>ww :w!<cr>
+" quicker with space w <cr>
+" map <Leader>ww :w!<cr>
 nmap <C-x> :quit<cr>
 nnoremap <leader>sc mqA;<esc>`q
 nnoremap <leader>ss :source %<cr>
@@ -515,25 +515,6 @@ nmap <C-K> <C-W><C-K>
 nmap <C-H> <C-W><C-H>
 nmap <C-L> <C-W><C-L>
 
-"--------------vim_devicons--------------"
-
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
-let g:DevIconsDefaultFolderOpenSymbol = ' '
-" adding to vim-startify screen
-let g:webdevicons_enable_startify = 1
-if has('macunix')
-  let g:WebDevIconsOS = 'Darwin'
-endif
-" adding the flags to NERDTree
-let g:webdevicons_enable_nerdtree = 1
-
-" adding to vim-airline's tabline
-let g:webdevicons_enable_airline_tabline = 1
-
-" adding to vim-airline's statusline
-let g:webdevicons_enable_airline_statusline = 1
-
 "--------------coc-prettier--------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
@@ -605,6 +586,26 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 "-------------editor_config-------------
 " play nice with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+"--------------vim_devicons--------------"
+
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
+let g:DevIconsDefaultFolderOpenSymbol = ' '
+" adding to vim-startify screen
+let g:webdevicons_enable_startify = 1
+if has('macunix')
+  let g:WebDevIconsOS = 'Darwin'
+endif
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
+
+" adding to vim-airline's statusline
+let g:webdevicons_enable_airline_statusline = 1
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
