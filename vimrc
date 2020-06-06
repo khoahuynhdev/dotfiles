@@ -43,7 +43,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'chr4/nginx.vim'
+" Plug 'chr4/nginx.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
@@ -74,16 +74,16 @@ Plug 'posva/vim-vue'
 Plug 'stephpy/vim-yaml'
 Plug 'pearofducks/ansible-vim'
 
-Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'kjssad/quantum.vim'
+Plug 'sainnhe/edge'
+
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-rails'
-Plug 'ryanoasis/vim-devicons'
 
 Plug 'franbach/miramare'
+
+Plug 'ryanoasis/vim-devicons'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -389,6 +389,7 @@ endif
 
 "joshdick/onedark.vim
 set background=dark
+
 colorscheme miramare " nord onedark
 
 
