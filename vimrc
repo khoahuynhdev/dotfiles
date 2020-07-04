@@ -83,6 +83,8 @@ Plug 'tpope/vim-rails'
 
 Plug 'franbach/miramare'
 
+Plug 'rakr/vim-one'
+
 Plug 'ryanoasis/vim-devicons'
 " Plugin development
 
@@ -123,17 +125,22 @@ set si                                "smart indent
 set hidden
 set number                            " Let's active line number
 set relativenumber                    " look to your left screen
+set showmatch
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
+
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
 set complete=.,w,b,u                  " Set our desired autocompletion matching"
 
+" exec 'set cc=' . join(range(2, 80, 3), ',')
+"
 augroup FileType_Local_tabwidth " {{{
   au!
   au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType json setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -159,7 +166,8 @@ augroup END
 augroup Filetype_javascript
   au!
   au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
-  au FileType javascript iab clg console.log()<left>
+  au FileType javascript iab clg console.log(``);<esc>2hi
+
 augroup END
 
 augroup Filetype_vim
@@ -300,7 +308,18 @@ inoremap jk <esc>
 onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F(vi(<cr>
 onoremap p i(
+
 " }}}
+function! ToggleBg()
+  if &bg == 'dark'
+    let &bg = 'light'
+    highlight colorcolumn guibg=#90f542
+  else
+    let &bg='dark'
+    highlight colorcolumn guibg=#870087
+  endif
+endfunction
+
 function! RenameFile()
   let old_name = expand("%")
   let new_name = input('New file Name:', expand('%'), 'file')
@@ -389,8 +408,10 @@ endif
 
 "joshdick/onedark.vim
 set background=dark
+colorscheme one " nord onedark
 
-colorscheme miramare " nord onedark
+highlight colorcolumn guibg=#870087
+set colorcolumn=80
 
 
 " hi Comment guifg=#808080
@@ -406,6 +427,7 @@ autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
+
 "--------------vim_gitgutter--------------"
 " Enable gitguter realtime upadating
 let g:gitgutter_realtime = 1
@@ -413,7 +435,7 @@ let g:gitgutter_eager = 1
 set updatetime=250
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='behelit' " nord kolor night_owl onedark
+let g:airline_theme='one' " behelit nord kolor night_owl onedark
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
@@ -487,8 +509,8 @@ let g:startify_custom_header = startify#center([
 let g:startify_custom_footer = startify#center([ '© Khoa Huynh 2020'])
 " highlight StartifyBracket guifg=17
 highlight StartifyFooter  guifg=#005f5f
-highlight StartifyHeader  guifg=#005f00
-highlight StartifyNumber  guifg=#5f0087
+highlight StartifyHeader  guifg=#005fd0
+highlight StartifyNumber  guifg=#00aaff
 highlight StartifyPath    guifg=#5fafd7
 " highlight StartifySlash   guifg=18
 " highlight StartifySpecial guifg=240
@@ -511,10 +533,11 @@ autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? 
 
 "--------------Split Management--------------"
 
-nmap <C-J> <C-W><C-J>
-nmap <C-K> <C-W><C-K>
-nmap <C-H> <C-W><C-H>
-nmap <C-L> <C-W><C-L>
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+" autocmd bufenter * execute "normal! \<c-w>|\<c-w>_"
 
 "--------------coc-prettier--------------"
 
@@ -523,13 +546,9 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 "--------------autopairs--------------"
 "let g:AutoPairsFlyMode = 1
 
-"--------------Vim_Javascript--------------"
-"let g:javascript_plugin_jsdoc = 1
-"let g:javascript_plugin_ngdoc = 1
-
 "--------------ALE--------------"
-let g:ale_sign_error = '😡'
-let g:ale_sign_warning = '🤧'
+let g:ale_sign_error = '💥'
+let g:ale_sign_warning = '⚠️'
 let g:ale_fixers = {
       \ 'javascript': ['eslint'],
       \}
@@ -617,8 +636,9 @@ autocmd BufReadPost *
 "Automatically source the Vimrc file on save.
 augroup autosourcing
   autocmd!
-  autocmd BufWritePost .vimrc source %
+  autocmd BufWritePost *vimrc source %
 augroup END
+
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
