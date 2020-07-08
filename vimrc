@@ -86,6 +86,7 @@ Plug 'franbach/miramare'
 Plug 'rakr/vim-one'
 
 Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/limelight.vim'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -411,10 +412,11 @@ set background=dark
 colorscheme one " nord onedark
 
 highlight colorcolumn guibg=#870087
-set colorcolumn=80
+autocmd InsertEnter * set colorcolumn=80
+autocmd InsertLeave * set colorcolumn=0
 
 
-" hi Comment guifg=#808080
+hi Comment guifg=#909090
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
