@@ -72,7 +72,7 @@ Plug 'posva/vim-vue'
 " Plug 'liuchengxu/vista.vim'
 
 Plug 'stephpy/vim-yaml'
-Plug 'pearofducks/ansible-vim'
+" Plug 'pearofducks/ansible-vim'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
@@ -134,10 +134,8 @@ set showmatch
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
-set complete=.,w,b,u                  " Set our desired autocompletion matching"
+set complete=.,w,b,u                  " Set our desired autocompletion matching
 
-" exec 'set cc=' . join(range(2, 80, 3), ',')
-"
 augroup FileType_Local_tabwidth " {{{
   au!
   au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -205,7 +203,7 @@ let g:vue_pre_processors = 'detect_on_enter'
 let g:indentguides_spacechar = '┆'
 let g:indentguides_tabchar = '|'
 
-" Ignore compiled files
+" =====Ignore_compiled_files===== {{{
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
@@ -215,8 +213,9 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+" }}}
 
-" Mapping ------------- {{{
+" ==========Mapping========== {{{
 let mapleader=','
 noremap <space> :
 " nnoremap j jzz
@@ -310,7 +309,14 @@ onoremap in( :<c-u>normal! f(vi(<cr>
 onoremap il( :<c-u>normal! F(vi(<cr>
 onoremap p i(
 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-H> <C-W><C-H>
+nnoremap <C-L> <C-W><C-L>
+" autocmd bufenter * execute "normal! \<c-w>|\<c-w>_"
+
 " }}}
+
 function! ToggleBg()
   if &bg == 'dark'
     let &bg = 'light'
@@ -519,10 +525,6 @@ highlight StartifyPath    guifg=#5fafd7
 " highlight StartifySlash   guifg=18
 " highlight StartifySpecial guifg=240
 
-"--------------Searching--------------"
-
-" set rtp+=/usr/local/opt/fzf
-
 "--------------NERDTree--------------"
 
 let NERDTreeShowHidden = 1
@@ -534,14 +536,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Prevent FZF open file in NERDTree
 autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
-
-"--------------Split Management--------------"
-
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-L> <C-W><C-L>
-" autocmd bufenter * execute "normal! \<c-w>|\<c-w>_"
 
 "--------------coc-prettier--------------"
 
@@ -560,14 +554,6 @@ let g:ale_fixers = {
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
-" Ansible
-let g:ansible_attribute_highlight = "ab"
-let g:ansible_unindent_after_newline = 1
-let g:ansible_name_highlight = 'b'
-" let g:ansible_extra_keywords_highlight = 1
-let g:ansible_normal_keywords_highlight = 'Constant'
-let g:ansible_with_keywords_highlight = 'Constant'
-
 " ---------EASY_MOTION-----{{{
 let g:EasyMotion_do_mapping = 0
 nmap s <Plug>(easymotion-overwin-f2)
@@ -580,6 +566,7 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 " }}}
 
+" =====Detect_JSX===== {{{
 "Shamelessly copy from author with credit ^_^
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim ftdetect file
@@ -618,6 +605,7 @@ autocmd BufNewFile,BufRead *.jsx let b:jsx_ext_found = 1
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 " autocmd BufNewFile,BufRead *.js
 "       \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
+" }}}
 
 "-------------editor_config-------------
 " play nice with fugitive
