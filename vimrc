@@ -412,8 +412,10 @@ set background=dark
 colorscheme one " nord onedark
 
 highlight colorcolumn guibg=#870087
-autocmd InsertEnter * set colorcolumn=80
-autocmd InsertLeave * set colorcolumn=0
+
+autocmd! InsertEnter * set colorcolumn=80 | set norelativenumber
+autocmd! InsertLeave * set colorcolumn=0 | set relativenumber
+
 
 
 hi Comment guifg=#909090
@@ -565,6 +567,18 @@ let g:ansible_name_highlight = 'b'
 " let g:ansible_extra_keywords_highlight = 1
 let g:ansible_normal_keywords_highlight = 'Constant'
 let g:ansible_with_keywords_highlight = 'Constant'
+
+" ---------EASY_MOTION-----{{{
+let g:EasyMotion_do_mapping = 0
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+" }}}
 
 "Shamelessly copy from author with credit ^_^
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
