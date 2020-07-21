@@ -115,6 +115,7 @@ set noswapfile                        " Ain't nobody got time for swap files
 set noerrorbells                      " Don't beep
 " set nowrap                            " Do not wrap lines
 set showcmd                           " Display incomplete commands in the bottom line of the screen
+set cmdheight=2
 set visualbell                        " Visual bell instead of beeping
 set laststatus=2                      " Always display the status line
 set encoding=UTF-8
@@ -314,9 +315,22 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-L> <C-W><C-L>
 " autocmd bufenter * execute "normal! \<c-w>|\<c-w>_"
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " }}}
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 function! ToggleBg()
   if &bg == 'dark'
     let &bg = 'light'
@@ -442,7 +456,7 @@ set lazyredraw
 " Enable gitguter realtime upadating
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-set updatetime=250
+set updatetime=300
 
 "--------------vim_airline/vim_airline_themes--------------"
 let g:airline_theme='one' " behelit nord kolor night_owl onedark
@@ -456,18 +470,18 @@ if !exists('g:airline_symbols')
 endif
 
 " powerline symbols
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.dirty='⚡'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+" let g:airline_symbols.dirty='⚡'
 
 "--------------vim_airline/vim_airline--------------"
 let g:airline#extensions#tabline#enabled = 1
