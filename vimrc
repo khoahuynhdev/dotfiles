@@ -10,11 +10,8 @@
 "            _______\///________\///////////__\///______________\///__\///________\///________\/////////__
 " ==================================================================================================================================================
 
-" set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
+set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
 " echo '(>^.^<)'                      "check symlink is working
-" Initialisation de pathogen
-" call pathogen#infect()
-" call pathogen#helptags()
 
 " moving to vim-plug
 " Vim plug settings ------------------- {{{
@@ -115,7 +112,6 @@ set noswapfile                        " Ain't nobody got time for swap files
 set noerrorbells                      " Don't beep
 " set nowrap                            " Do not wrap lines
 set showcmd                           " Display incomplete commands in the bottom line of the screen
-set cmdheight=2
 set visualbell                        " Visual bell instead of beeping
 set laststatus=2                      " Always display the status line
 set encoding=UTF-8
