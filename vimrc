@@ -429,8 +429,12 @@ colorscheme one " nord onedark
 
 highlight colorcolumn guibg=#870087
 
-autocmd! InsertEnter * set colorcolumn=80 | set norelativenumber
-autocmd! InsertLeave * set colorcolumn=0 | set relativenumber
+autocmd! InsertEnter * set colorcolumn=80 |
+  \ set norelativenumber |
+  \ set conceallevel=0
+autocmd! InsertLeave * set colorcolumn=0 |
+  \ set relativenumber |
+  \ set conceallevel=2
 
 
 
