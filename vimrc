@@ -27,11 +27,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'do': 'CocInstall coc-tsserver'}
 " Plug 'neoclide/coc-denite'
 
-if has ("nvim")
-  Plug 'APZelos/blamer.nvim'
-  let g:blamer_delay = 1000
-  let g:blamer_prefix = ' '
-endif
 Plug 'dense-analysis/ale'
 
 Plug 'jiangmiao/auto-pairs'
@@ -45,7 +40,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'ervandew/supertab'
-" Plug 'vim-syntastic/syntastic'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
@@ -69,7 +64,6 @@ Plug 'posva/vim-vue'
 " Plug 'liuchengxu/vista.vim'
 
 Plug 'stephpy/vim-yaml'
-" Plug 'pearofducks/ansible-vim'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
@@ -327,6 +321,7 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
 function! ToggleBg()
   if &bg == 'dark'
     let &bg = 'light'
@@ -559,8 +554,9 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 "let g:AutoPairsFlyMode = 1
 
 "--------------ALE--------------"
-let g:ale_sign_error = '💥'
+let g:ale_sign_error = '❗️'
 let g:ale_sign_warning = '⚠️'
+let g:ale_sign_info = 'ℹ️'
 let g:ale_fixers = {
       \ 'javascript': ['eslint'],
       \}
