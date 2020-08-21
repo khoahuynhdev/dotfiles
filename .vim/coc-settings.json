@@ -5,7 +5,6 @@
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
   "diagnostic.errorSign":"Err",
   "diagnostic.enableSign":true,
-  "diagnostic.warningSign":"🎃",
-  "diagnostic.infoSign":"🤔"
+  "diagnostic.displayByAle": true
 }
 
