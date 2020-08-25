@@ -39,7 +39,7 @@ window:
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
-
+  dynamic_title: true
   # Window decorations
   #
   # Values for `decorations`:
@@ -301,7 +301,7 @@ colors:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -371,7 +371,7 @@ selection:
   save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+# dynamic_title: true
 
 cursor:
   # Cursor style
