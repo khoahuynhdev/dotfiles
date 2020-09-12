@@ -31,7 +31,7 @@ Plug 'dense-analysis/ale'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
-Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -62,7 +62,7 @@ Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 " Plug 'liuchengxu/vista.vim'
 
-Plug 'stephpy/vim-yaml'
+" Plug 'stephpy/vim-yaml'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
