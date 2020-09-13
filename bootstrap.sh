@@ -1,18 +1,32 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# bootstrap all the things
+ROOT="$(pwd)"
 
-function bootstrapTerminal() {
-  sudo -v # ask password beforehand
-  source ./setup.sh
+set -e # abort on error
+
+sudo -v # ask password beforehand
+
+function install() {
+  if [[ $reply =~ ^[Yy]$ ]]; then
+    if [[ $(uname -s) == "Darwin" ]]; then
+      "$ROOT/setup-osx.sh"
+    elif[[ $(uname -s) == "Linux" ]]
+      "$ROOT/setup-linux.sh"
+    fi
+  fi
 }
 
-echo 'Bootstrap terminal'
-echo '------------------'
-echo 'This will reset your terminal. Are you sure you want to to this? (y/n) '
-read -p 'Answer: '  reply
+function greet() {
+  echo 'Bootstrap terminal'
+  echo '------------------'
+  echo 'This will reset your terminal. Are you sure you want to to this? (y/n) '
+  read -p 'Answer: '  reply
+  echo '------------------'
+}
 
-if [[ $reply =~ ^[Yy]$ ]]
-then
-  bootstrapTerminal
-fi
+function main() {
+  greet
+  install
+}
+
+main
