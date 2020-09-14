@@ -21,7 +21,6 @@ else
   ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
 fi
 
-brew update && brew cleanup && brew cask cleanup
 
 # install from brew
 
