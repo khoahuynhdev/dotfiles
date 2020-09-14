@@ -7,12 +7,10 @@ set -e # abort on error
 # sudo -v # ask password beforehand
 
 function install() {
-  if [[ $reply =~ ^[Yy]$ ]]; then
-    if [[ $(uname -s) == "Darwin" ]]; then
-      ./osx/setup-osx.sh
-    elif[[ $(uname -s) == "Linux" ]]
-      "$ROOT/setup-linux.sh"
-    fi
+  if [[ $(uname -s) == "Darwin" ]]; then
+    ./osx/setup-osx.sh
+  elif[[ $(uname -s) == "Linux" ]]
+    "$ROOT/setup-linux.sh"
   fi
 }
 
