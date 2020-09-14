@@ -9,8 +9,8 @@ set -e # abort on error
 function install() {
   if [[ $(uname -s) == "Darwin" ]]; then
     ./osx/setup-osx.sh
-  elif[[ $(uname -s) == "Linux" ]]
-    "$ROOT/setup-linux.sh"
+  elif[[ $(uname -s) == "Linux" ]]; then
+    ./linux/setup-linux.sh
   fi
 }
 
