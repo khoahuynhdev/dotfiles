@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 echo Install core dependencies
 
@@ -25,10 +25,15 @@ brew update && brew cleanup && brew cask cleanup
 
 # install from brew
 
-brew install vim
-brew install neovim
+install_editor() {
+  echo Install vim and neovim!
+  brew install vim
+  brew install neovim
+}
+
 
 install_zsh() {
+  echo Install zsh!
   if [[ -f /bin/zsh  ]] || [[ -f /usr/bin/zsh ]]; then
     return
   fi
@@ -36,6 +41,7 @@ install_zsh() {
 }
 
 install_oh_my_zsh() {
+  echo Install 0h-my-zsh!
   if [[ ! -d $dir/.oh-my-zsh/ ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   fi
@@ -45,5 +51,12 @@ install_oh_my_zsh() {
   fi
 }
 
+install_spaceship_theme() {
+  echo Install Spaceship theme!
+  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+  ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+}
+
 install_zsh
 install_oh_my_zsh
+install_spaceship_theme
