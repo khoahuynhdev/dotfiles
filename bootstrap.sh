@@ -8,7 +8,7 @@ set -e # abort on error
 
 function install() {
   if [[ $(uname -s) == "Darwin" ]]; then
-    ./osx/setup-osx.sh
+    ./osx/setup.sh
   elif [[ $(uname -s) == "Linux" ]]; then
     echo Not supported yet!
   fi
