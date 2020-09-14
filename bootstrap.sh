@@ -9,7 +9,7 @@ sudo -v # ask password beforehand
 function install() {
   if [[ $reply =~ ^[Yy]$ ]]; then
     if [[ $(uname -s) == "Darwin" ]]; then
-      "$ROOT/setup-osx.sh"
+      "$ROOT/osx/setup-osx.sh"
     elif[[ $(uname -s) == "Linux" ]]
       "$ROOT/setup-linux.sh"
     fi
@@ -19,8 +19,8 @@ function install() {
 function greet() {
   echo 'Bootstrap terminal'
   echo '------------------'
-  echo 'This will reset your terminal. Are you sure you want to to this? (y/n) '
-  read -p 'Answer: '  reply
+  echo 'This will reset your terminal'
+  # read -p 'Answer: '  reply
   echo '------------------'
 }
 
