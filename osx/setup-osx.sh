@@ -42,11 +42,11 @@ install_zsh() {
 install_oh_my_zsh() {
   echo Install 0h-my-zsh!
   if [[ ! -d $dir/.oh-my-zsh/ ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   fi
   # Set the default shell to zsh if it isn't currently set to zsh
   if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
-    sudo -s chsh $(which zsh)
+    sudo -s chsh -s $(which zsh)
   fi
 }
 
