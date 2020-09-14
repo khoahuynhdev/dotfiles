@@ -4,7 +4,7 @@ ROOT="$(pwd)"
 
 set -e # abort on error
 
-sudo -v # ask password beforehand
+# sudo -v # ask password beforehand
 
 function install() {
   if [[ $reply =~ ^[Yy]$ ]]; then
