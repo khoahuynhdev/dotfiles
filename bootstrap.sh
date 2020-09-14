@@ -10,7 +10,7 @@ function install() {
   if [[ $(uname -s) == "Darwin" ]]; then
     ./osx/setup-osx.sh
   elif[[ $(uname -s) == "Linux" ]]; then
-    ./linux/setup-linux.sh
+    echo Not supported yet!
   fi
 }
 
