@@ -22,3 +22,28 @@ else
 fi
 
 brew update && brew cleanup && brew cask cleanup
+
+# install from brew
+
+brew install vim
+brew install neovim
+
+install_zsh() {
+  if [[ -f /bin/zsh  ]] || [[ -f /usr/bin/zsh ]]; then
+    return
+  fi
+  brew install zsh
+}
+
+install_oh_my_zsh() {
+  if [[ ! -d $dir/.oh-my-zsh/ ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  fi
+  # Set the default shell to zsh if it isn't currently set to zsh
+  if [[ ! $(echo $SHELL) == $(which zsh) ]]; then
+    chsh -s $(which zsh)
+  fi
+}
+
+install_zsh
+install_oh_my_zsh
