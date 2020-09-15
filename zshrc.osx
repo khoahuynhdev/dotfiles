@@ -178,27 +178,12 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vm="vim"
-if type nvim > /dev/null 2>&1; then
-  alias vm="nvim"
+if [[ -f $(which nvim) ]]; then
   alias vim="nvim"
 fi
-alias ll="ls -lGa"
-alias sl="sl | lolcat"
-if type curl > /dev/null 2>&1;
-then
-  alias wt="curl wttr.in"
-fi
 
-if type ag > /dev/null 2>&1;
-then
+if [[ -f $(which ag) ]]; then
   # Setting ag as the default source for fzf
   export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/node@12/bin:$PATH"
-export PATH="/usr/local/opt/python@3.8/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@11/bin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/lib:$PATH"
