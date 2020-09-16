@@ -148,7 +148,7 @@ ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git osx ruby node ansible docker)
-
+export DISABLE_AUTO_UPDATE='true'
 source $ZSH/oh-my-zsh.sh
 if [[ -f $HOME/.aliases ]]; then
   source $HOME/.aliases
