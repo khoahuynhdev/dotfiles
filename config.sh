@@ -33,15 +33,12 @@ done
 
 # symlink config folder
 config_dir=$HOME/.config
-target_dirs="alacritty nvim"
-for dir in $target_dirs; do
-  symlink "$source_dir/$dir" $config_dir/$dir
-done
-
+symlink "$source_dir/alacritty" $config_dir/alacritty
+symlink "$source_dir/nvim" $config_dir/nvim
 echo Source zsh config
 $(which zsh) $HOME/.zshrc
 
 install_spaceship_theme
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+echo install vim plugins
 nvim --headless +PlugInstall +qall
