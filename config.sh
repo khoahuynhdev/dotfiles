@@ -42,3 +42,4 @@ echo Source zsh config
 $(which zsh) $HOME/.zshrc
 
 install_spaceship_theme
+nvim --headless +PlugInstall +qall
