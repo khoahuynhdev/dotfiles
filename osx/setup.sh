@@ -50,17 +50,6 @@ install_oh_my_zsh() {
   fi
 }
 
-install_spaceship_theme() {
-  echo Install Spaceship theme!
-  export ZSH="$HOME/.oh-my-zsh"
-  if [[ -z "$ZSH_CUSTOM" ]]; then
-    export ZSH_CUSTOM="$ZSH/custom"
-  fi
-  git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-  ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-}
-
 install_zsh
 install_oh_my_zsh
-install_spaceship_theme
 install_editor
