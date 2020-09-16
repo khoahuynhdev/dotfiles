@@ -33,6 +33,9 @@ jobs:
       - name: Execute full install
         run: ./bootstrap.sh
 
+      - name: symlink and config
+        run: ./config.sh
+
       # Print out result
-      - name: post-shell script
+      - name: test post-shell script
         run: echo Done!
