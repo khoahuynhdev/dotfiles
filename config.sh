@@ -35,4 +35,6 @@ for dir in $target_dirs; do
 done
 
 source $HOME/.zshrc
+# run arbitrary config here
 install_spaceship_theme
+vim +PlugInstall +qa
