@@ -18,6 +18,10 @@ function symlink() {
 
 install_spaceship_theme() {
   echo Install Spaceship theme!
+  export ZSH="$HOME/.oh-my-zsh"
+  if [[ -z "$ZSH_CUSTOM" ]]; then
+    export ZSH_CUSTOM="$ZSH/custom"
+  fi
   git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
   ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 }
@@ -38,7 +42,6 @@ echo Source zsh config
 $(which zsh) $HOME/.zshrc
 
 # run arbitrary config here
-echo Install Spaceship theme
 install_spaceship_theme
 echo Install Vim plugins
 vim +PlugInstall +qa
