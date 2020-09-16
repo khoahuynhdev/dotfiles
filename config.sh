@@ -35,9 +35,10 @@ for dir in $target_dirs; do
 done
 
 echo Source zsh config
-source $HOME/.zshrc
+$(which zsh) $HOME/.zshrc
+
 # run arbitrary config here
 echo Install Spaceship theme
 install_spaceship_theme
-
-# vim +PlugInstall +qa
+echo Install Vim plugins
+vim +PlugInstall +qa
