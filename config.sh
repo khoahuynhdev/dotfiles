@@ -2,7 +2,7 @@
 
 set -e
 
-source_dir="$HOME/dotfiles"
+source_dir="$(pwd)"
 
 function symlink() {
   source=$1
