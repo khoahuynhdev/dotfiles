@@ -1,0 +1,57 @@
+[user]
+  name = khoahuynhdev
+  email = khoa0319@gmail.com
+[alias]
+  co = checkout
+  unstage = reset -q HEAD --
+  discard = checkout --
+  uncommit = reset --mixed HEAD~
+
+# Amend current commit w/ timestamp touch and author reset
+  ca = commit --amend --reset-author
+
+# remove changes
+  scraplastcommit = reset --hard HEAD^
+
+# keep your changes
+  unwindlastcommit = reset --soft HEAD^
+
+# List commits in short form, with colors and branch/tag annotations.
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate
+
+# List commits short form, tree
+  lst = log --graph --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --abbrev-commit
+
+# List commits showing changed files
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --numstat
+
+# List with no colors if you need to chain the out put with Unix pipes:
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+
+# oneline commits showing dates
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]%Creset" --decorate --date=short
+
+# default look for short git log:
+  le = log --oneline --decorate
+
+# see all the commits related to a file, with the diff of the changes
+  filelog = log -u
+  fl = log -u
+
+# check what was in the last commit
+  dl = "!git ll -1"
+
+# Show a diff last commit:
+  dlc = diff --cached HEAD^
+
+# Diff uncommited changes
+  diffunc = diff --cached
+
+  who = shortlog -n -s --no-merges # who has committed to this project
+  get = !git pull --ff-only #better git pull
+[core]
+  editor = nvim
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
