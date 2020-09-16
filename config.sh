@@ -41,7 +41,4 @@ done
 echo Source zsh config
 $(which zsh) $HOME/.zshrc
 
-# run arbitrary config here
 install_spaceship_theme
-echo Install Vim plugins
-vim +PlugInstall +qall > /dev/null
