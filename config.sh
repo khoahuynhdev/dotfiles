@@ -23,7 +23,7 @@ install_spaceship_theme() {
 }
 
 
-for file in $(ls "$source_dir/dot"); do
+for file in $(ls "$(pwd)/dot"); do
   symlink $source_dir/$file $HOME/.$file
 done
 
