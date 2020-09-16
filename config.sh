@@ -34,7 +34,10 @@ for dir in $target_dirs; do
   symlink "$source_dir/$dir" $config_dir/$dir
 done
 
+echo Source zsh config
 source $HOME/.zshrc
 # run arbitrary config here
+echo Install Spaceship theme
 install_spaceship_theme
-vim +PlugInstall +qa
+
+# vim +PlugInstall +qa
