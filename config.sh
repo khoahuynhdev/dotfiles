@@ -24,7 +24,7 @@ install_spaceship_theme() {
 
 
 for file in $(ls "$(pwd)/dot"); do
-  symlink $source_dir/$file $HOME/.$file
+  symlink "$source_dir/dot/$file" $HOME/.$file
 done
 
 # symlink config folder
