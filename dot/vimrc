@@ -10,8 +10,10 @@
 "            _______\///________\///////////__\///______________\///__\///________\///________\/////////__
 " ==================================================================================================================================================
 
-set nocompatible                      "We want the latest vim settings/options, it must be first because it changes other options as a side effect
-" echo '(>^.^<)'                      "check symlink is working
+" We want the latest vim settings/options, it must be first because it changes other options as a side effect
+set nocompatible
+" check symlink is working
+" echo '(>^.^<)'
 
 " moving to vim-plug
 " Vim plug settings ------------------- {{{
