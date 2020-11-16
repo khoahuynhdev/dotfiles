@@ -79,6 +79,8 @@ Plug 'rakr/vim-one'
 
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/limelight.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'puremourning/vimspector'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -129,7 +131,9 @@ set omnifunc=syntaxcomplete#Complete
 set complete=.,w,b,u                  " Set our desired autocompletion matching
 
 augroup FileType_Local_tabwidth " {{{
-  au!
+  autocmd!
+  au FileType scheme setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType typescript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType json setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -565,6 +569,7 @@ let g:ale_linters = {
       \ }
 let g:ale_fixers = {
       \ 'javascript': ['eslint'],
+      \ 'typescript': ['eslint'],
       \ 'vue': ['eslint'],
       \}
 let g:ale_fix_on_save = 1
@@ -647,6 +652,9 @@ let g:webdevicons_enable_airline_tabline = 1
 
 " adding to vim-airline's statusline
 let g:webdevicons_enable_airline_statusline = 1
+
+" Vimspector config
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
