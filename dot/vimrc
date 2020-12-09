@@ -62,9 +62,6 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
-" Plug 'liuchengxu/vista.vim'
-
-" Plug 'stephpy/vim-yaml'
 
 Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
@@ -77,7 +74,6 @@ Plug 'franbach/miramare'
 
 Plug 'rakr/vim-one'
 
-" Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'puremourning/vimspector'
@@ -632,26 +628,6 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 "-------------editor_config-------------
 " play nice with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-"--------------vim_devicons--------------"
-
-" let g:DevIconsEnableFoldersOpenClose = 1
-" let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ' '
-" let g:DevIconsDefaultFolderOpenSymbol = ' '
-" " adding to vim-startify screen
-" let g:webdevicons_enable_startify = 1
-" if has('macunix')
-"   let g:WebDevIconsOS = 'Darwin'
-" endif
-" " adding the flags to NERDTree
-" let g:webdevicons_enable_nerdtree = 1
-" let g:webdevicons_conceal_nerdtree_brackets = 1
-
-" " adding to vim-airline's tabline
-" let g:webdevicons_enable_airline_tabline = 1
-
-" " adding to vim-airline's statusline
-" let g:webdevicons_enable_airline_statusline = 1
 
 " Vimspector config
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
