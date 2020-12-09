@@ -112,7 +112,7 @@ set showcmd                           " Display incomplete commands in the botto
 set visualbell                        " Visual bell instead of beeping
 set laststatus=2                      " Always display the status line
 set encoding=UTF-8
-set clipboard=unnamed
+set clipboard^=unnamed,unnamedplus
 set splitright
 set splitbelow
 set autoindent
