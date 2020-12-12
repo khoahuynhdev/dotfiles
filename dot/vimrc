@@ -29,7 +29,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'do': 'CocInstall coc-tsserver'}
 " Plug 'neoclide/coc-denite'
 
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
@@ -482,22 +482,6 @@ endif
 "--------------vim_airline/vim_airline--------------"
 let g:airline#extensions#tabline#enabled = 1
 
-" airline-ale
-" ale error_symbol
-let airline#extensions#ale#error_symbol = 'E:'
-
-" ale warning
-let airline#extensions#ale#warning_symbol = 'W:'
-
-" ale show_line_numbers
-let airline#extensions#ale#show_line_numbers = 1
-
-" ale open_lnum_symbol
-let airline#extensions#ale#open_lnum_symbol = '(L'
-
-" ale close_lnum_symbol
-let airline#extensions#ale#close_lnum_symbol = ')'
-
 "--------------Mouse--------------"
 if has('mouse')
   set mouse=a
@@ -553,24 +537,6 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 "--------------autopairs--------------"
 "let g:AutoPairsFlyMode = 1
-
-"--------------ALE--------------"
-let g:ale_sign_error = '❗️'
-let g:ale_sign_warning = '⚠️'
-let g:ale_sign_info = 'ℹ️'
-let g:ale_linters = {
-      \ 'javascript': ['eslint', 'tsserver'],
-      \ 'typescript': ['eslint', 'tsserver'],
-      \ 'vue': ['eslint'],
-      \ }
-let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
-      \ 'typescript': ['eslint'],
-      \ 'vue': ['eslint'],
-      \}
-let g:ale_fix_on_save = 1
-highlight ALEErrorSign ctermbg=NONE ctermfg=red
-highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 " ---------EASY_MOTION-----{{{
 let g:EasyMotion_do_mapping = 0
