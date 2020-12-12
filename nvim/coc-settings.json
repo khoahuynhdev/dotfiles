@@ -3,9 +3,6 @@
   "suggest.timeout": 500,
   "suggest.maxCompleteItemCount": 20,
   "suggest.minTriggerInputLength": 2,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
-  "diagnostic.errorSign":"Err",
-  "diagnostic.enableSign":true,
-  "diagnostic.displayByAle": true
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"]
 }
 
