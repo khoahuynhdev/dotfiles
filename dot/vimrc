@@ -77,6 +77,8 @@ Plug 'rakr/vim-one'
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'puremourning/vimspector'
+Plug 'liuchengxu/vista.vim'
+
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -176,19 +178,22 @@ augroup END
 "-------------VIM_VUE-------------"
 let g:vue_pre_processors = ['scss']
 let g:vue_pre_processors = 'detect_on_enter'
-"-------------VISTA_VIM-------------"
-" function! NearestMethodOrFunction() abort
-"   return get(b:, 'vista_nearest_method_or_function', '')
-" endfunction
 
-" set statusline+=%{NearestMethodOrFunction()}
+"-------------VISTA_VIM-------------"
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
 " you can add the following line to your vimrc
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
-" let g:vista_default_executive = 'ctags'
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista_default_executive = 'coc'
+let g:vista_executive_for = {
+  \ 'javascript': 'coc',
+  \ }
 
 "-------------INDENTGUIDES-------------"
 
