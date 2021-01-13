@@ -224,9 +224,10 @@ nnoremap <ESC><ESC> :nohlsearch<cr>
 " nnoremap <Leader>qq :bd<CR>
 " nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
+
 " quicker with space w <cr>
-" map <Leader>ww :w!<cr>
-nmap <C-x> :quit<cr>
+map <Leader>ww :w!<cr>
+
 nnoremap <leader>sc mqA;<esc>`q
 nnoremap <leader>ss :source %<cr>
 
