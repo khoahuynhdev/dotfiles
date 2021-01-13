@@ -130,6 +130,7 @@ set complete=.,w,b,u                  " Set our desired autocompletion matching
 
 augroup FileType_Local_tabwidth " {{{
   autocmd!
+  au FileType typescriptreact setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType scheme setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType typescript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
