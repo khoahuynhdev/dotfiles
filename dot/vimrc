@@ -516,7 +516,6 @@ let g:startify_custom_header = startify#center([
 "       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
 "       \ { 'type': 'commands',  'header': ['   Commands']       },
 "       \ ]
-let g:startify_custom_footer = startify#center([ '© Khoa Huynh 2020'])
 " highlight StartifyBracket guifg=17
 highlight StartifyFooter  guifg=#005f5f
 highlight StartifyHeader  guifg=#005fd0
