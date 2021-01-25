@@ -49,6 +49,7 @@
 
   who = shortlog -n -s --no-merges # who has committed to this project
   get = !git pull --ff-only #better git pull
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [core]
   editor = nvim
 [color "status"]
