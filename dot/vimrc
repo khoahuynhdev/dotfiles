@@ -221,7 +221,7 @@ noremap <space> :
 nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 " Add simple hightlight removal
 nnoremap <ESC><ESC> :nohlsearch<cr>
-" nnoremap <Leader>qq :bd<CR>
+nnoremap <Leader>qq :bd<CR>
 " nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 map <C-n> :NERDTreeToggle<cr>
 
