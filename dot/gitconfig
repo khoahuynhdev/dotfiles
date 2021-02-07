@@ -52,6 +52,7 @@
   alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
 [core]
   editor = nvim
+  hooksPath = /Users/macintosh/gitconfig/hooks
 [color "status"]
   added = yellow
   changed = green

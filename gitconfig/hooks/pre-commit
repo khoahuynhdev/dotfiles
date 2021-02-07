@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+# get a list of added, modified, copied files
+files=`git diff --cached --name-only --diff-filter=ACM`
+
+#
+#
+#
+
+# re-stage the modified files
+git add $files
