@@ -38,7 +38,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'chr4/nginx.vim'
-Plug 'joshdick/onedark.vim'
+" Plug 'joshdick/onedark.vim'
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'ervandew/supertab'
@@ -63,14 +63,14 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 
-Plug 'arcticicestudio/nord-vim'
+" Plug 'arcticicestudio/nord-vim'
 Plug 'sainnhe/edge'
 
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
 Plug 'tpope/vim-rails'
 
-Plug 'franbach/miramare'
+" Plug 'franbach/miramare'
 
 Plug 'rakr/vim-one'
 
@@ -78,6 +78,8 @@ Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'puremourning/vimspector'
 Plug 'liuchengxu/vista.vim'
+
+Plug 'dracula/vim', { 'name': 'dracula' }
 
 " Plugin development
 
@@ -435,8 +437,8 @@ if has("nvim")
 endif
 
 "joshdick/onedark.vim
-set background=dark
-colorscheme one
+" set background=dark
+colorscheme dracula
 
 highlight colorcolumn guibg=#870087
 
@@ -470,7 +472,7 @@ let g:gitgutter_eager = 1
 set updatetime=300
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='one' " behelit nord kolor night_owl onedark
+let g:airline_theme='dracula'
 let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
