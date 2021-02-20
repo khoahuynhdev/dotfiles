@@ -81,6 +81,8 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'dracula/vim', { 'name': 'dracula' }
 
+Plug 'tpope/vim-eunuch'
+
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
