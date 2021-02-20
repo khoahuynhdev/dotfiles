@@ -146,7 +146,7 @@ augroup FileType_Local_tabwidth " {{{
   au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
   au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
   au FileType eruby setlocal tabstop=2 shiftwidth=2 expandtab
-  au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab
+  au FileType scss setlocal tabstop=2 shiftwidth=2 expandtab iskeyword+=@-@
   au FileType ruby setlocal tabstop=2 shiftwidth=2 expandtab
   au FileType cs setlocal tabstop=4 shiftwidth=4 expandtab
   au FileType html.erb setlocal tabstop=2 shiftwidth=2 expandtab
@@ -436,7 +436,7 @@ endif
 
 "joshdick/onedark.vim
 set background=dark
-colorscheme one " nord onedark
+colorscheme one
 
 highlight colorcolumn guibg=#870087
 
@@ -449,7 +449,7 @@ autocmd! InsertLeave * set colorcolumn=0 |
 
 
 
-hi Comment guifg=#909090
+highlight Comment guifg=darkcyan
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
