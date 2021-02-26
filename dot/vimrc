@@ -82,6 +82,7 @@ Plug 'liuchengxu/vista.vim'
 Plug 'dracula/vim', { 'name': 'dracula' }
 
 Plug 'tpope/vim-eunuch'
+Plug 'delphinus/vim-auto-cursorline'
 
 " Plugin development
 
