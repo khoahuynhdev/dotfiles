@@ -189,3 +189,4 @@ then
   export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 
+[ -f "/Users/macintosh/.ghcup/env" ] && source "/Users/macintosh/.ghcup/env" # ghcup-env
