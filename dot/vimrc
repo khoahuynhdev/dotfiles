@@ -231,7 +231,7 @@ nnoremap <Leader>qq :bd<CR>
 map <C-n> :NERDTreeToggle<cr>
 
 " quicker with space w <cr>
-map <Leader>ww :w!<cr>
+map <Leader>w :w!<cr>
 
 nnoremap <leader>sc mqA;<esc>`q
 nnoremap <leader>ss :source %<cr>
@@ -330,9 +330,14 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
+nmap<silent> <leader>gd :call CocAction('jumpDefinition', 'vsplit')<CR>
+
 " Navigate error
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nnoremap <leader>i :CocCommand tsserver.organizeImports<cr>
+
 " }}}
 
 function! s:show_documentation()
