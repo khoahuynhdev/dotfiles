@@ -337,7 +337,7 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nnoremap <leader>i :CocCommand tsserver.organizeImports<cr>
-
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }}}
 
 function! s:show_documentation()
