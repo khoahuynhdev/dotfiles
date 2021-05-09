@@ -53,7 +53,7 @@ Plug 'tpope/vim-fugitive'
 " Plug 'johngrib/vim-game-code-break'
 Plug 'airblade/vim-gitgutter'
 Plug 'thaerkh/vim-indentguides'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars'
@@ -520,24 +520,24 @@ let g:airline#extensions#tabline#enabled = 1
 if has('mouse')
   set mouse=a
 endif
-let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
-" let g:startify_custom_header = startify#center([
-"       \ "              ________ ++     ________    ",
-"       \ "             /VVVVVVVV\++++  /VVVVVVVV\   ",
-"       \ "             \VVVVVVVV/++++++\VVVVVVVV/   ",
-"       \ "              |VVVVVV|++++++++/VVVVV/'    ",
-"       \ "              |VVVVVV|++++++/VVVVV/'      ",
-"       \ "             +|VVVVVV|++++/VVVVV/'+       ",
-"       \ "           +++|VVVVVV|++/VVVVV/'+++++     ",
-"       \ "         +++++|VVVVVV|/VVVVV/'+++++++++   ",
-"       \ "           +++|VVVVVVVVVVV/'+++++++++     ",
-"       \ "             +|VVVVVVVVV/'+++++++++       ",
-"       \ "              |VVVVVVV/'+++++++++         ",
-"       \ "              |VVVVV/'+++++++++           ",
-"       \ "              |VVV/'+++++++++             ",
-"       \ "              'V/'   ++++++               ",
-"       \ "                       ++                 ",
-"       \ ])
+" let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
+let g:startify_custom_header = startify#center([
+      \ "              ________ ++     ________    ",
+      \ "             /VVVVVVVV\++++  /VVVVVVVV\   ",
+      \ "             \VVVVVVVV/++++++\VVVVVVVV/   ",
+      \ "              |VVVVVV|++++++++/VVVVV/'    ",
+      \ "              |VVVVVV|++++++/VVVVV/'      ",
+      \ "             +|VVVVVV|++++/VVVVV/'+       ",
+      \ "           +++|VVVVVV|++/VVVVV/'+++++     ",
+      \ "         +++++|VVVVVV|/VVVVV/'+++++++++   ",
+      \ "           +++|VVVVVVVVVVV/'+++++++++     ",
+      \ "             +|VVVVVVVVV/'+++++++++       ",
+      \ "              |VVVVVVV/'+++++++++         ",
+      \ "              |VVVVV/'+++++++++           ",
+      \ "              |VVV/'+++++++++             ",
+      \ "              'V/'   ++++++               ",
+      \ "                       ++                 ",
+      \ ])
 
 " let g:startify_lists = [
 "       \ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -583,47 +583,6 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 " }}}
 
-" =====Detect_JSX===== {{{
-"Shamelessly copy from author with credit ^_^
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim ftdetect file
-"
-" Language: JSX (JavaScript)
-" Maintainer: Max Wang <mxawng@gmail.com>
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Whether the .jsx extension is required.
-if !exists('g:jsx_ext_required')
-  let g:jsx_ext_required = 0
-endif
-
-" Whether the @jsx pragma is required.
-if !exists('g:jsx_pragma_required')
-  let g:jsx_pragma_required = 0
-endif
-
-let s:jsx_pragma_pattern = '\%^\_s*\/\*\*\%(\_.\%(\*\/\)\@!\)*@jsx\_.\{-}\*\/'
-
-" Whether to set the JSX filetype on *.js files.
-fu! <SID>EnableJSX()
-  if g:jsx_pragma_required && !exists('b:jsx_ext_found')
-    " Look for the @jsx pragma.  It must be included in a docblock comment
-    " before anything else in the file (except whitespace).
-    let b:jsx_pragma_found = search(s:jsx_pragma_pattern, 'npw')
-  endif
-
-  if g:jsx_pragma_required && !b:jsx_pragma_found | return 0 | endif
-  if g:jsx_ext_required && !exists('b:jsx_ext_found') | return 0 | endif
-  return 1
-endfu
-
-autocmd BufNewFile,BufRead *.jsx let b:jsx_ext_found = 1
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-" autocmd BufNewFile,BufRead *.js
-"       \ if <SID>EnableJSX() | set filetype=javascript.jsx | endif
-" }}}
-
 "-------------editor_config-------------
 " play nice with fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
@@ -647,7 +606,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
+let g:vim_jsx_pretty_highlight_close_tag = 1
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds
