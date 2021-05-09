@@ -348,6 +348,9 @@ function! s:show_documentation()
   endif
 endfunction
 
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
 function! ToggleBg()
   if &bg == 'dark'
     let &bg = 'light'
