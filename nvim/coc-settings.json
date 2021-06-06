@@ -1,8 +1,15 @@
 {
-  "javascript.suggestionActions.enabled": false,
-  "suggest.timeout": 500,
-  "suggest.maxCompleteItemCount": 20,
-  "suggest.minTriggerInputLength": 2,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"]
+  "diagnostic.virtualText": true,
+  "codeLens.enable": true,
+  "suggest.maxCompleteItemCount": 30,
+  "list.insertMappings": {
+    "<C-x>": "action:split",
+    "<C-v>": "action:vsplit"
+  },
+  "list.normalMappings": {
+    "s": "action:split",
+    "v": "action:vsplit"
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
 }
-
