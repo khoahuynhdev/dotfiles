@@ -10,6 +10,8 @@
     "s": "action:split",
     "v": "action:vsplit"
   },
+  "css.lint.duplicateProperties": "warning",
+  "scss.lint.duplicateProperties": "warning",
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
 }
