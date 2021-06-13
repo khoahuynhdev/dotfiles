@@ -83,7 +83,7 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 
 Plug 'tpope/vim-eunuch'
 Plug 'delphinus/vim-auto-cursorline'
-
+Plug 'jparise/vim-graphql'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
