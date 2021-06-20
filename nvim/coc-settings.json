@@ -13,5 +13,15 @@
   "css.lint.duplicateProperties": "warning",
   "scss.lint.duplicateProperties": "warning",
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
+    }
+  }
 }

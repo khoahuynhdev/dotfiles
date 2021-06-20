@@ -84,6 +84,11 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'tpope/vim-eunuch'
 Plug 'delphinus/vim-auto-cursorline'
 Plug 'jparise/vim-graphql'
+if has('nvim')
+  Plug 'fatih/vim-go'
+endif
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -390,8 +395,7 @@ function! VisualSelection(direction, extra_filter) range
 
   let @/ = l:pattern
   let @" = l:saved_reg
-endfunction
-"--------------FloatingWindows {{{
+endfunction "--------------FloatingWindows {{{
 if has('nvim')
   function! OpenFloatTerm(...)
     " Configuration
