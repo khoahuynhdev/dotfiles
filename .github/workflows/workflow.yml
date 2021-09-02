@@ -35,6 +35,7 @@ jobs:
 
       - name: symlink and config
         run: ./config.sh
+        shell: zsh
 
       # Print out result
       - name: test post-shell script
