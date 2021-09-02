@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 set -e
 
@@ -26,7 +26,7 @@ install_spaceship_theme() {
   ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 }
 
-
+chsh zsh
 for file in $(ls "$(pwd)/dot"); do
   symlink "$source_dir/dot/$file" $HOME/.$file
 done
