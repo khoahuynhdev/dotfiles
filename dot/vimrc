@@ -33,21 +33,19 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" Plug 'preservim/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'chr4/nginx.vim'
 " Plug 'joshdick/onedark.vim'
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
+Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
@@ -55,7 +53,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 " Plug 'johngrib/vim-game-code-break'
 Plug 'airblade/vim-gitgutter'
-Plug 'thaerkh/vim-indentguides'
+" Plug 'thaerkh/vim-indentguides'
 " Plug 'pangloss/vim-javascript'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -91,6 +89,11 @@ Plug 'pantharshit00/vim-prisma'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'romainl/flattened'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'lukas-reineke/indent-blankline.nvim'
+
 if has('nvim')
   Plug 'fatih/vim-go'
 endif
@@ -140,6 +143,56 @@ set showmatch
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
+
+"-------------TELESCOPE-------------"
+lua << EOF
+require('telescope').setup{
+  require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    path_display = {},
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+    }
+  }
+}
+EOF
 
 
 "-------------AUTOCOMPLETE-------------"
@@ -206,7 +259,7 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
-set statusline+=%{NearestMethodOrFunction()}
+" set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
@@ -219,8 +272,8 @@ let g:vista_executive_for = {
 
 "-------------INDENTGUIDES-------------"
 
-let g:indentguides_spacechar = '┆'
-let g:indentguides_tabchar = '|'
+" let g:indentguides_spacechar = '┆'
+" let g:indentguides_tabchar = '|'
 
 " =====Ignore_compiled_files===== {{{
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -464,7 +517,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -483,6 +536,13 @@ nnoremap <silent><nowait> <leader><space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
+
+" NVIM telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fn <cmd>Telescope file_browser<cr>
 " }}}
 
 
@@ -617,41 +677,41 @@ let g:gitgutter_eager = 1
 set updatetime=300
 
 "--------------vim_airline/vim_airline_themes--------------"
-let g:airline_theme='dracula'
-let g:airline_powerline_fonts = 1
+" let g:airline_theme='dracula'
+" let g:airline_powerline_fonts = 1
 
 " Do not draw separators for empty sections (only for the active window) >
-let g:airline_skip_empty_sections = 1
+" let g:airline_skip_empty_sections = 1
 " You must define the dictionary first before setting values.
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
 
 " powerline symbols
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.whitespace = 'Ξ'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.dirty='⚡'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
+" let g:airline_symbols.dirty='⚡'
 
-let g:airline#extensions#default#section_truncate_width = {
-      \ 'b': 80,
-      \ 'x': 100,
-      \ 'y': 100,
-      \ 'z': 100,
-      \ 'warning': 80,
-      \ 'error': 80,
-      \ }
+" let g:airline#extensions#default#section_truncate_width = {
+"       \ 'b': 80,
+"       \ 'x': 100,
+"       \ 'y': 100,
+"       \ 'z': 100,
+"       \ 'warning': 80,
+"       \ 'error': 80,
+"       \ }
 
 "--------------vim_airline/vim_airline--------------"
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 "--------------Mouse--------------"
 if has('mouse')
@@ -695,15 +755,7 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_ignore = [ 'node_modules', '.cache' ]
 let g:nvim_tree_auto_close = 1
 let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
-" let NERDTreeShowHidden = 1
-" let NERDTReeMinimalUI = 1
-" let NERDTreeDirArrows = 1
-" let NERDTreeAutoDeleteBuffer = 1
-" " Auto close NERDTree if it is the last and only buffer
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" " Prevent FZF open file in NERDTree
-autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+" autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------coc-prettier--------------"
 
@@ -743,9 +795,54 @@ augroup autosourcing
   autocmd BufWritePost *vimrc source %
 augroup END
 
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 let g:vim_jsx_pretty_highlight_close_tag = 1
+
+lua << EOF
+require("indent_blankline").setup {
+    buftype_exclude = {"terminal"},
+    bufname_exclude = {'startify'},
+}
+EOF
+
+lua << EOF
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'dracula',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'filename', { 'diagnostics', sources = { 'coc', 'ale' }}},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+tabline = {
+  lualine_a = {},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {'fugitive', 'nvim-tree'}
+}
+EOF
+
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds
