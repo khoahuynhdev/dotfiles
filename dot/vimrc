@@ -29,8 +29,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'do': 'CocInstall coc-tsserver'}
 " Plug 'neoclide/coc-denite'
 
-" Plug 'dense-analysis/ale'
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -42,10 +40,9 @@ Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'akinsho/bufferline.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
@@ -93,10 +90,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'fatih/vim-go'
 
-if has('nvim')
-  Plug 'fatih/vim-go'
-endif
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 " Plugin development
@@ -259,7 +254,6 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
-" set statusline+=%{NearestMethodOrFunction()}
 " By default vista.vim never run if you don't call it explicitly.
 "
 " If you want to show the nearest function in your statusline automatically,
@@ -269,11 +263,6 @@ let g:vista_default_executive = 'coc'
 let g:vista_executive_for = {
   \ 'javascript': 'coc',
   \ }
-
-"-------------INDENTGUIDES-------------"
-
-" let g:indentguides_spacechar = '┆'
-" let g:indentguides_tabchar = '|'
 
 " =====Ignore_compiled_files===== {{{
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -539,6 +528,7 @@ nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
 " NVIM telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -656,7 +646,7 @@ autocmd! InsertLeave * set colorcolumn=0 |
 
 
 
-highlight Comment guifg=darkcyan
+" highlight Comment guifg=darkcyan
 set guioptions-=e
 set guioptions-=l
 set guioptions-=L
@@ -676,65 +666,28 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 set updatetime=300
 
-"--------------vim_airline/vim_airline_themes--------------"
-" let g:airline_theme='dracula'
-" let g:airline_powerline_fonts = 1
-
-" Do not draw separators for empty sections (only for the active window) >
-" let g:airline_skip_empty_sections = 1
-" You must define the dictionary first before setting values.
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-
-" powerline symbols
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.whitespace = 'Ξ'
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
-" let g:airline_symbols.dirty='⚡'
-
-" let g:airline#extensions#default#section_truncate_width = {
-"       \ 'b': 80,
-"       \ 'x': 100,
-"       \ 'y': 100,
-"       \ 'z': 100,
-"       \ 'warning': 80,
-"       \ 'error': 80,
-"       \ }
-
-"--------------vim_airline/vim_airline--------------"
-" let g:airline#extensions#tabline#enabled = 1
-
 "--------------Mouse--------------"
 if has('mouse')
   set mouse=a
 endif
 " let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
 let g:startify_custom_header = startify#center([
-      \ "              ________ ++     ________    ",
-      \ "             /VVVVVVVV\++++  /VVVVVVVV\   ",
-      \ "             \VVVVVVVV/++++++\VVVVVVVV/   ",
-      \ "              |VVVVVV|++++++++/VVVVV/'    ",
-      \ "              |VVVVVV|++++++/VVVVV/'      ",
-      \ "             +|VVVVVV|++++/VVVVV/'+       ",
-      \ "           +++|VVVVVV|++/VVVVV/'+++++     ",
-      \ "         +++++|VVVVVV|/VVVVV/'+++++++++   ",
-      \ "           +++|VVVVVVVVVVV/'+++++++++     ",
-      \ "             +|VVVVVVVVV/'+++++++++       ",
-      \ "              |VVVVVVV/'+++++++++         ",
-      \ "              |VVVVV/'+++++++++           ",
-      \ "              |VVV/'+++++++++             ",
-      \ "              'V/'   ++++++               ",
-      \ "                       ++                 ",
-      \ ])
+\  "                                   ",
+\  "                                   ",
+\  "                                   ",
+\  "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
+\  "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
+\  "          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
+\  "           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
+\  "          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
+\  "   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
+\  "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
+\  " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
+\  " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄  ",
+\  "    ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆        ",
+\  "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃      ",
+\  "                                   ",
+\ ])
 
 " let g:startify_lists = [
 "       \ { 'type': 'sessions',  'header': ['   Sessions']       },
@@ -743,7 +696,7 @@ let g:startify_custom_header = startify#center([
 "       \ ]
 " highlight StartifyBracket guifg=17
 highlight StartifyFooter  guifg=#005f5f
-highlight StartifyHeader  guifg=#005fd0
+" highlight StartifyHeader  guifg=#005fd0
 highlight StartifyNumber  guifg=#00aaff
 highlight StartifyPath    guifg=#5fafd7
 " highlight StartifySlash   guifg=18
@@ -802,7 +755,7 @@ let g:vim_jsx_pretty_highlight_close_tag = 1
 lua << EOF
 require("indent_blankline").setup {
     buftype_exclude = {"terminal"},
-    bufname_exclude = {'startify'},
+    bufname_exclude = {'startify', 'NvimTree'},
 }
 EOF
 
@@ -841,6 +794,10 @@ tabline = {
   },
   extensions = {'fugitive', 'nvim-tree'}
 }
+EOF
+
+lua << EOF
+require("bufferline").setup{}
 EOF
 
 " Folding cheat sheet
