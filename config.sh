@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/local/bin/zsh
 
 set -e
 
@@ -36,7 +36,7 @@ config_dir=$HOME/.config
 symlink "$source_dir/alacritty" $config_dir/alacritty
 symlink "$source_dir/nvim" $config_dir/nvim
 echo Source zsh config
-$(which zsh) $HOME/.zshrc
+zsh $HOME/.zshrc
 
 install_spaceship_theme
 
