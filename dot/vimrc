@@ -190,7 +190,11 @@ require('telescope').setup{
 }
 
 -- gitsign
-require('gitsigns').setup()
+require('gitsigns').setup({
+  numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
+  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
+  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+})
 
 -- Lualine
 require'lualine'.setup {
