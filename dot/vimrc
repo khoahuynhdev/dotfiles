@@ -49,7 +49,7 @@ Plug 'jidn/vim-dbml'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 " Plug 'johngrib/vim-game-code-break'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 " Plug 'thaerkh/vim-indentguides'
 " Plug 'pangloss/vim-javascript'
 Plug 'neoclide/vim-jsx-improve'
@@ -91,6 +91,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go'
+Plug 'lewis6991/gitsigns.nvim'
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -139,7 +140,7 @@ set showmatch
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
 
-"-------------TELESCOPE-------------"
+"-------------LUA_CONFIG-------------{{{1
 lua << EOF
 require('telescope').setup{
   require('telescope').setup{
@@ -169,7 +170,7 @@ require('telescope').setup{
       },
     },
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
+    file_ignore_patterns = {'node_modules/*','.git/*'},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
     winblend = 0,
     border = {},
@@ -187,8 +188,57 @@ require('telescope').setup{
     }
   }
 }
-EOF
 
+-- gitsign
+require('gitsigns').setup()
+
+-- Lualine
+require'lualine'.setup {
+  options = {
+    icons_enabled = true,
+    theme = 'dracula',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'filename', { 'diagnostics', sources = { 'coc' }}},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+tabline = {
+  lualine_a = {},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  extensions = {'fugitive', 'nvim-tree'}
+}
+
+-- bufferline
+require("bufferline").setup{}
+
+-- indent_blankline
+require("indent_blankline").setup {
+    buftype_exclude = {"terminal"},
+    bufname_exclude = {'startify', 'NvimTree'},
+}
+
+EOF
+"}}}1
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
@@ -527,8 +577,8 @@ nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
 " NVIM telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -662,9 +712,9 @@ set lazyredraw
 
 "--------------vim_gitgutter--------------"
 " Enable gitguter realtime upadating
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-set updatetime=300
+" let g:gitgutter_realtime = 1
+" let g:gitgutter_eager = 1
+" set updatetime=300
 
 "--------------Mouse--------------"
 if has('mouse')
@@ -684,7 +734,7 @@ let g:startify_custom_header = startify#center([
 \  "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
 \  " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
 \  " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄  ",
-\  "    ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆        ",
+\  "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆        ",
 \  "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃      ",
 \  "                                   ",
 \ ])
@@ -708,6 +758,7 @@ let g:nvim_tree_git_hl = 1
 let g:nvim_tree_ignore = [ 'node_modules', '.cache' ]
 let g:nvim_tree_auto_close = 1
 let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
+let g:nvim_tree_lsp_diagnostics = 1
 " autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------coc-prettier--------------"
@@ -751,54 +802,6 @@ augroup END
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 let g:vim_jsx_pretty_highlight_close_tag = 1
-
-lua << EOF
-require("indent_blankline").setup {
-    buftype_exclude = {"terminal"},
-    bufname_exclude = {'startify', 'NvimTree'},
-}
-EOF
-
-lua << EOF
-require'lualine'.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'dracula',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename', { 'diagnostics', sources = { 'coc', 'ale' }}},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-tabline = {
-  lualine_a = {},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  extensions = {'fugitive', 'nvim-tree'}
-}
-EOF
-
-lua << EOF
-require("bufferline").setup{}
-EOF
 
 " Folding cheat sheet
 " zR    open all folds
