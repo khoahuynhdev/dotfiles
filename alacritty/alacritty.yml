@@ -250,6 +250,11 @@ draw_bold_text_with_bright_colors: true
   # indexed_colors: []
 
 colors:
+
+  cursor:
+   text: '0x000000'
+   cursor: '0xffffff'
+
   # Default colors
   primary:
     background: '0x002635'
