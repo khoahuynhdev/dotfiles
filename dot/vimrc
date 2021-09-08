@@ -280,11 +280,9 @@ augroup END
 " }}}
 
 " Fold --------------{{{
-augroup Filetype_javascript
+augroup Filetype_js_ts
   au!
-  au FileType javascript setlocal foldmethod=indent foldnestmax=3 nofoldenable
-  au FileType javascript iab clg console.log(``);<esc>2hi
-
+  au FileType javascript,typescript setlocal foldmethod=indent foldnestmax=3 nofoldenable
 augroup END
 
 augroup Filetype_vim
