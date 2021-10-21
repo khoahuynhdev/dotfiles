@@ -1,6 +1,6 @@
 [user]
   name = khoahuynhdev
-  email = khoa0319@gmail.com
+  email = khoa.huynh@unibiz.io
 [alias]
   co = checkout
   unstage = reset -q HEAD --
