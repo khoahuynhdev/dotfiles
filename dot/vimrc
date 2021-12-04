@@ -39,9 +39,9 @@ Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
 Plug 'hoob3rt/lualine.nvim'
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'akinsho/bufferline.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'akinsho/bufferline.nvim'
 
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
@@ -91,7 +91,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
 
 let g:go_def_mode='gopls'
@@ -190,6 +190,25 @@ require('telescope').setup{
   }
 }
 
+require'nvim-web-devicons'.setup {
+ -- your personnal icons can go here (to override)
+ -- DevIcon will be appended to `name`
+ override = {
+  zsh = {
+    icon = "",
+    color = "#428850",
+    name = "Zsh"
+  }
+ };
+ -- globally enable default icons (default to false)
+ -- will get overriden by `get_icons` option
+ default = true;
+}
+
+-- nvim-tree
+require'nvim-tree'.setup()
+
+
 -- gitsign
 require('gitsigns').setup({
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
@@ -252,6 +271,7 @@ set complete=.,w,b,u                  " Set our desired autocompletion matching
 augroup FileType_Local_tabwidth " {{{
   autocmd!
   au FileType nginx setlocal tabstop=4 shiftwidth=4 expandtab
+  au FileType php setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
   au FileType prisma setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType typescriptreact setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType scheme setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
@@ -283,6 +303,11 @@ augroup END
 augroup Filetype_js_ts
   au!
   au FileType javascript,typescript setlocal foldmethod=indent foldnestmax=3 nofoldenable
+augroup END
+
+augroup Filetype_php
+  au!
+  au FileType php setlocal foldmethod=indent foldnestmax=3 nofoldenable
 augroup END
 
 augroup Filetype_vim
@@ -765,10 +790,7 @@ let g:dashboard_custom_header = [
 "--------------NVIM_Tree--------------"
 let g:nvim_tree_highlight_opened_files = 1
 let g:nvim_tree_git_hl = 1
-let g:nvim_tree_ignore = [ 'node_modules', '.cache' ]
-let g:nvim_tree_auto_close = 1
 let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
-let g:nvim_tree_lsp_diagnostics = 1
 " autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------coc-prettier--------------"
