@@ -206,14 +206,14 @@ require'lualine'.setup {
   options = {
     icons_enabled = true,
     theme = 'dracula',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
+    component_separators = {left = '', right = ''},
+    section_separators = {left = '', right = ''},
     disabled_filetypes = {}
   },
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename', { 'diagnostics', sources = { 'coc' }}},
+    lualine_c = {{'filename', path = 1 , file_status = true, shorting_path = 100 }, { 'diagnostics', sources = { 'coc' }}},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
