@@ -1,6 +1,6 @@
 [user]
   name = khoahuynhdev
-  email = khoa.hd@geekup.vn
+  email = khoa0319@gmail.com
 [alias]
   co = checkout
   unstage = reset -q HEAD --
