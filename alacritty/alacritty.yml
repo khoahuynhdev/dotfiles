@@ -203,88 +203,95 @@ draw_bold_text_with_bright_colors: true
   #  text: '0xeaeaea'
   #  background: '0x404040'
 
-  # Normal colors
-  # normal:
-  #   black:   '0x000000'
-  #   red:     '0xd54e53'
-  #   green:   '0xb9ca4a'
-  #   yellow:  '0xe6c547'
-  #   blue:    '0x7aa6da'
-  #   magenta: '0xc397d8'
-  #   cyan:    '0x70c0ba'
-  #   white:   '0xeaeaea'
+# colors:
 
-  # Bright colors
-  # bright:
-  #   black:   '0x666666'
-  #   red:     '0xff3334'
-  #   green:   '0x9ec400'
-  #   yellow:  '0xe7c547'
-  #   blue:    '0x7aa6da'
-  #   magenta: '0xb77ee0'
-  #   cyan:    '0x54ced6'
-  #   white:   '0xffffff'
+#   cursor:
+#    text: '0x000000'
+#    cursor: '0xffffff'
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  # dim:
-  #   black:   '0x000000'
-  #   red:     '0x8c3336'
-  #   green:   '0x7a8530'
-  #   yellow:  '0x97822e'
-  #   blue:    '0x506d8f'
-  #   magenta: '0x80638e'
-  #   cyan:    '0x497e7a'
-  #   white:   '0x9a9a9a'
+#   # Default colors
+#   primary:
+#     background: '0x002635'
+#     foreground: '0xe6e6dc'
 
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
-  # indexed_colors: []
+#   # Normal colors
+#   normal:
+#     black:   '0x00384d'
+#     red:     '0xc43061'
+#     green:   '0x7fc06e'
+#     yellow:  '0xf08e48'
+#     blue:    '0x1c8db2'
+#     magenta: '0xc694ff'
+#     cyan:    '0x00cccc'
+#     white:   '0x77929e'
+
+#   # Bright colors
+#   bright:
+#     black:   '0x517f8d'
+#     red:     '0xff5a67'
+#     green:   '0x9cf087'
+#     yellow:  '0xffcc1b'
+#     blue:    '0x7eb2dd'
+#     magenta: '0xfb94ff'
+#     cyan:    '0x00ffff'
+#     white:   '0xb7cff9'
+
+#     cursor:
+#       text: "0x002635"
+#       cursor: "0xffcc1b"
 
 colors:
-
-  cursor:
-   text: '0x000000'
-   cursor: '0xffffff'
-
-  # Default colors
   primary:
-    background: '0x002635'
-    foreground: '0xe6e6dc'
-
-  # Normal colors
+    background: '#282a36'
+    foreground: '#f8f8f2'
+    bright_foreground: '#ffffff'
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  vi_mode_cursor:
+    text: CellBackground
+    cursor: CellForeground
+  search:
+    matches:
+      foreground: '#44475a'
+      background: '#50fa7b'
+    focused_match:
+      foreground: '#44475a'
+      background: '#ffb86c'
+    bar:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+  hints:
+    start:
+      foreground: '#282a36'
+      background: '#f1fa8c'
+    end:
+      foreground: '#f1fa8c'
+      background: '#282a36'
+  line_indicator:
+    foreground: None
+    background: None
+  selection:
+    text: CellForeground
+    background: '#44475a'
   normal:
-    black:   '0x00384d'
-    red:     '0xc43061'
-    green:   '0x7fc06e'
-    yellow:  '0xf08e48'
-    blue:    '0x1c8db2'
-    magenta: '0xc694ff'
-    cyan:    '0x00cccc'
-    white:   '0x77929e'
-
-  # Bright colors
+    black: '#21222c'
+    red: '#ff5555'
+    green: '#50fa7b'
+    yellow: '#f1fa8c'
+    blue: '#bd93f9'
+    magenta: '#ff79c6'
+    cyan: '#8be9fd'
+    white: '#f8f8f2'
   bright:
-    black:   '0x517f8d'
-    red:     '0xff5a67'
-    green:   '0x9cf087'
-    yellow:  '0xffcc1b'
-    blue:    '0x7eb2dd'
-    magenta: '0xfb94ff'
-    cyan:    '0x00ffff'
-    white:   '0xb7cff9'
-
-    cursor:
-      text: "0x002635"
-      cursor: "0xffcc1b"
+    black: '#6272a4'
+    red: '#ff6e6e'
+    green: '#69ff94'
+    yellow: '#ffffa5'
+    blue: '#d6acff'
+    magenta: '#ff92df'
+    cyan: '#a4ffff'
+    white: '#ffffff'
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -429,7 +436,6 @@ enable_experimental_conpty_backend: false
 
 # Send ESC (\x1b) before characters when alt is pressed.
 alt_send_esc: true
-
 debug:
   # Display the time it takes to redraw each frame.
   render_timer: false
