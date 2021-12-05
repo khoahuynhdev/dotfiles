@@ -93,9 +93,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
+Plug 'folke/which-key.nvim', { 'branch': 'main' }
 
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -140,6 +139,9 @@ set showmatch
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 "-------------LUA_CONFIG-------------{{{1
 lua << EOF
@@ -193,6 +195,7 @@ require('telescope').setup{
 require'nvim-web-devicons'.setup ()
 require'nvim-tree'.setup()
 
+require("which-key").setup()
 
 -- gitsign
 require('gitsigns').setup({
