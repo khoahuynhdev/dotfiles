@@ -1,7 +1,7 @@
 # dotfiles
 
 ## Iterm2 + zsh + tmux + vim
-![Iterm2-zsh-tmux-vim](./full-custom.png)
+![Iterm2-zsh-tmux-vim](./screens/dracula-dotfiles.png)
 
 ## Install
 
