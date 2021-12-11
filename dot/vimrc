@@ -143,6 +143,11 @@ set showmatch
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
+"--------------NVIM_Tree--------------"
+let g:nvim_tree_highlight_opened_files = 1
+let g:nvim_tree_git_hl = 1
+let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
+
 "-------------LUA_CONFIG-------------{{{1
 lua << EOF
 require('telescope').setup{
@@ -157,7 +162,7 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_prefix = "> ",
+    prompt_prefix = "$ ",
     selection_caret = "> ",
     entry_prefix = "  ",
     initial_mode = "insert",
@@ -193,7 +198,13 @@ require('telescope').setup{
 }
 
 require'nvim-web-devicons'.setup ()
-require'nvim-tree'.setup()
+require'nvim-tree'.setup({
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  }
+})
 
 require("which-key").setup()
 
@@ -593,7 +604,7 @@ nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
 " NVIM telescope
 nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -753,31 +764,39 @@ endif
 " \  "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃      ",
 " \  "                                   ",
 " \ ])
+"
+" let g:dashboard_custom_header = [
+" \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
+" \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
+" \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
+" \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
+" \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
+" \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+" \]
+let g:dashboard_default_executive = 'telescope'
 let g:dashboard_custom_header = [
-\ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-\ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-\ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-\ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-\ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-\ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
+\'             `.............--------------`',
+\'          `:+ooooooooooooyyyyyyyyyyyyys:` ',
+\'         `-+oooooooooooosyyyyyyyyyyyys:`  ',
+\'       `-+oooooooooooosyyyyyyyyyyyys/`    ',
+\'      ./oooooooooooosyyyyyyyyyyyys/`      ',
+\'     /ooooooooooo+:--------------.        ',
+\'     oooooooooo+:`                        ',
+\'     ooooooooo/`            ``````````````',
+\'     ooooooo/.            `/yyyyyyyyyyyyso',
+\'     ooooo/.            `/yyyyyyyyyyyysooo',
+\'     ooo/.            `/yyyyyyyyyyyysooooo',
+\'     o+-            `/yyyyyyyyyyyysooooooo',
+\'     -`            `-::::::::::/oooooooooo',
+\'                             `-+oooooooooo',
+\'                           `-+oooooooooo+/',
+\'                         `-+oooooooooo+/. ',
+\'                       `-/oooooooooo+/.   ',
+\'                     `-+oooooooooo+/.     ',
+\'                    ./+++++++++++/.       ',
+\'                    `````````````         ',
 \]
-" let g:startify_lists = [
-"       \ { 'type': 'sessions',  'header': ['   Sessions']       },
-"       \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-"       \ { 'type': 'commands',  'header': ['   Commands']       },
-"       \ ]
-" highlight StartifyBracket guifg=17
-" highlight StartifyFooter  guifg=#005f5f
-" highlight StartifyHeader  guifg=#005fd0
-" highlight StartifyNumber  guifg=#00aaff
-" highlight StartifyPath    guifg=#5fafd7
-" highlight StartifySlash   guifg=18
-" highlight StartifySpecial guifg=240
 
-"--------------NVIM_Tree--------------"
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
 " autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------coc-prettier--------------"
