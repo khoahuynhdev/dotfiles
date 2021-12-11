@@ -12,8 +12,6 @@
 
 " We want the latest vim settings/options, it must be first because it changes other options as a side effect
 set nocompatible
-" check symlink is working
-" echo '(>^.^<)'
 
 " moving to vim-plug
 " Vim plug settings ------------------- {{{
@@ -94,6 +92,7 @@ Plug 'fatih/vim-go'
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Plugin development
 
@@ -196,7 +195,6 @@ require('telescope').setup{
     }
   }
 }
-
 require'nvim-web-devicons'.setup ()
 require'nvim-tree'.setup({
   git = {
