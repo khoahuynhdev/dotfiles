@@ -93,12 +93,12 @@ Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+Plug 'nvim-treesitter/playground'
+Plug 'github/copilot.vim', { 'branch': 'main' }
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
-
 "}}}
 
 "-------------COMMON_SETTING-------------"
@@ -258,6 +258,26 @@ require("indent_blankline").setup {
     bufname_exclude = {'startify', 'NvimTree'},
 }
 
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  }
+}
 EOF
 "}}}1
 
