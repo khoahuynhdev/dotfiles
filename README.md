@@ -19,3 +19,8 @@ brew doctor
 ```
 ### Tmux
 * Install tmux plugin manager: https://github.com/tmux-plugins/tpm
+
+### TODOs
+[ ] Porting to init.lua
+[ ] split lua modules
+[ ] COC -> TreeSitter
