@@ -143,6 +143,7 @@ set hidden
 set number                            " Let's active line number
 set relativenumber                    " look to your left screen
 set showmatch
+set nofixendofline
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
