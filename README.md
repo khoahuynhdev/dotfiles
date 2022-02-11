@@ -19,3 +19,7 @@ brew doctor
 ```
 ### Tmux
 * Install tmux plugin manager: https://github.com/tmux-plugins/tpm
+
+### TODOs
+[ ] migrate coc-nvim to lsp
+[ ] use make as a script runner

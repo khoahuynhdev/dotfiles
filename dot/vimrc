@@ -90,9 +90,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
+Plug 'folke/which-key.nvim', { 'branch': 'main' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'github/copilot.vim', { 'branch': 'main' }
+Plug 'wakatime/vim-wakatime'
+Plug 'neomake/neomake'
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -281,6 +287,7 @@ augroup FileType_Local_tabwidth " {{{
   au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType apache setlocal commentstring=#\ %s
   au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType make set noexpandtab
 augroup END
 " }}}
 
@@ -410,6 +417,8 @@ map <leader>h :bprevious<cr>
 " to the first none blank char of line
 noremap <S-H> ^
 noremap <S-L> $
+vnoremap <S-H> ^
+vnoremap <S-L> $h
 
 " make Y consistent with C and D.
 nnoremap Y y$
@@ -818,7 +827,7 @@ augroup END
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 let g:vim_jsx_pretty_highlight_close_tag = 1
-
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds

@@ -1,6 +1,15 @@
+# Change this to 1 for profiling
+_prof=0
+if [ "$_prof" -eq 1 ]; then
+  zmodload zsh/datetime
+  setopt prompt_subst
+  PS4='$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2>"/tmp/zsh_prof.$$"
+  setopt xtrace
+fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-zmodload zsh/zprof
+# zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
@@ -147,7 +156,7 @@ ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm osx ruby ansible docker)
+plugins=(git npm macos ruby ansible docker yii2 golang)
 
 source $ZSH/oh-my-zsh.sh
 if [[ -f $HOME/.aliases ]]; then
@@ -189,4 +198,20 @@ then
   export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 
+alias dlog="docker logs -f"
+alias dnet="docker network"
+
 [ -f "/Users/macintosh/.ghcup/env" ] && source "/Users/macintosh/.ghcup/env" # ghcup-env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Cleaning up after profiling
+if [ "$_prof" -eq 1 ]; then
+  zmodload -u zsh/datetime
+  unsetopt xtrace
+  exec 2>&3 3>&-
+fi
