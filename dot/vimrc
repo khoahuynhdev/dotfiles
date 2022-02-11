@@ -74,7 +74,7 @@ Plug 'rakr/vim-one'
 
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'liuchengxu/vista.vim'
 
 Plug 'dracula/vim', { 'name': 'dracula' }
@@ -810,7 +810,7 @@ map <Leader>k <Plug>(easymotion-k)
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Vimspector config
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
