@@ -193,7 +193,15 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-    }
+    },
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+      file_browser = {
+        hidden = true,
+      },
+    },
   }
 }
 
@@ -603,12 +611,13 @@ nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
 " NVIM telescope
-nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fn <cmd>Telescope file_browser<cr>
+nnoremap <leader>fj <cmd>lua require('telescope.builtin').jumplist()<cr>
 " }}}
 
 
