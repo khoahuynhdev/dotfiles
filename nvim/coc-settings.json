@@ -10,7 +10,7 @@
   },
   "css.lint.duplicateProperties": "warning",
   "scss.lint.duplicateProperties": "warning",
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "html", "js"],
+  "coc.preferences.formatOnSaveFiletypes": [],
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "languageserver": {
     "golang": {

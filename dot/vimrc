@@ -72,7 +72,7 @@ Plug 'rakr/vim-one'
 
 Plug 'junegunn/limelight.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'liuchengxu/vista.vim'
 
 Plug 'dracula/vim', { 'name': 'dracula' }
@@ -88,11 +88,15 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'github/copilot.vim', { 'branch': 'main' }
+Plug 'wakatime/vim-wakatime'
+Plug 'neomake/neomake'
 
 " Plugin development
 
@@ -135,6 +139,7 @@ set hidden
 set number                            " Let's active line number
 set relativenumber                    " look to your left screen
 set showmatch
+set nofixendofline
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
@@ -192,7 +197,15 @@ require('telescope').setup{
 
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-    }
+    },
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+      file_browser = {
+        hidden = true,
+      },
+    },
   }
 }
 require'nvim-web-devicons'.setup ()
@@ -257,7 +270,7 @@ require("indent_blankline").setup {
     buftype_exclude = {"terminal"},
     bufname_exclude = {'startify', 'NvimTree'},
 }
-
+require("which-key").setup {}
 EOF
 "}}}1
 
@@ -293,6 +306,7 @@ augroup FileType_Local_tabwidth " {{{
   au FileType html.handlebars setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType apache setlocal commentstring=#\ %s
   au FileType gitconfig setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+  au FileType make set noexpandtab
 augroup END
 " }}}
 
@@ -422,6 +436,8 @@ map <leader>h :bprevious<cr>
 " to the first none blank char of line
 noremap <S-H> ^
 noremap <S-L> $
+vnoremap <S-H> ^
+vnoremap <S-L> $h
 
 " make Y consistent with C and D.
 nnoremap Y y$
@@ -601,12 +617,13 @@ nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
 
 " NVIM telescope
-nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <C-p> <cmd>Telescope find_files find_command=rg,--hidden,--files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fn <cmd>Telescope file_browser<cr>
+nnoremap <leader>fj <cmd>lua require('telescope.builtin').jumplist()<cr>
 " }}}
 
 
@@ -821,7 +838,7 @@ map <Leader>k <Plug>(easymotion-k)
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Vimspector config
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -838,7 +855,7 @@ augroup END
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 
 let g:vim_jsx_pretty_highlight_close_tag = 1
-
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 " Folding cheat sheet
 " zR    open all folds
 " zM    close all folds

@@ -57,3 +57,5 @@
   added = yellow
   changed = green
   untracked = cyan
+[http]
+	sslVerify = false

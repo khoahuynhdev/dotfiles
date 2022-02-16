@@ -1,65 +1,21 @@
+# Change this to 1 for profiling
+_prof=0
+if [ "$_prof" -eq 1 ]; then
+  zmodload zsh/datetime
+  setopt prompt_subst
+  PS4='$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2>"/tmp/zsh_prof.$$"
+  setopt xtrace
+fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-zmodload zsh/zprof
+# zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# POWERLEVEL9K-Configs {{{
-# Customise the Powerlevel9k prompts
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  # custom_apple
-  # custom_vim
-  # custom_node
-  # custom_ruby
-  # custom_javascript
-  ssh
-  user
-  # ip
-  # custom_wifi_signal
-  dir
-  vcs
-  newline
-  status
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
-# Add the custom Vim icon prompt segment
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_VIM="echo -n $'\uE7C5'"
-POWERLEVEL9K_CUSTOM_VIM_FOREGROUND="green"
-POWERLEVEL9K_CUSTOM_VIM_BACKGROUND="gray"
-
-# Add the custom Apple icon prompt segment
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_APPLE="echo -n $'\uE711'"
-POWERLEVEL9K_CUSTOM_APPLE_FOREGROUND="white"
-POWERLEVEL9K_CUSTOM_APPLE_BACKGROUND="black"
-
-# Add the custom Javascript icon prompt segment
-POWERLEVEL9K_CUSTOM_JAVASCRIPT="echo -n $'\ue781'"
-POWERLEVEL9K_CUSTOM_JAVASCRIPT_FOREGROUND="black"
-POWERLEVEL9K_CUSTOM_JAVASCRIPT_BACKGROUND="yellow"
-
-# Add the custom Ruby icon prompt segment
-POWERLEVEL9K_CUSTOM_RUBY="echo -n $'\ue791'"
-POWERLEVEL9K_CUSTOM_RUBY_FOREGROUND="red"
-POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND="black"
-
-# Add the custom NodeJs icon prompt segment
-POWERLEVEL9K_CUSTOM_NODE="echo -n $'\uf898'"
-POWERLEVEL9K_CUSTOM_NODE_FOREGROUND="green"
-POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
-
-# MacOS only
-# Add the custom WIFI icon prompt segment
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
-POWERLEVEL9K_MODE='nerdfont-complete'
-# }}}
 
 # MacOS only
 zsh_wifi_signal(){
@@ -147,7 +103,7 @@ ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm osx ruby ansible docker)
+plugins=(git npm macos ruby ansible docker yii2 golang gcloud)
 
 source $ZSH/oh-my-zsh.sh
 if [[ -f $HOME/.aliases ]]; then
@@ -189,4 +145,20 @@ then
   export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 
+alias dlog="docker logs -f"
+alias dnet="docker network"
+
 [ -f "/Users/macintosh/.ghcup/env" ] && source "/Users/macintosh/.ghcup/env" # ghcup-env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Cleaning up after profiling
+if [ "$_prof" -eq 1 ]; then
+  zmodload -u zsh/datetime
+  unsetopt xtrace
+  exec 2>&3 3>&-
+fi
