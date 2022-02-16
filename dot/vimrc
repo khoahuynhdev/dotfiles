@@ -264,7 +264,7 @@ require("indent_blankline").setup {
     buftype_exclude = {"terminal"},
     bufname_exclude = {'startify', 'NvimTree'},
 }
-
+require("which-key").setup {}
 EOF
 "}}}1
 
