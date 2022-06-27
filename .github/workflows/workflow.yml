@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: check github_repository
-        run: echo "Current Repository is $env:GITHUB_REPOSITORY"
+        run: echo "Current Repository is $GITHUB_REPOSITORY"
 
       # check shell, env, etc
       - name: Check versions of pre-installed software/system
