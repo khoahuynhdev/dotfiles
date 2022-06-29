@@ -59,3 +59,5 @@
   untracked = cyan
 [http]
 	sslVerify = false
+[merge]
+	conflictstyle = diff3
