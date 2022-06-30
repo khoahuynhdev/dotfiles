@@ -142,8 +142,8 @@ packer.startup({
     --   requires = "nvim-lua/plenary.nvim",
     -- }
 
-    -- -- Status
-    -- use { 'hoob3rt/lualine.nvim', config = [[require'modules.lualine']] }
+    -- Status
+    use { 'hoob3rt/lualine.nvim', config = [[require'modules.lualine']] }
     -- use { "jose-elias-alvarez/buftabline.nvim",
     --   setup = [[require'modules.buftabline'.setup()]],
     --   config = [[require'modules.buftabline'.config()]],
