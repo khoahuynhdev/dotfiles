@@ -16,9 +16,10 @@ packer.startup({
     -- Packer can manage itself
     use { 'wbthomason/packer.nvim', opt = true }
 
-    -- -- Lib
+    -- Lib
 
     -- Installer
+    use 'nvim-lua/plenary.nvim'
     -- use { localplug("installer"),
     --   requires = {'nvim-lua/plenary.nvim'},
     --   config = [[require'installer'.setup()]]
