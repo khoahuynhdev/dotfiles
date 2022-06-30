@@ -159,12 +159,6 @@ alias dnet="docker network"
 
 [ -f "/Users/macintosh/.ghcup/env" ] && source "/Users/macintosh/.ghcup/env" # ghcup-env
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Cleaning up after profiling
 if [ "$_prof" -eq 1 ]; then
   zmodload -u zsh/datetime
@@ -173,3 +167,14 @@ if [ "$_prof" -eq 1 ]; then
 fi
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 complete -F __start_kubectl
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/geekup/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# if node executable doesn't exists, run 'nvm use default'
+if [ ! -x "$(command -v node)" ]; then
+  nvm use default
+fi
