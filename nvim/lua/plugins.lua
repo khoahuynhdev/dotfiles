@@ -26,6 +26,7 @@ packer.startup({
     -- }
 
     -- Themes
+    use {'kyazdani42/nvim-web-devicons', config = [[require'nvim-web-devicons'.setup()]]}
     use({
     'rose-pine/neovim',
     as = 'rose-pine',
@@ -33,15 +34,9 @@ packer.startup({
     config = function()
         vim.cmd('colorscheme rose-pine')
     end
-})
-    -- use { 'sainnhe/gruvbox-material',
-    --   config = [[require'modules.themes'.gruvbox()]]
-    -- }
-    -- use { 'sainnhe/everforest',
-    --   -- config = [[require'modules.themes'.everforest()]]
-    -- }
+    })
 
-    -- -- Enhancement
+    -- Enhancement
     -- use { localplug("broot"),
     --   setup = [[require'modules.broot'.setup()]],
     --   config = [[require'modules.broot'.config()]],
@@ -62,11 +57,21 @@ packer.startup({
     --     require("utils").packer_lazy_load("gitsigns.nvim")
     --   end,
     -- }
-    -- use { 'folke/trouble.nvim',
-    --   setup = [[require'modules.trouble'.setup()]],
-    --   config = [[require'modules.trouble'.config()]],
-    --   cmd = { 'Trouble', 'TroubleClose', 'TroubleToggle', 'TroubleRefresh' },
-    -- }
+    use { 'folke/trouble.nvim',
+      setup = [[require'modules.trouble'.setup()]],
+      config = [[require'modules.trouble'.config()]],
+      cmd = { 'Trouble', 'TroubleClose', 'TroubleToggle', 'TroubleRefresh' },
+    }
+    use { 'folke/todo-comments.nvim',
+  requires = 'nvim-lua/plenary.nvim',
+  config = function()
+    require('todo-comments').setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
     -- use { 'lukas-reineke/indent-blankline.nvim',
     --   config = [[require'modules.indent_blankline']],
     --   event = 'BufRead',
