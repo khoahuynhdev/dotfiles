@@ -32,7 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 Plug 'chr4/nginx.vim'
-" Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
@@ -42,7 +42,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
 
 Plug 'tpope/vim-commentary'
-Plug 'ap/vim-css-color'
+" Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
@@ -90,13 +90,18 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
-Plug 'glepnir/dashboard-nvim'
+Plug 'glepnir/dashboard-nvim', { 'branch': 'master' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
-Plug 'github/copilot.vim', { 'branch': 'main' }
+Plug 'github/copilot.vim', { 'branch': 'release' }
 Plug 'wakatime/vim-wakatime'
 Plug 'neomake/neomake'
+Plug 'folke/todo-comments.nvim', { 'branch': 'main' }
+Plug 'fxn/vim-monochrome', { 'branch': 'main' }
+Plug 'https://git.goral.net.pl/mgoral/vim-bw'
+Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'rose-pine/neovim', { 'branch': 'main' }
 
 " Plugin development
 
@@ -140,6 +145,7 @@ set number                            " Let's active line number
 set relativenumber                    " look to your left screen
 set showmatch
 set nofixendofline
+set termguicolors
 " set shell=bash
 " set conceallevel=0                  "Concealing Characters
 " set autowriteall                      " Automatically write the file when switching buffer
@@ -147,10 +153,6 @@ set nofixendofline
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
-"--------------NVIM_Tree--------------"
-let g:nvim_tree_highlight_opened_files = 1
-let g:nvim_tree_git_hl = 1
-let g:nvim_tree_auto_ignore_ft = [ 'startify' ]
 
 "-------------LUA_CONFIG-------------{{{1
 lua << EOF
@@ -214,6 +216,10 @@ require'nvim-tree'.setup({
     enable = true,
     ignore = false,
     timeout = 500,
+  },
+  renderer = {
+    highlight_git = true,
+    highlight_opened_files = 'name'
   }
 })
 
@@ -230,7 +236,7 @@ require('gitsigns').setup({
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'dracula',
+    theme = 'rose-pine',
     component_separators = {left = '', right = ''},
     section_separators = {left = '', right = ''},
     disabled_filetypes = {}
@@ -271,6 +277,15 @@ require("indent_blankline").setup {
     bufname_exclude = {'startify', 'NvimTree'},
 }
 require("which-key").setup {}
+require("todo-comments").setup {}
+require'colorizer'.setup()
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+      enable = true,
+    },
+  }
+
 EOF
 "}}}1
 
@@ -722,10 +737,9 @@ if has("nvim")
   set termguicolors
 endif
 
-"joshdick/onedark.vim
-" set background=light
-colorscheme dracula
+set background=dark
 
+" #A676EF
 highlight colorcolumn guibg=#A676EF
 
 autocmd! InsertEnter * set colorcolumn=80 |
@@ -761,6 +775,7 @@ set lazyredraw
 if has('mouse')
   set mouse=a
 endif
+" {{{
 " let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
 " let g:startify_custom_header = startify#center([
 " \  "                                   ",
@@ -788,6 +803,7 @@ endif
 " \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
 " \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
 " \]
+" }}}
 let g:dashboard_default_executive = 'telescope'
 let g:dashboard_custom_header = [
 \'             `.............--------------`',
@@ -853,7 +869,7 @@ augroup autosourcing
 augroup END
 
 " let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
-
+let g:go_metalinter_command = "golangci-lint"
 let g:vim_jsx_pretty_highlight_close_tag = 1
 let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 " Folding cheat sheet
