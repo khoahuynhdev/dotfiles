@@ -36,7 +36,6 @@ Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
-Plug 'hoob3rt/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
@@ -231,42 +230,6 @@ require('gitsigns').setup({
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
 })
-
--- Lualine
-require'lualine'.setup {
-  options = {
-    icons_enabled = true,
-    theme = 'rose-pine',
-    component_separators = {left = '', right = ''},
-    section_separators = {left = '', right = ''},
-    disabled_filetypes = {}
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff'},
-    lualine_c = {{'filename', path = 1 , file_status = true, shorting_path = 100 }, { 'diagnostics', sources = { 'coc' }}},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-tabline = {
-  lualine_a = {},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  extensions = {'fugitive', 'nvim-tree'}
-}
 
 -- bufferline
 require("bufferline").setup{}
