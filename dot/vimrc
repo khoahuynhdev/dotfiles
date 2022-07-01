@@ -85,7 +85,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
+" Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -94,8 +94,6 @@ Plug 'wakatime/vim-wakatime'
 Plug 'neomake/neomake'
 Plug 'fxn/vim-monochrome', { 'branch': 'main' }
 Plug 'https://git.goral.net.pl/mgoral/vim-bw'
-Plug 'norcalli/nvim-colorizer.lua'
-" Plug 'rose-pine/neovim', { 'branch': 'main' }
 
 " Plugin development
 
@@ -218,13 +216,6 @@ require'nvim-tree'.setup({
 })
 
 require("which-key").setup()
-
--- gitsign
-require('gitsigns').setup({
-  numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
-  linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-  word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-})
 
 -- bufferline
 require("bufferline").setup{}

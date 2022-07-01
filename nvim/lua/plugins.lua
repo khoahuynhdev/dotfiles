@@ -49,14 +49,14 @@ packer.startup({
     --   config = [[require'modules.autopairs']],
     --   event = "InsertEnter",
     -- }
-    -- use { 'lewis6991/gitsigns.nvim',
-    --   opt = true,
-    --   requires = {'nvim-lua/plenary.nvim'},
-    --   config = [[require'modules.gitsigns']],
-    --   setup = function()
-    --     require("utils").packer_lazy_load("gitsigns.nvim")
-    --   end,
-    -- }
+    use { 'lewis6991/gitsigns.nvim',
+      opt = true,
+      requires = {'nvim-lua/plenary.nvim'},
+      config = [[require'modules.gitsigns']],
+      setup = function()
+        require("utils").packer_lazy_load("gitsigns.nvim")
+      end,
+    }
     use { 'folke/trouble.nvim',
       setup = [[require'modules.trouble'.setup()]],
       config = [[require'modules.trouble'.config()]],
@@ -72,6 +72,7 @@ packer.startup({
     }
   end
 }
+    use { 'norcalli/nvim-colorizer.lua' }
     -- use { 'lukas-reineke/indent-blankline.nvim',
     --   config = [[require'modules.indent_blankline']],
     --   event = 'BufRead',
