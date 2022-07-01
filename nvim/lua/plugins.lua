@@ -12,6 +12,7 @@ end
 local packer = require'packer_init'
 
 packer.startup({
+
   function(use)
     -- Packer can manage itself
     use { 'wbthomason/packer.nvim', opt = true }
@@ -66,6 +67,16 @@ packer.startup({
   requires = 'nvim-lua/plenary.nvim',
   config = function()
     require('todo-comments').setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+    use {
+  "folke/which-key.nvim",
+  config = function()
+    require("which-key").setup {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
