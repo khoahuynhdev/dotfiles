@@ -12,7 +12,6 @@
 
 " We want the latest vim settings/options, it must be first because it changes other options as a side effect
 set nocompatible
-
 " moving to vim-plug
 " Vim plug settings ------------------- {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -87,7 +86,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
-Plug 'glepnir/dashboard-nvim', { 'branch': 'master' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -692,10 +690,6 @@ endif
 
 "--------------visuals--------------"
 
-if has("nvim")
-  set termguicolors
-endif
-
 set background=dark
 
 " #A676EF
@@ -735,57 +729,6 @@ if has('mouse')
   set mouse=a
 endif
 " {{{
-" let g:startify_custom_header = startify#center(map(split(system('fortune | cowsay'), '\n'), '" ". v:val') + ['',''])
-" let g:startify_custom_header = startify#center([
-" \  "                                   ",
-" \  "                                   ",
-" \  "                                   ",
-" \  "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
-" \  "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
-" \  "          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ",
-" \  "           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ",
-" \  "          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ",
-" \  "   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ",
-" \  "  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ",
-" \  " ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ",
-" \  " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄  ",
-" \  "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆        ",
-" \  "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃      ",
-" \  "                                   ",
-" \ ])
-"
-" let g:dashboard_custom_header = [
-" \ ' ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗',
-" \ ' ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║',
-" \ ' ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║',
-" \ ' ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║',
-" \ ' ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║',
-" \ ' ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝',
-" \]
-" }}}
-let g:dashboard_default_executive = 'telescope'
-let g:dashboard_custom_header = [
-\'             `.............--------------`',
-\'          `:+ooooooooooooyyyyyyyyyyyyys:` ',
-\'         `-+oooooooooooosyyyyyyyyyyyys:`  ',
-\'       `-+oooooooooooosyyyyyyyyyyyys/`    ',
-\'      ./oooooooooooosyyyyyyyyyyyys/`      ',
-\'     /ooooooooooo+:--------------.        ',
-\'     oooooooooo+:`                        ',
-\'     ooooooooo/`            ``````````````',
-\'     ooooooo/.            `/yyyyyyyyyyyyso',
-\'     ooooo/.            `/yyyyyyyyyyyysooo',
-\'     ooo/.            `/yyyyyyyyyyyysooooo',
-\'     o+-            `/yyyyyyyyyyyysooooooo',
-\'     -`            `-::::::::::/oooooooooo',
-\'                             `-+oooooooooo',
-\'                           `-+oooooooooo+/',
-\'                         `-+oooooooooo+/. ',
-\'                       `-/oooooooooo+/.   ',
-\'                     `-+oooooooooo+/.     ',
-\'                    ./+++++++++++/.       ',
-\'                    `````````````         ',
-\]
 
 " autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 

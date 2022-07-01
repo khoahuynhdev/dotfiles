@@ -27,8 +27,7 @@ packer.startup({
 
     -- Themes
     use {'kyazdani42/nvim-web-devicons', config = [[require'nvim-web-devicons'.setup()]]}
-    use({
-    'rose-pine/neovim',
+    use({ 'rose-pine/neovim',
     as = 'rose-pine',
     tag = 'v1.*',
     config = function()
@@ -36,6 +35,7 @@ packer.startup({
     end
     })
 
+    use {'glepnir/dashboard-nvim', config = [[require'modules.dashboard']]}
     -- Enhancement
     -- use { localplug("broot"),
     --   setup = [[require'modules.broot'.setup()]],
