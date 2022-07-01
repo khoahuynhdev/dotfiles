@@ -151,10 +151,7 @@ packer.startup({
 
     -- Status
     use { 'hoob3rt/lualine.nvim', config = [[require'modules.lualine']] }
-    -- use { "jose-elias-alvarez/buftabline.nvim",
-    --   setup = [[require'modules.buftabline'.setup()]],
-    --   config = [[require'modules.buftabline'.config()]],
-    -- }
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
     -- Debugging
     use {'mfussenegger/nvim-dap',

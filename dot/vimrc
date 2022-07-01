@@ -35,7 +35,6 @@ Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'akinsho/bufferline.nvim'
 
 Plug 'tpope/vim-commentary'
 " Plug 'ap/vim-css-color'
@@ -154,11 +153,6 @@ require'nvim-tree'.setup({
     highlight_opened_files = 'name'
   }
 })
-
-require("which-key").setup()
-
--- bufferline
-require("bufferline").setup{}
 
 require("which-key").setup {}
 
