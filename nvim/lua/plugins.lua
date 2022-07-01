@@ -72,11 +72,14 @@ packer.startup({
     }
   end
 }
-    use { 'norcalli/nvim-colorizer.lua' }
-    -- use { 'lukas-reineke/indent-blankline.nvim',
-    --   config = [[require'modules.indent_blankline']],
-    --   event = 'BufRead',
-    -- }
+    use { 'norcalli/nvim-colorizer.lua',
+      event = 'BufRead'
+    }
+
+    use { 'lukas-reineke/indent-blankline.nvim',
+      config = [[require'modules.indent_blankline']],
+      event = 'BufRead',
+    }
     -- use { 'kevinhwang91/nvim-bqf',
     --   config = [[require'modules.bqf']],
     -- }
@@ -84,44 +87,41 @@ packer.startup({
     --   setup = [[require'modules.outline']],
     --   cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'}
     -- }
-    -- use { 'norcalli/nvim-colorizer.lua',
-    --   config = [[require'modules.colorizer']],
-    --   event = 'BufRead',
-    -- }
-    -- use { 'nathom/filetype.nvim',
-    --   config = [[require'modules.filetype']]
-    -- }
 
-    -- -- Syntax highlight
-    -- use 'chr4/nginx.vim'
+    use { 'nathom/filetype.nvim',
+      config = [[require'modules.filetype']]
+    }
 
-    -- -- Telescope
-    -- use { 'nvim-telescope/telescope.nvim',
-    --   requires = {{'nvim-lua/plenary.nvim'}},
-    --   setup = [[require'modules.telescope'.setup()]],
-    --   config = [[require'modules.telescope'.config()]],
-    --   cmd = {'Telescope'},
-    --   module = "telescope"
-    -- }
-    -- use { 'nvim-telescope/telescope-dap.nvim',
-    --   after = 'telescope.nvim',
-    --   config = function()
-    --     require('telescope').load_extension('dap')
-    --   end,
-    -- }
-    -- use { 'nvim-telescope/telescope-fzf-native.nvim',
-    --   after = 'telescope.nvim',
-    --   run = 'make',
-    --   config = function()
-    --     require('telescope').load_extension('fzf')
-    --   end,
-    -- }
-    -- use { 'nvim-telescope/telescope-ui-select.nvim',
-    --   after = 'telescope.nvim',
-    --   config = function()
-    --     require('telescope').load_extension('ui-select')
-    --   end,
-    -- }
+    -- Syntax highlight
+    use 'chr4/nginx.vim'
+
+    -- Telescope
+    use { 'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/plenary.nvim'}},
+      setup = [[require'modules.telescope'.setup()]],
+      config = [[require'modules.telescope'.config()]],
+      cmd = {'Telescope'},
+      module = "telescope"
+    }
+    use { 'nvim-telescope/telescope-dap.nvim',
+      after = 'telescope.nvim',
+      config = function()
+        require('telescope').load_extension('dap')
+      end,
+    }
+    use { 'nvim-telescope/telescope-fzf-native.nvim',
+      after = 'telescope.nvim',
+      run = 'make',
+      config = function()
+        require('telescope').load_extension('fzf')
+      end,
+    }
+    use { 'nvim-telescope/telescope-ui-select.nvim',
+      after = 'telescope.nvim',
+      config = function()
+        require('telescope').load_extension('ui-select')
+      end,
+    }
 
     -- -- FZF
     -- use { 'ibhagwan/fzf-lua',
@@ -156,15 +156,15 @@ packer.startup({
     --   config = [[require'modules.buftabline'.config()]],
     -- }
 
-    -- -- Debugging
-    -- use {'mfussenegger/nvim-dap',
-    --   setup = [[require'modules.debugging.dap'.setup()]],
-    --   config = [[require'modules.debugging.dap'.config()]],
-    -- }
-    -- use { 'rcarriga/nvim-dap-ui',
-    --   config = [[require'modules.debugging.dapui']],
-    --   after = {'nvim-dap'},
-    -- }
+    -- Debugging
+    use {'mfussenegger/nvim-dap',
+      setup = [[require'modules.debugging.dap'.setup()]],
+      config = [[require'modules.debugging.dap'.config()]],
+    }
+    use { 'rcarriga/nvim-dap-ui',
+      config = [[require'modules.debugging.dapui']],
+      after = {'nvim-dap'},
+    }
 
     -- -- Snippets
     -- use { 'L3MON4D3/LuaSnip',

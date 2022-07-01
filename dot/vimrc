@@ -30,7 +30,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
-Plug 'chr4/nginx.vim'
 Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
@@ -45,7 +44,6 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 " Plug 'johngrib/vim-game-code-break'
 " Plug 'airblade/vim-gitgutter'
-" Plug 'thaerkh/vim-indentguides'
 " Plug 'pangloss/vim-javascript'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -81,11 +79,8 @@ Plug 'pantharshit00/vim-prisma'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'romainl/flattened'
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'lewis6991/gitsigns.nvim', { 'branch': 'main' }
 Plug 'folke/which-key.nvim', { 'branch': 'main' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -148,60 +143,7 @@ let g:go_info_mode='gopls'
 
 "-------------LUA_CONFIG-------------{{{1
 lua << EOF
-require('telescope').setup{
-  require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    prompt_prefix = "$ ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_config = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {'node_modules/*','.git/*'},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    winblend = 0,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-    path_display = {},
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-    },
-    pickers = {
-      find_files = {
-        hidden = true,
-      },
-      file_browser = {
-        hidden = true,
-      },
-    },
-  }
-}
 
 require'nvim-tree'.setup({
   git = {
@@ -220,13 +162,7 @@ require("which-key").setup()
 -- bufferline
 require("bufferline").setup{}
 
--- indent_blankline
-require("indent_blankline").setup {
-    buftype_exclude = {"terminal"},
-    bufname_exclude = {'startify', 'NvimTree'},
-}
 require("which-key").setup {}
-require'colorizer'.setup()
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -578,16 +514,6 @@ nnoremap <silent><nowait> <leader><space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <leader><space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <leader><space>p  :<C-u>CocListResume<CR>
-
-" NVIM telescope
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-nnoremap <leader>fn <cmd>Telescope file_browser<cr>
-nnoremap <leader>fj <cmd>lua require('telescope.builtin').jumplist()<cr>
-" }}}
 
 
 function! ToggleBg()
