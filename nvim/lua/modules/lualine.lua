@@ -29,35 +29,43 @@ end
 
 require'lualine'.setup {
   options = {
-    icons_enabled = true,
     theme = 'rose-pine',
-    component_separators = {left = '', right = ''},
-    section_separators = {left = '', right = ''},
-    disabled_filetypes = {}
+    icons_enabled = false,
+    section_separators = '',
+    component_separators = { left = '|', right = '|' },
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff'},
-    lualine_c = {{'filename', path = 1 , file_status = true, shorting_path = 100 }, { 'diagnostics', sources = { 'coc' }}},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_a = {
+      { 'mode', upper = true },
+    },
+    lualine_b = {
+      'filename'
+    },
+    lualine_c = {
+      gps_status,
+    },
+    lualine_x = {
+      'g:metals_status',
+      lsp_message,
+      attached_lsp,
+      {
+        'diagnostics',
+        sources = { 'nvim_lsp' },
+        sections = { 'error', 'warn', 'info', 'hint' },
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
+        },
+        colored = false,
+      },
+    },
+    lualine_y = {
+      { 'filetype' },
+    },
+    lualine_z = {
+      { 'location' },
+    },
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-tabline = {
-  lualine_a = {},
-    lualine_b = {'branch'},
-    lualine_c = {'filename'},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  extensions = {'fugitive', 'nvim-tree'}
 }

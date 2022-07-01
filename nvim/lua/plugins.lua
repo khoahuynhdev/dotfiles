@@ -131,16 +131,16 @@ packer.startup({
     --   module = "fzf-lua"
     -- }
 
-    -- -- Treesitter
-    -- use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
-    --   config = [[require'modules.treesitter']],
-    -- }
-    -- use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
-    -- use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
-    -- use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
-    -- use { 'SmiteshP/nvim-gps', after = 'nvim-treesitter',
-    --   config = [[require'modules.gps']],
-    -- }
+    -- Treesitter
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync',
+      config = [[require'modules.treesitter']],
+    }
+    use { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' }
+    use { 'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter' }
+    use { 'nvim-treesitter/playground', after = 'nvim-treesitter' }
+    use { 'SmiteshP/nvim-gps', after = 'nvim-treesitter',
+      config = [[require("nvim-gps").setup()]],
+    }
 
     -- -- Org mode
     -- use { 'nvim-neorg/neorg',
