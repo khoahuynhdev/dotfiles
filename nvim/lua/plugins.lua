@@ -37,14 +37,21 @@ packer.startup({
     })
 
     use {'glepnir/dashboard-nvim', config = [[require'modules.dashboard']]}
+
     -- Enhancement
+    use {
+      'kyazdani42/nvim-tree.lua',
+      requires = { 'kyazdani42/nvim-web-devicons'},
+      tag = 'nightly',
+      config = [[require'modules.nvimtree']]
+    }
     -- use { localplug("broot"),
     --   setup = [[require'modules.broot'.setup()]],
     --   config = [[require'modules.broot'.config()]],
     --   cmd = { "Broot" },
     -- }
-    -- use { 'tpope/vim-commentary', event = 'BufRead' }
-    -- use { 'tpope/vim-surround', event = 'BufRead' }
+    use { 'tpope/vim-commentary', event = 'BufRead' }
+    use { 'tpope/vim-surround', event = 'BufRead' }
     -- use { 'tpope/vim-repeat', event = 'BufRead' }
     -- use { 'windwp/nvim-autopairs',
     --   config = [[require'modules.autopairs']],

@@ -34,9 +34,7 @@ Plug 'joshdick/onedark.vim', { 'branch': 'main' }
 Plug 'alunny/pegjs-vim'
 Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ervandew/supertab'
-Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'tpope/vim-commentary'
 " Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
 Plug 'easymotion/vim-easymotion'
@@ -50,7 +48,6 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'moll/vim-node'
 Plug 'vim-ruby/vim-ruby'
 " Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-surround'
 Plug 'posva/vim-vue'
 
 " Plug 'arcticicestudio/nord-vim'
@@ -135,29 +132,6 @@ set termguicolors
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-
-
-"-------------LUA_CONFIG-------------{{{1
-lua << EOF
-
-
-require'nvim-tree'.setup({
-  git = {
-    enable = true,
-    ignore = false,
-    timeout = 500,
-  },
-  renderer = {
-    highlight_git = true,
-    highlight_opened_files = 'name'
-  }
-})
-
-
-
-
-EOF
-"}}}1
 
 "-------------AUTOCOMPLETE-------------"
 set omnifunc=syntaxcomplete#Complete
@@ -259,7 +233,6 @@ nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
 nnoremap <ESC><ESC> :nohlsearch<cr>
 nnoremap <Leader>qq :bd<CR>
 " nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
-nnoremap <C-n> :NvimTreeToggle<CR>
 " quicker with space w <cr>
 map <Leader>w :w!<cr>
 
@@ -633,7 +606,6 @@ if has('mouse')
 endif
 " {{{
 
-" autocmd VimEnter * nnoremap <silent> <expr> <C-p> (expand('%') =~ 'NvimTree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 "--------------coc-prettier--------------"
 
