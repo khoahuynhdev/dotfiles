@@ -69,9 +69,9 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'delphinus/vim-auto-cursorline'
 Plug 'jparise/vim-graphql'
 Plug 'pantharshit00/vim-prisma'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'romainl/flattened'
+" Plug 'ekalinin/Dockerfile.vim'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'romainl/flattened'
 Plug 'neovim/nvim-lspconfig'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim', { 'branch': 'release' }
@@ -221,7 +221,7 @@ set wildignore+=*.png,*.jpg,*.gif
 " }}}
 
 " ==========Mapping========== {{{
-let mapleader=','
+" let mapleader=','
 noremap <space> :
 " nnoremap j jzz
 " nnoremap k kzz
@@ -240,7 +240,7 @@ nnoremap <leader>ss :source %<cr>
 map q <Nop>
 
 " Mapping for managing tab
-map <leader>tn :tabnew<cr>
+" map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove<cr>
@@ -248,7 +248,7 @@ map <leader>tt :tabnext<cr>
 map <leader>tp :tabprevious<cr>
 
 " Go to tab by number
-nnoremap <leader>1 1gt
+" nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt
 nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
