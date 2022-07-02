@@ -52,7 +52,8 @@ packer.startup({
     -- }
     use { 'tpope/vim-commentary', event = 'BufRead' }
     use { 'tpope/vim-surround', event = 'BufRead' }
-    -- use { 'tpope/vim-repeat', event = 'BufRead' }
+    use {'tpope/vim-fugitive'}
+    use { 'tpope/vim-repeat', event = 'BufRead' }
     -- use { 'windwp/nvim-autopairs',
     --   config = [[require'modules.autopairs']],
     --   event = "InsertEnter",

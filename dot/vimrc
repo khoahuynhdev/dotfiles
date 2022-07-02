@@ -38,7 +38,6 @@ Plug 'cakebaker/scss-syntax.vim'
 " Plug 'ap/vim-css-color'
 Plug 'jidn/vim-dbml'
 Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-fugitive'
 " Plug 'johngrib/vim-game-code-break'
 " Plug 'airblade/vim-gitgutter'
 " Plug 'pangloss/vim-javascript'
@@ -55,7 +54,6 @@ Plug 'sainnhe/edge'
 
 Plug 'wlangstroth/vim-racket'
 Plug 'rhysd/git-messenger.vim'
-Plug 'tpope/vim-rails'
 
 " Plug 'franbach/miramare'
 
@@ -68,7 +66,6 @@ Plug 'liuchengxu/vista.vim'
 
 Plug 'dracula/vim', { 'name': 'dracula' }
 
-Plug 'tpope/vim-eunuch'
 Plug 'delphinus/vim-auto-cursorline'
 Plug 'jparise/vim-graphql'
 Plug 'pantharshit00/vim-prisma'
