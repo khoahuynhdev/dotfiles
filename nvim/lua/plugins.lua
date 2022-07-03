@@ -38,6 +38,7 @@ packer.startup({
 
     use {'glepnir/dashboard-nvim', config = [[require'modules.dashboard']]}
 
+    use {'junegunn/limelight.vim'}
     -- Enhancement
     use {
       'kyazdani42/nvim-tree.lua',
@@ -76,13 +77,13 @@ packer.startup({
   config = function()
     require('todo-comments').setup {}
     end
-  }
+    }
     use {
   "folke/which-key.nvim",
   config = function()
     require("which-key").setup {}
   end
-  }
+    }
     use { 'norcalli/nvim-colorizer.lua',
       event = 'BufRead'
     }
@@ -90,6 +91,12 @@ packer.startup({
     use { 'lukas-reineke/indent-blankline.nvim',
       config = [[require'modules.indent_blankline']],
       event = 'BufRead',
+    }
+    use {
+    "delphinus/auto-cursorline.nvim",
+    config = function()
+      require("auto-cursorline").setup {}
+    end,
     }
     use { 'kevinhwang91/nvim-bqf',
       config = [[require'modules.bqf']]
@@ -102,6 +109,7 @@ packer.startup({
     use { 'nathom/filetype.nvim',
       config = [[require'modules.filetype']]
     }
+    use {'rhysd/git-messenger.vim'}
 
     -- Syntax highlight
     use 'chr4/nginx.vim'
@@ -136,7 +144,6 @@ packer.startup({
 
     -- FZF
     use { 'ibhagwan/fzf-lua',
-      requires = {{'junegunn/fzf'}},
       setup = [[require'modules.fzf'.setup()]],
       config = [[require'modules.fzf'.config()]],
       cmd = {'FzfLua'},
@@ -226,5 +233,39 @@ packer.startup({
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+
+    -- Utility
+    use { 'wakatime/vim-wakatime'}
+    use { 'github/copilot.vim'}
+
   end,
 })
+
+-- Legacy from vim-plug
+-- TODO: update later
+-- 'neoclide/coc.nvim', {'branch': 'release'}
+-- 'editorconfig/editorconfig-vim'
+-- 'joshdick/onedark.vim', { 'branch': 'main' }
+-- 'alunny/pegjs-vim'
+-- 'cakebaker/scss-syntax.vim'
+-- 'jidn/vim-dbml'
+-- 'easymotion/vim-easymotion'
+-- 'neoclide/vim-jsx-improve'
+-- 'MaxMEllon/vim-jsx-pretty'
+-- 'mustache/vim-mustache-handlebars'
+-- 'moll/vim-node'
+-- 'vim-ruby/vim-ruby'
+-- 'posva/vim-vue'
+-- 'sainnhe/edge'
+-- 'wlangstroth/vim-racket'
+-- 'rakr/vim-one'
+-- 'junegunn/limelight.vim'
+-- 'leafgarland/typescript-vim'
+-- 'puremourning/vimspector'
+-- 'dracula/vim', { 'name': 'dracula' }
+-- 'jparise/vim-graphql'
+-- 'pantharshit00/vim-prisma'
+-- 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+-- 'neomake/neomake'
+-- 'fxn/vim-monochrome', { 'branch': 'main' }
+-- 'https://git.goral.net.pl/mgoral/vim-bw'

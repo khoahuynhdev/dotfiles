@@ -14,48 +14,17 @@
 set nocompatible
 " moving to vim-plug
 " Vim plug settings ------------------- {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
-endif
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall --sync | source $HOME/.vimrc
+" endif
+" call plug#begin('~/.vim/plugged')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'editorconfig/editorconfig-vim'
-Plug 'joshdick/onedark.vim', { 'branch': 'main' }
-Plug 'alunny/pegjs-vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'jidn/vim-dbml'
-Plug 'easymotion/vim-easymotion'
-Plug 'neoclide/vim-jsx-improve'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'moll/vim-node'
-Plug 'vim-ruby/vim-ruby'
-Plug 'posva/vim-vue'
-Plug 'sainnhe/edge'
-Plug 'wlangstroth/vim-racket'
-Plug 'rhysd/git-messenger.vim'
-Plug 'rakr/vim-one'
-Plug 'junegunn/limelight.vim'
-Plug 'leafgarland/typescript-vim'
-" Plug 'puremourning/vimspector'
-Plug 'dracula/vim', { 'name': 'dracula' }
-Plug 'delphinus/vim-auto-cursorline'
-Plug 'jparise/vim-graphql'
-Plug 'pantharshit00/vim-prisma'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'github/copilot.vim', { 'branch': 'release' }
-Plug 'wakatime/vim-wakatime'
-Plug 'neomake/neomake'
-Plug 'fxn/vim-monochrome', { 'branch': 'main' }
-Plug 'https://git.goral.net.pl/mgoral/vim-bw'
 " Plugin development
 
 " List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+" call plug#end()
 
 "}}}
 
