@@ -9,7 +9,7 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 
 -- telescope
 -- find file with telescope
-vim.keymap.set("n", "<C-p>", ":lua require('telescope.builtin').find_files()<CR>")
+-- vim.keymap.set("n", "<C-p>", ":lua require('telescope.builtin').find_files()<CR>")
 -- fuzzy search git file, respect .gitignore
 vim.keymap.set("n", "<Leader>fg", ":lua require('telescope.builtin').git_files()<CR>", default_opts)
 -- find which in buffer

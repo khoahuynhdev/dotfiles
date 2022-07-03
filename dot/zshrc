@@ -148,12 +148,6 @@ fi
 # alias vm="vim"
 alias vim="nvim"
 
-if which ag > /dev/null 2>&1;
-then
-  # Setting ag as the default source for fzf
-  export FZF_DEFAULT_COMMAND='ag -g ""'
-fi
-
 alias dlog="docker logs -f"
 alias dnet="docker network"
 

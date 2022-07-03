@@ -135,12 +135,13 @@ packer.startup({
     }
 
     -- FZF
-    -- use { 'ibhagwan/fzf-lua',
-    --   setup = [[require'modules.fzf'.setup()]],
-    --   config = [[require'modules.fzf'.config()]],
-    --   cmd = {'FzfLua'},
-    --   module = "fzf-lua"
-    -- }
+    use { 'ibhagwan/fzf-lua',
+      requires = {{'junegunn/fzf'}},
+      setup = [[require'modules.fzf'.setup()]],
+      config = [[require'modules.fzf'.config()]],
+      cmd = {'FzfLua'},
+      module = "fzf-lua"
+    }
 
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdateSync',
@@ -212,6 +213,11 @@ packer.startup({
       config = [[require'modules.cmp']],
       event = "InsertEnter",
       module = "cmp",
+    }
+
+    use { 'kosayoda/nvim-lightbulb',
+      config = [[require'modules.lightbulb']],
+      module = 'nvim-lightbulb',
     }
 
     -- Cmp sources
