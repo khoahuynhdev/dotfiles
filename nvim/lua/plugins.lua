@@ -21,10 +21,10 @@ packer.startup({
 
     -- Installer
     use 'nvim-lua/plenary.nvim'
-    -- use { localplug("installer"),
-    --   requires = {'nvim-lua/plenary.nvim'},
-    --   config = [[require'installer'.setup()]]
-    -- }
+    use { localplug("installer"),
+      requires = {'nvim-lua/plenary.nvim'},
+      config = [[require'installer'.setup()]]
+    }
 
     -- Themes
     use {'kyazdani42/nvim-web-devicons', config = [[require'nvim-web-devicons'.setup()]]}
@@ -74,23 +74,15 @@ packer.startup({
     use { 'folke/todo-comments.nvim',
   requires = 'nvim-lua/plenary.nvim',
   config = function()
-    require('todo-comments').setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+    require('todo-comments').setup {}
+    end
+  }
     use {
   "folke/which-key.nvim",
   config = function()
-    require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
+    require("which-key").setup {}
   end
-}
+  }
     use { 'norcalli/nvim-colorizer.lua',
       event = 'BufRead'
     }
@@ -161,12 +153,12 @@ packer.startup({
       config = [[require("nvim-gps").setup()]],
     }
 
-    -- -- Org mode
-    -- use { 'nvim-neorg/neorg',
-    --   disable = true,
-    --   config = [[require'modules.neorg']],
-    --   requires = "nvim-lua/plenary.nvim",
-    -- }
+    -- Org mode
+    use { 'nvim-neorg/neorg',
+      disable = true,
+      config = [[require'modules.neorg']],
+      requires = "nvim-lua/plenary.nvim",
+    }
 
     -- Status
     use { 'hoob3rt/lualine.nvim', config = [[require'modules.lualine']] }
@@ -182,50 +174,51 @@ packer.startup({
       after = {'nvim-dap'},
     }
 
-    -- -- Snippets
-    -- use { 'L3MON4D3/LuaSnip',
-    --   config = [[require'modules.luasnip']],
-    --   opt = true,
-    -- }
+    -- Snippets
+    use { 'L3MON4D3/LuaSnip',
+      config = [[require'modules.luasnip']],
+      opt = true,
+    }
 
-    -- -- LSP
-    -- use { 'neovim/nvim-lspconfig',
-    --   opt = true,
-    --   config = [[require'modules.lsp']],
-    --   setup = function()
-    --     require("utils").packer_lazy_load("nvim-lspconfig")
-    --     vim.defer_fn(function()
-    --       vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-    --     end, 0)
-    --   end,
-    -- }
+    -- LSP
+    use { 'neovim/nvim-lspconfig',
+      opt = true,
+      config = [[require'modules.lsp']],
+      setup = function()
+        require("utils").packer_lazy_load("nvim-lspconfig")
+        vim.defer_fn(function()
+          vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+        end, 0)
+      end,
+    }
     -- use{ 'scalameta/nvim-metals',
     --   requires = { "nvim-lua/plenary.nvim" },
     --   config = [[require'modules.metals']],
     -- }
-    -- use { 'nvim-lua/lsp-status.nvim', config = [[require'modules.lspstatus']],
-    --   after = 'nvim-lspconfig',
-    -- }
-    -- use { 'ray-x/lsp_signature.nvim',
-    --   after = {'nvim-lspconfig'},
-    --   config = [[require'modules.lspsignature']]
-    -- }
-    -- use { 'jose-elias-alvarez/null-ls.nvim',
-    --   after = {'nvim-lspconfig'},
-    --   config = [[require'modules.nullls']]
-    -- }
-    -- use { 'hrsh7th/nvim-cmp',
-    --   wants = { 'LuaSnip' },
-    --   config = [[require'modules.cmp']],
-    --   event = "InsertEnter",
-    --   module = "cmp",
-    -- }
 
-    -- -- Cmp sources
-    -- use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
-    -- use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
-    -- use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
-    -- use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
-    -- use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+    use { 'nvim-lua/lsp-status.nvim', config = [[require'modules.lspstatus']],
+      after = 'nvim-lspconfig'
+    }
+    use { 'ray-x/lsp_signature.nvim',
+      after = {'nvim-lspconfig'},
+      config = [[require'modules.lspsignature']]
+    }
+    use { 'jose-elias-alvarez/null-ls.nvim',
+      after = {'nvim-lspconfig'},
+      config = [[require'modules.nullls']]
+    }
+    use { 'hrsh7th/nvim-cmp',
+      wants = { 'LuaSnip' },
+      config = [[require'modules.cmp']],
+      event = "InsertEnter",
+      module = "cmp",
+    }
+
+    -- Cmp sources
+    use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
   end,
 })
