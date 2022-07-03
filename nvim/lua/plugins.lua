@@ -54,10 +54,10 @@ packer.startup({
     use { 'tpope/vim-surround', event = 'BufRead' }
     use {'tpope/vim-fugitive'}
     use { 'tpope/vim-repeat', event = 'BufRead' }
-    -- use { 'windwp/nvim-autopairs',
-    --   config = [[require'modules.autopairs']],
-    --   event = "InsertEnter",
-    -- }
+    use { 'windwp/nvim-autopairs',
+      config = [[require'modules.autopairs']],
+      event = "InsertEnter",
+    }
     use { 'lewis6991/gitsigns.nvim',
       opt = true,
       requires = {'nvim-lua/plenary.nvim'},
@@ -91,13 +91,13 @@ packer.startup({
       config = [[require'modules.indent_blankline']],
       event = 'BufRead',
     }
-    -- use { 'kevinhwang91/nvim-bqf',
-    --   config = [[require'modules.bqf']],
-    -- }
-    -- use { 'simrat39/symbols-outline.nvim',
-    --   setup = [[require'modules.outline']],
-    --   cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'}
-    -- }
+    use { 'kevinhwang91/nvim-bqf',
+      config = [[require'modules.bqf']]
+    }
+    use { 'simrat39/symbols-outline.nvim',
+      setup = [[require'modules.outline']],
+      cmd = {'SymbolsOutline', 'SymbolsOutlineOpen', 'SymbolsOutlineClose'}
+    }
 
     use { 'nathom/filetype.nvim',
       config = [[require'modules.filetype']]
@@ -134,7 +134,7 @@ packer.startup({
       end,
     }
 
-    -- -- FZF
+    -- FZF
     -- use { 'ibhagwan/fzf-lua',
     --   setup = [[require'modules.fzf'.setup()]],
     --   config = [[require'modules.fzf'.config()]],

@@ -26,7 +26,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'neoclide/coc.nvim', {'do': 'CocInstall coc-tsserver'}
 " Plug 'neoclide/coc-denite'
 
-Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
@@ -69,10 +68,6 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'delphinus/vim-auto-cursorline'
 Plug 'jparise/vim-graphql'
 Plug 'pantharshit00/vim-prisma'
-" Plug 'ekalinin/Dockerfile.vim'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'romainl/flattened'
-" Plug 'neovim/nvim-lspconfig'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim', { 'branch': 'release' }
 Plug 'wakatime/vim-wakatime'
@@ -607,9 +602,6 @@ endif
 "--------------coc-prettier--------------"
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-"--------------autopairs--------------"
-"let g:AutoPairsFlyMode = 1
 
 " ---------EASY_MOTION-----{{{
 let g:EasyMotion_do_mapping = 0
