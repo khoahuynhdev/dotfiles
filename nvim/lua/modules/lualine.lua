@@ -29,7 +29,7 @@ end
 
 require'lualine'.setup {
   options = {
-    theme = 'rose-pine',
+    theme = 'dracula',
     icons_enabled = false,
     section_separators = '',
     component_separators = { left = '|', right = '|' },

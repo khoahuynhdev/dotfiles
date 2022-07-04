@@ -28,11 +28,9 @@ packer.startup({
 
     -- Themes
     use {'kyazdani42/nvim-web-devicons', config = [[require'nvim-web-devicons'.setup()]]}
-    use({ 'rose-pine/neovim',
-    as = 'rose-pine',
-    tag = 'v1.*',
+    use({ 'dracula/vim',
     config = function()
-        vim.cmd('colorscheme rose-pine')
+        vim.cmd('colorscheme dracula')
     end
     })
 
@@ -215,6 +213,14 @@ packer.startup({
       after = {'nvim-lspconfig'},
       config = [[require'modules.nullls']]
     }
+
+
+    use { 'kosayoda/nvim-lightbulb',
+      config = [[require'modules.lightbulb']],
+      module = 'nvim-lightbulb',
+      requires = 'antoinemadec/FixCursorHold.nvim',
+    }
+
     use { 'hrsh7th/nvim-cmp',
       wants = { 'LuaSnip' },
       config = [[require'modules.cmp']],
@@ -222,17 +228,12 @@ packer.startup({
       module = "cmp",
     }
 
-    use { 'kosayoda/nvim-lightbulb',
-      config = [[require'modules.lightbulb']],
-      module = 'nvim-lightbulb',
-    }
-
     -- Cmp sources
-    use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' }
-    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+    use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
 
     -- Utility
     use { 'wakatime/vim-wakatime'}

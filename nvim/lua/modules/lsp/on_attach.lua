@@ -34,9 +34,16 @@ local set_buf_keymap = function(client, bufnr)
     ["gi"]            = vim.lsp.buf.implementation,
     ["gr"]            = vim.lsp.buf.references,
     ["gy"]            = vim.lsp.buf.type_definition,
-    ["<leader>f"]     = vim.lsp.buf.formatting,
-    ["<leader>ga"]    = vim.lsp.buf.code_action,
-  }, { silent = true, buffer = bufnr })
+    ["<leader>fm"]     = vim.lsp.buf.formatting,
+    ["<leader>ca"]    = vim.lsp.buf.code_action,
+    ["<leader>wa"]    = vim.lsp.buf.add_workspace_folder,
+    ["<leader>wr"]    = vim.lsp.buf.remove_workspace_folder,
+    ["<leader>wl"]    = function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end,
+    ["[d"]    = vim.diagnostic.goto_prev,
+    ["]d"]    = vim.diagnostic.goto_next,
+  }, { silent = true, buffer = bufnr, noremap = true })
 end
 
 function _M.default(client, bufnr)

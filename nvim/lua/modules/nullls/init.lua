@@ -25,6 +25,7 @@ nullls.setup({
   default_timeout = 500,
   on_attach = require'modules.lsp.on_attach'.make_on_attach(),
   sources = {
+    code_actions.eslint,
     formatting.gofumpt.with({
       command = installer.bin("gofumpt"),
     }),

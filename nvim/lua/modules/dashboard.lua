@@ -1,5 +1,6 @@
 local home = os.getenv('HOME')
 local db = require('dashboard')
+
 db.custom_header = {
 '             `.............--------------`',
 '          `:+ooooooooooooyyyyyyyyyyyyys:` ',
@@ -22,6 +23,7 @@ db.custom_header = {
 '                    ./+++++++++++/.       ',
 '                    `````````````         ',
 }
+
 db.custom_center = {
       {icon = '  ',
       desc = 'Recently latest session                  ',
@@ -49,7 +51,6 @@ db.custom_center = {
       shortcut = 'SPC f d'},
     }
 -- Highlight Group
---
 vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = "#00DCDC" })
 
 vim.g.indentLine_fileTypeExclude = { 'dashboard' }
