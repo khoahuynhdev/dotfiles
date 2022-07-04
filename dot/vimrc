@@ -300,8 +300,6 @@ endif
 
 "--------------visuals--------------"
 
-set background=dark
-
 " #A676EF
 highlight colorcolumn guibg=#A676EF
 

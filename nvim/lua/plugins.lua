@@ -30,6 +30,7 @@ packer.startup({
     use {'kyazdani42/nvim-web-devicons', config = [[require'nvim-web-devicons'.setup()]]}
     use({ 'dracula/vim',
     config = function()
+	vim.o.background = 'dark'
         vim.cmd('colorscheme dracula')
     end
     })
@@ -263,7 +264,6 @@ packer.startup({
 -- 'junegunn/limelight.vim'
 -- 'leafgarland/typescript-vim'
 -- 'puremourning/vimspector'
--- 'dracula/vim', { 'name': 'dracula' }
 -- 'jparise/vim-graphql'
 -- 'pantharshit00/vim-prisma'
 -- 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

@@ -25,3 +25,5 @@ vim.keymap.set("n", "<C-j>", "<C-W>j")
 vim.keymap.set("n", "<C-k>", "<C-W>k")
 vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-l>", "<C-W>l") -- override default nvim mapping to <C-l>
+
+vim.keymap.set("n", "q", "<Nop>")
