@@ -1,6 +1,7 @@
 local nullls = require("null-ls")
 local formatting = nullls.builtins.formatting
 local code_actions = nullls.builtins.code_actions
+local diagnostics = nullls.builtins.diagnostics
 local installer = require('installer')
 local conditions = require('modules.nullls.conditions')
 local goext = require('modules.nullls.go')
@@ -38,5 +39,6 @@ nullls.setup({
 
     goext.code_actions.gostructhelper,
     goext.code_actions.gomodifytags,
+    diagnostics.eslint.with({ command = installer.bin("eslint") })
   }
 })

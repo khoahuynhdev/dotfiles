@@ -74,6 +74,11 @@ lspconfig.yamlls.setup{
   }
 }
 
+lspconfig.eslint.setup{
+  cmd = { installer.bin("eslint") },
+  on_attach = attach.make_on_attach(nofmt_cap),
+}
+
 -- lspconfig.jsonls.setup{
 --   cmd = { installer.bin("jsonls"), "--stdio" },
 --   on_attach = attach.make_on_attach(nofmt_cap),
