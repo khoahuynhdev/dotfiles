@@ -3,3 +3,4 @@ bundle
 .vscode
 *.log
 .tmux
+.DS_Store
