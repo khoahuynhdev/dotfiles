@@ -238,7 +238,7 @@ packer.startup({
 
     -- Utility
     use { 'wakatime/vim-wakatime'}
-    use { 'github/copilot.vim'}
+    -- use { 'github/copilot.vim'}
 
   end,
 })
