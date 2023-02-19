@@ -38,4 +38,8 @@ function M.keymap_set_multi(mode, mappings, opts)
   end
 end
 
+vim.api.nvim_exec([[
+set mouse=a
+]], true)
+
 return M
