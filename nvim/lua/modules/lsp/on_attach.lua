@@ -18,7 +18,7 @@ end
 
 local set_buf_keymap = function(client, bufnr)
   vim.api.nvim_create_user_command("Formatting", function(params)
-    vim.lsp.buf.formatting_seq_sync(nil, 200)
+    vim.lsp.buf.formatting_seq_sync(nil, 500)
   end, { bang = true })
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
