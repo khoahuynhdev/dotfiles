@@ -53,6 +53,7 @@
 [core]
   editor = nvim
   hooksPath = /Users/macintosh/gitconfig/hooks
+  excludesfile = ~/.gitignore
 [color "status"]
   added = yellow
   changed = green
