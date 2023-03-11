@@ -33,12 +33,16 @@ nullls.setup({
     formatting.rustfmt,
     formatting.black,
     formatting.prettierd.with({ command = installer.bin("prettierd") }),
+    formatting.prettier.with({ command = installer.bin("prettierd") }),
     formatting.terraform_fmt,
     formatting.trim_newlines,
     formatting.trim_whitespace,
 
     goext.code_actions.gostructhelper,
     goext.code_actions.gomodifytags,
-    diagnostics.eslint.with({ command = installer.bin("eslint") })
+    diagnostics.eslint,
+    diagnostics.hadolint,
+    diagnostics.jsonlint,
+    diagnostics.php,
   }
 })
