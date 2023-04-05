@@ -18,7 +18,7 @@ vim.keymap.set("n", "<Leader>bf", ":lua require('telescope.builtin').buffers()<C
 vim.keymap.set("n", "<leader>p", ":cprevious<CR>")
 vim.keymap.set("n", "<leader>n", ":cnext<CR>")
 
-vim.keymap.set("n", "<C-s>", ":w<CR>")
+-- vim.keymap.set("n", "<C-s>", ":w<CR>")
 
 -- Navigate pane
 vim.keymap.set("n", "<C-j>", "<C-W>j")
