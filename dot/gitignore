@@ -1,2 +1,4 @@
 hh.*
 .DS_Store
+.geekup/
+.vscode/*
