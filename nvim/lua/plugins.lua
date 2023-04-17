@@ -166,6 +166,11 @@ packer.startup({
         }
         use {'windwp/nvim-ts-autotag', after = 'nvim-treesitter'}
         use {'RRethy/nvim-treesitter-textsubjects', after = 'nvim-treesitter'}
+        use({
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            after = "nvim-treesitter",
+            requires = "nvim-treesitter/nvim-treesitter"
+        })
         use {'nvim-treesitter/playground', after = 'nvim-treesitter'}
         use {
             'SmiteshP/nvim-gps',
