@@ -300,8 +300,6 @@ endif
 
 "--------------visuals--------------"
 
-" #A676EF
-highlight colorcolumn guibg=#A676EF
 
 autocmd! InsertEnter * set colorcolumn=80 |
   \ set norelativenumber |
