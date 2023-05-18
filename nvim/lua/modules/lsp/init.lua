@@ -32,10 +32,7 @@ lspconfig.rust_analyzer.setup {
 
 -- lspconfig.dartls.setup {on_attach = attach.make_on_attach(nofmt_cap)}
 
-lspconfig.tsserver.setup {
-    cmd = {installer.bin("tsserver"), "--stdio"},
-    on_attach = attach.make_on_attach(nofmt_cap)
-}
+lspconfig.tsserver.setup {on_attach = attach.make_on_attach(nofmt_cap)}
 
 lspconfig.pyright.setup {
     cmd = {installer.bin("pyright"), "--stdio"},
@@ -64,10 +61,10 @@ lspconfig.yamlls.setup {
     settings = {yaml = {schemas = {}}}
 }
 
-lspconfig.eslint.setup {
-    -- cmd = { installer.bin("eslint") },
-    on_attach = attach.make_on_attach(nofmt_cap)
-}
+-- lspconfig.eslint.setup {
+--     cmd = { installer.bin("eslint") },
+--     on_attach = attach.make_on_attach(nofmt_cap)
+-- }
 
 lspconfig.sumneko_lua.setup {
     cmd = {installer.bin("lua-language-server")},
