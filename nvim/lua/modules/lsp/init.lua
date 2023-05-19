@@ -66,7 +66,7 @@ lspconfig.yamlls.setup {
 --     on_attach = attach.make_on_attach(nofmt_cap)
 -- }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     cmd = {installer.bin("lua-language-server")},
     settings = {
         Lua = {
