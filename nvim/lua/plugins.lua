@@ -27,7 +27,7 @@ packer.startup({
 
         -- Themes
         use {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
             config = [[require'nvim-web-devicons'.setup()]]
         }
         use({
@@ -41,13 +41,18 @@ packer.startup({
             end
         })
 
-        use {'glepnir/dashboard-nvim', config = [[require'modules.dashboard']]}
+        use {
+            'glepnir/dashboard-nvim',
+            event = 'VimEnter',
+            config = [[require'modules.dashboard']],
+            requires = {'nvim-tree/nvim-web-devicons'}
+        }
 
         use {'junegunn/limelight.vim'}
         -- Enhancement
         use {
-            'kyazdani42/nvim-tree.lua',
-            requires = {'kyazdani42/nvim-web-devicons'},
+            'nvim-tree/nvim-tree.lua',
+            requires = {'nvim-tree/nvim-web-devicons'},
             config = [[require'modules.nvimtree']]
         }
         -- use { localplug("broot"),
@@ -81,7 +86,6 @@ packer.startup({
         }
         use {
             'folke/todo-comments.nvim',
-            branch = 'neovim-pre-0.8.0',
             requires = 'nvim-lua/plenary.nvim',
             config = function() require('todo-comments').setup {} end
         }
@@ -161,7 +165,6 @@ packer.startup({
         use {
             'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdateSync',
-            tag = 'v0.7.2',
             config = [[require'modules.treesitter']]
         }
         use {'windwp/nvim-ts-autotag', after = 'nvim-treesitter'}
@@ -188,7 +191,12 @@ packer.startup({
 
         -- Status
         use {'nvim-lualine/lualine.nvim', config = [[require'modules.lualine']]}
-        -- use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+        use {
+            'akinsho/bufferline.nvim',
+            tag = "*",
+            requires = 'nvim-tree/nvim-web-devicons',
+            config = function() require('bufferline').setup {} end
+        }
 
         -- Debugging
         use {
@@ -279,9 +287,9 @@ packer.startup({
         use {
             "danymat/neogen",
             config = [[require'modules.neogen']],
-            requires = "nvim-treesitter/nvim-treesitter",
-            tag = '2.10.0'
+            requires = "nvim-treesitter/nvim-treesitter"
         }
+        use {"SmiteshP/nvim-navic", requires = "neovim/nvim-lspconfig"}
     end
 })
 
