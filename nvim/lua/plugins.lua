@@ -246,8 +246,6 @@ packer.startup({
         }
         use {
             'jose-elias-alvarez/null-ls.nvim',
-            branch = '0.7-compat',
-            after = {'nvim-lspconfig'},
             config = [[require'modules.nullls']]
         }
 
