@@ -18,20 +18,19 @@ end, {
     end,
     bang = true
 })
-
+local sources = {
+    code_actions.eslint,
+    -- formatting.gofumpt.with({command = installer.bin("gofumpt")}),
+    -- formatting.rustfmt,
+    formatting.black, formatting.prettier, formatting.terraform_fmt,
+    formatting.trim_newlines, formatting.trim_whitespace, formatting.lua_format,
+    goext.code_actions.gostructhelper, goext.code_actions.gomodifytags,
+    diagnostics.eslint, diagnostics.hadolint, diagnostics.luacheck.with({
+        extra_args = {'--config', '~/.config/luacheck/.luacheckrc'}
+    })
+}
 nullls.setup({
-    default_timeout = 500,
+    default_timeout = 2000,
     on_attach = require'modules.lsp.on_attach'.make_on_attach(),
-    sources = {
-        code_actions.eslint,
-        formatting.gofumpt.with({command = installer.bin("gofumpt")}),
-        formatting.rustfmt, formatting.black, formatting.prettier,
-        formatting.terraform_fmt, formatting.trim_newlines,
-        formatting.trim_whitespace, formatting.lua_format,
-        goext.code_actions.gostructhelper, goext.code_actions.gomodifytags,
-        diagnostics.eslint, diagnostics.hadolint,
-        diagnostics.php, diagnostics.luacheck.with({
-            extra_args = {'--config', '~/.config/luacheck/.luacheckrc'}
-        })
-    }
+    sources = sources
 })
