@@ -25,12 +25,11 @@ nullls.setup({
     sources = {
         code_actions.eslint,
         formatting.gofumpt.with({command = installer.bin("gofumpt")}),
-        formatting.rustfmt, formatting.black,
-        formatting.prettier.with({command = installer.bin("prettier")}),
+        formatting.rustfmt, formatting.black, formatting.prettier,
         formatting.terraform_fmt, formatting.trim_newlines,
         formatting.trim_whitespace, formatting.lua_format,
         goext.code_actions.gostructhelper, goext.code_actions.gomodifytags,
-        diagnostics.eslint, diagnostics.hadolint, diagnostics.jsonlint,
+        diagnostics.eslint, diagnostics.hadolint,
         diagnostics.php, diagnostics.luacheck.with({
             extra_args = {'--config', '~/.config/luacheck/.luacheckrc'}
         })
