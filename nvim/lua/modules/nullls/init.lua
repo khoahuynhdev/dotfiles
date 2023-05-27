@@ -30,7 +30,7 @@ local sources = {
     })
 }
 nullls.setup({
-    default_timeout = 1000,
+    default_timeout = 5000,
     on_attach = require'modules.lsp.on_attach'.make_on_attach(),
     sources = sources
 })
