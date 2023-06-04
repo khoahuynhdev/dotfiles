@@ -40,56 +40,22 @@ augroup END
 " }}}
 
 " ==========Mapping========== {{{
-noremap <space> :
 " nnoremap j jzz
 " nnoremap k kzz
-nnoremap <Leader>ev :tabedit $HOME/.vimrc<cr>
-" Add simple hightlight removal
-nnoremap <ESC><ESC> :nohlsearch<cr>
-nnoremap <Leader>qq :bd<CR>
 " nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
 " quicker with space w <cr>
-map <Leader>w :w!<cr>
 
-nnoremap <leader>sc mqA;<esc>`q
-nnoremap <leader>ss :source %<cr>
-
-" Mapping for managing tab
-" map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove<cr>
-map <leader>tt :tabnext<cr>
-map <leader>tp :tabprevious<cr>
+" nnoremap <leader>sc mqA;<esc>`q
 
 " move a line up/down
 " move line mappings
 " ∆ is <A-j> on macOS
 " ˚ is <A-k> on macOS
-nnoremap ∆ :m .+1<cr>==
-nnoremap ˚ :m .-2<cr>==
-inoremap ∆ <Esc>:m .+1<cr>==gi
-inoremap ˚ <Esc>:m .-2<cr>==gi
-vnoremap ∆ :m '>+1<cr>gv=gv
-vnoremap ˚ :m '<-2<cr>gv=gv
 
-vnoremap $( <esc>`>a)<esc>`<i(<esc>
-vnoremap $[ <esc>`>a]<esc>`<i[<esc>
-vnoremap ${ <esc>`>a}<esc>`<i{<esc>
-vnoremap $" <esc>`>a"<esc>`<i"<esc>
-vnoremap $' <esc>`>a'<esc>`<i'<esc>
-vnoremap $\ <esc>`>o*/<esc>`<O/*<esc>
-vnoremap $< <esc>`>a><esc>`<i<<esc>
 
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
-" Buffer management
-" Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
-" Next/Previous between buffers
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
 
 " to the first none blank char of line
 noremap <S-H> ^
@@ -225,7 +191,6 @@ autocmd! InsertLeave * set colorcolumn=0 |
 
 
 
-autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
 
 " {{{
 

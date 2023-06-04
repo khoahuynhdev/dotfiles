@@ -1,8 +1,11 @@
 local default_opts = { noremap = true, silent = true }
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 -- Quickly goback
 vim.keymap.set("n", "<BS>", "<C-o>")
-
+vim.keymap.set("n", "<Leader>w", ":w!<cr>")
+vim.keymap.set("n", "<Leader>qq", ":bd<cr>")
+vim.keymap.set("n", "<ESC><ESC>", ":nohlsearch<cr>") -- Add simple hightlight removal
+vim.keymap.set({ "n", "v" }, "<space>", ":")
 
 -- nvim-tree
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
@@ -11,7 +14,7 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 -- find file with telescope
 -- vim.keymap.set("n", "<C-p>", ":lua require('telescope.builtin').find_files()<CR>")
 -- fuzzy search git file, respect .gitignore
-vim.keymap.set("n", "<Leader>fg",":lua require('telescope.builtin').git_files()<CR>", default_opts)
+vim.keymap.set("n", "<Leader>fg", ":lua require('telescope.builtin').git_files()<CR>", default_opts)
 vim.keymap.set("n", "<Leader>bf", ":lua require('telescope.builtin').buffers()<CR>", default_opts)
 
 -- Quick list move
@@ -27,3 +30,15 @@ vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-l>", "<C-W>l") -- override default nvim mapping to <C-l>
 
 vim.keymap.set("n", "q", "<Nop>")
+
+-- move a line up/down
+-- move line mappings
+-- ∆ is <A-j> on macOS
+-- ˚ is <A-k> on macOS
+vim.keymap.set("n", "∆", ":m .+1<cr>==")
+vim.keymap.set("n", "˚", ":m .-2<cr>==")
+
+-- inoremap ∆ <Esc>:m .+1<cr>==gi
+-- inoremap ˚ <Esc>:m .-2<cr>==gi
+-- vnoremap ∆ :m '>+1<cr>gv=gv
+-- vnoremap ˚ :m '<-2<cr>gv=gv
