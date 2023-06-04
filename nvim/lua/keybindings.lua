@@ -7,6 +7,20 @@ vim.keymap.set("n", "<Leader>qq", ":bd<cr>")
 vim.keymap.set("n", "<ESC><ESC>", ":nohlsearch<cr>") -- Add simple hightlight removal
 vim.keymap.set({ "n", "v" }, "<space>", ":")
 
+-- remember to add description
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set({ "n", "v" }, "<S-H>", "^")
+vim.keymap.set("n", "<S-L>", "$")
+vim.keymap.set("v", "<S-L>", "$h")
+
+-- make Y consistent with C and D.
+vim.keymap.set("n", "Y", "y$")
+
+-- escape with jk
+vim.keymap.set("i", "jk", "<esc>")
+
 -- nvim-tree
 vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 

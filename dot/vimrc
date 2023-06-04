@@ -39,56 +39,6 @@ augroup END
 
 " }}}
 
-" ==========Mapping========== {{{
-" nnoremap j jzz
-" nnoremap k kzz
-" nnoremap <C-o> :tabedit<cr>:NERDTreeToggle<cr>
-" quicker with space w <cr>
-
-" nnoremap <leader>sc mqA;<esc>`q
-
-" move a line up/down
-" move line mappings
-" ∆ is <A-j> on macOS
-" ˚ is <A-k> on macOS
-
-
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap J mzJ`z
-
-" to the first none blank char of line
-noremap <S-H> ^
-noremap <S-L> $
-vnoremap <S-H> ^
-vnoremap <S-L> $h
-
-" make Y consistent with C and D.
-nnoremap Y y$
-
-nnoremap <CR> G
-" Open terminal
-nnoremap <Leader>at :call OpenFloatTerm()<CR>
-" Open node REPL
-nnoremap <Leader>an :call OpenFloatTerm('"node"')<CR>
-nnoremap <Leader>ar :call OpenFloatTerm('"irb"')<CR>
-" Open tig, yes TIG, A FLOATING TIGGGG!!!!!!
-nnoremap <Leader>ag :call OpenFloatTerm('"tig"')<CR>
-" nnoremap <leader>g :silent execute "grep! -R" . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f', '')<CR>
-vnoremap <silent> # :call VisualSelection('b', '')<CR>
-
-inoremap jk <esc>
-" Operation mapping
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap il( :<c-u>normal! F(vi(<cr>
-onoremap p i(
-
-" }}}
-
 
 function! ToggleBg()
   if &bg == 'dark'
@@ -207,9 +157,6 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 " }}}
 
-"-------------editor_config-------------
-" play nice with fugitive
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " Vimspector config
 " let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
