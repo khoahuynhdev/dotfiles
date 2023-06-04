@@ -37,27 +37,6 @@ augroup FileType_Local_tabwidth " {{{
 augroup END
 " }}}
 
-" Fold --------------{{{
-augroup Filetype_js_ts
-  au!
-  au FileType javascript,typescript setlocal foldmethod=indent foldnestmax=3 nofoldenable
-augroup END
-
-augroup Filetype_php
-  au!
-  au FileType php setlocal foldmethod=indent foldnestmax=3 nofoldenable
-augroup END
-
-augroup Filetype_vim
-  au!
-  au FileType vim setlocal foldmethod=marker foldenable
-augroup END
-
-augroup Filetype_zsh
-  au!
-  au FileType zsh setlocal foldmethod=marker foldenable
-augroup END
-
 " }}}
 
 " ==========Mapping========== {{{

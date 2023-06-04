@@ -3,6 +3,7 @@ local options = {
   writebackup = false,
   swapfile = false,
   title = true,
+  titlestring = "%<%F%=%l/%L - nvim",
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
   splitbelow = true, -- force all horizontal splits to go below current window
   splitright = true, -- force all vertical splits to go to the right of current window
@@ -24,7 +25,27 @@ local options = {
   background = "dark",
   -- autowriteall = true,
   cursorline = true, -- highlight the current line
-  wildignore = {"*/.git/*","*/.hg/*","*/.svn/*","*/.DS_Store", "log/**", "*.gem"}
+  wildignore = { "*/.git/*", "*/.hg/*", "*/.svn/*", "*/.DS_Store", "log/**", "*.gem" },
+  completeopt = { "menu", "menuone", "noselect" }, -- mostly just for cmp
+  mouse = "a",
+  updatetime = 500, -- https://github.com/antoinemadec/FixCursorHold.nvim
+  linespace = 8,
+  mousemoveevent = true,
+  syntax = "off",
+  foldlevelstart = 99,
+  foldlevel = 99,
+  foldenable = true,
+  foldcolumn = "1",
+  fillchars = {
+    foldopen = "",
+    foldclose = "",
+    fold = " ",
+    foldsep = " ",
+    diff = "╱",
+    eob = " ",
+  },
+  -- session
+  sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
 }
 
 -- load options
