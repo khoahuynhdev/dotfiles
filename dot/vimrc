@@ -10,70 +10,18 @@
 "            _______\///________\///////////__\///______________\///__\///________\///________\/////////__
 " ==================================================================================================================================================
 
-" We want the latest vim settings/options, it must be first because it changes other options as a side effect
-set nocompatible
-
-"-------------COMMON_SETTING-------------"
-filetype plugin indent on                    " Detect files type
-set backspace=indent,eol,start        " Make backspace behave like every other editor
-set t_Co=256                          " use 256 colors.
-syntax on                             " Enable syntax highlighting
-syntax enable
-set autoread                          " Read open files again when changed outside Vim
-set autowrite                         " Write a modified buffer on each :next , ...
-set history=200                       " Keep 200 lines of command line history
-set incsearch                         " Find the next match as we type the search
-set hlsearch                          " Highlight searches by default
-set ignorecase                        " Ignore case when searching...
-set smartcase                         " ...unless we type a capital
-set listchars=""                      " Empty the listchars
-set listchars=tab:>.                  " A tab will be displayed as >...
-set listchars+=trail:.                " Trailing white spaces will be displayed as .
-set nobackup                          " Don't constantly write backup files
-set nowritebackup
-set noswapfile                        " Ain't nobody got time for swap files
-set noerrorbells                      " Don't beep
-" set nowrap                            " Do not wrap lines
-set showcmd                           " Display incomplete commands in the bottom line of the screen
-set visualbell                        " Visual bell instead of beeping
-set laststatus=2                      " Always display the status line
-set encoding=UTF-8
-set clipboard^=unnamed,unnamedplus
-set splitright
-set splitbelow
-set autoindent
-set si                                "smart indent
-set hidden
-set number                            " Let's active line number
-set relativenumber                    " look to your left screen
-set showmatch
-set nofixendofline
-set termguicolors
-" set shell=bash
-" set conceallevel=0                  "Concealing Characters
-" set autowriteall                      " Automatically write the file when switching buffer
-
-"-------------AUTOCOMPLETE-------------"
-set omnifunc=syntaxcomplete#Complete
-set complete=.,w,b,u                  " Set our desired autocompletion matching
 
 augroup FileType_Local_tabwidth " {{{
   autocmd!
   au FileType nginx setlocal tabstop=4 shiftwidth=4 expandtab
   au FileType php setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
   au FileType prisma setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType typescriptreact setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType scheme setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType typescript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType json setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType vim setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType sh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType zsh setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType javascript setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType pegjs setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
-  au FileType javascript.jsx setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType pug setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
   au FileType html setlocal tabstop=2 shiftwidth=2 expandtab
   au FileType vue setlocal tabstop=2 shiftwidth=2 expandtab
@@ -110,18 +58,6 @@ augroup Filetype_zsh
   au FileType zsh setlocal foldmethod=marker foldenable
 augroup END
 
-" }}}
-
-" =====Ignore_compiled_files===== {{{
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
 " }}}
 
 " ==========Mapping========== {{{
@@ -310,18 +246,7 @@ autocmd! InsertLeave * set colorcolumn=0 |
 
 
 
-" highlight Comment guifg=darkcyan
-set guioptions-=e
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-set cursorline                                  "highlight current line
-set title
 autocmd BufWritePre * %s/\s\+$//e               "Auto remove trailing space
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
 
 " {{{
 

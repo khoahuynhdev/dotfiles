@@ -48,10 +48,7 @@ packer.startup({
     use({
       "dracula/vim",
       config = function()
-        vim.o.background = "dark"
         vim.cmd("colorscheme dracula")
-
-        -- this is a side effect
         vim.cmd("highlight ColorColumn guibg=#A676EF")
       end,
     })
