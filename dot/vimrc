@@ -12,10 +12,6 @@
 
 
 
-
-" }}}
-
-
 function! ToggleBg()
   if &bg == 'dark'
     let &bg = 'light'
