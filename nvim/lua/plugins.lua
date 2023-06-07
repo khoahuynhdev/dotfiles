@@ -125,12 +125,7 @@ packer.startup({
     use({ "kevinhwang91/nvim-bqf", config = [[require'modules.bqf']] })
     use({
       "simrat39/symbols-outline.nvim",
-      setup = [[require'modules.outline']],
-      cmd = {
-        "SymbolsOutline",
-        "SymbolsOutlineOpen",
-        "SymbolsOutlineClose",
-      },
+      config = [[require'modules.outline']],
     })
 
     use({ "nathom/filetype.nvim", config = [[require'modules.filetype']] })
