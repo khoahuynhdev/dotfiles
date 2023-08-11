@@ -23,7 +23,7 @@ local sources = {
     -- formatting.gofumpt.with({command = installer.bin("gofumpt")}),
     -- formatting.rustfmt,
     formatting.black, formatting.prettier, formatting.terraform_fmt,
-    formatting.trim_newlines, formatting.trim_whitespace, formatting.lua_format,
+    formatting.trim_newlines, formatting.trim_whitespace, formatting.stylua,
     goext.code_actions.gostructhelper, goext.code_actions.gomodifytags,
     diagnostics.eslint, diagnostics.hadolint, diagnostics.luacheck.with({
         extra_args = {'--config', '~/.config/luacheck/.luacheckrc'}
