@@ -46,6 +46,8 @@ local options = {
   },
   -- session
   sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
+  foldmethod = "expr",
+  foldexpr = "nvim_treesitter#foldexpr()",
 }
 
 -- load options

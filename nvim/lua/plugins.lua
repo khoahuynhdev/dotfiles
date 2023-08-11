@@ -128,7 +128,7 @@ packer.startup({
       config = [[require'modules.outline']],
     })
 
-    use({ "nathom/filetype.nvim", config = [[require'modules.filetype']] })
+    -- use({ "nathom/filetype.nvim", config = [[require'modules.filetype']] })
     use({ "rhysd/git-messenger.vim" })
 
     -- Syntax highlight
