@@ -1,0 +1,5 @@
+require("globals")
+require("options")
+require("autocmds")
+require("plugins")
+require("keybindings")
