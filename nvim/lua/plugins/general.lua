@@ -9,9 +9,10 @@
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "folke/tokyonight.nvim",
+  {
+    "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "moon" }, 
+    opts = { style = "moon" },
   },
 
   -- Configure LazyVim to load gruvbox
@@ -28,9 +29,6 @@ return {
     -- opts will be merged with the parent spec
     opts = { use_diagnostic_signs = true },
   },
-
-  -- disable trouble
-  { "folke/trouble.nvim", enabled = false },
 
   -- add symbols-outline
   {
@@ -172,7 +170,7 @@ return {
       init = function()
         require("lazyvim.util").on_attach(function(_, buffer)
           -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+          vim.keymap.set("n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
           vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
         end)
       end,
@@ -209,6 +207,7 @@ return {
     opts = {
       ensure_installed = {
         "bash",
+        "dockerfile",
         "go",
         "gomod",
         "gowork",
@@ -222,6 +221,7 @@ return {
         "python",
         "query",
         "regex",
+        "scala",
         "tsx",
         "typescript",
         "vim",
@@ -335,7 +335,7 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     opts = function(_, opts)
       if type(opts.sources) == "table" then
         local nls = require("null-ls")
@@ -344,8 +344,22 @@ return {
           nls.builtins.code_actions.impl,
           nls.builtins.formatting.gofumpt,
           nls.builtins.formatting.goimports_reviser,
+          nls.builtins.diagnostics.hadolint,
         })
       end
     end,
   },
+  {
+    "scalameta/nvim-metals",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local metals_config = require("metals").bare_config()
+      -- Example of settings
+      metals_config.settings = {
+        showImplicitArguments = true,
+        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+      }
+      -- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+    end
+  }
 }
