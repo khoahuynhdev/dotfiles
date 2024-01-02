@@ -5,7 +5,11 @@
 - clean: ['~']
 
 - link:
+    ~/.gitconfig: git/.gitconfig
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.zshrc: 
+        force: true
+        path: zsh/.zshrc
     ~/.config/nvim: nvim
 
 - shell:

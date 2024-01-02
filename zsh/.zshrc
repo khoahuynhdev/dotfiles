@@ -43,7 +43,7 @@ zsh_wifi_signal(){
 
 SPACESHIP_GIT_STATUS_COLOR=green
 SPACESHIP_PROMPT_ADD_NEWLINE=false
-ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
+ZSH_THEME="agnoster" # powerlevel9k/powerlevel9k
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -162,4 +162,4 @@ fi
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 complete -F __start_kubectl
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+#. /usr/local/opt/asdf/libexec/asdf.sh
