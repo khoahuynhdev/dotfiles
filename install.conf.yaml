@@ -7,10 +7,25 @@
 - link:
     ~/.gitconfig: git/.gitconfig
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tool-versions: .tool-versions
     ~/.zshrc: 
         force: true
         path: zsh/.zshrc
     ~/.config/nvim: nvim
+    ~/.config/spaceship.zsh: zsh/spaceship.zsh
 
 - shell:
   - [git submodule update --init --recursive, installing submodules]
+# This example uses python, nodejs and ruby plugins:
+
+- asdf:
+  - plugin: nodejs
+    url: https://github.com/asdf-vm/asdf-nodejs.git
+    global: 20.10.0
+    versions:
+     s- 20.10.0
+  - plugin: golang
+    url: https://github.com/asdf-community/asdf-golang
+    global: 1.25.1
+    versions:
+     - 1.21.5

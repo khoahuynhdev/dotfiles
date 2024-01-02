@@ -42,8 +42,8 @@ zsh_wifi_signal(){
 }
 
 SPACESHIP_GIT_STATUS_COLOR=green
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-ZSH_THEME="agnoster" # powerlevel9k/powerlevel9k
+# SPACESHIP_PROMPT_ADD_NEWLINE=false
+ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -159,7 +159,12 @@ if [ "$_prof" -eq 1 ]; then
   unsetopt xtrace
   exec 2>&3 3>&-
 fi
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-complete -F __start_kubectl
+# [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+# complete -F __start_kubectl
 
 #. /usr/local/opt/asdf/libexec/asdf.sh
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit

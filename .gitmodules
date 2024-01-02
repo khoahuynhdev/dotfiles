@@ -2,3 +2,6 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
+[submodule "dotbot-asdf"]
+	path = dotbot-asdf
+	url = https://github.com/sobolevn/dotbot-asdf.git
