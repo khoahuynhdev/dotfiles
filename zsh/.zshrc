@@ -1,69 +1,47 @@
+# Change this to 1 for profiling
+_prof=0
+if [ "$_prof" -eq 1 ]; then
+  zmodload zsh/datetime
+  setopt prompt_subst
+  PS4='$EPOCHREALTIME %N:%i> '
+  exec 3>&2 2>"/tmp/zsh_prof.$$"
+  setopt xtrace
+fi
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# POWERLEVEL9K-Configs {{{
-# Customise the Powerlevel9k prompts
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  # custom_apple
-  # custom_vim
-  # custom_node
-  # custom_ruby
-  # custom_javascript
-  ssh
-  user
-  # ip
-  # custom_wifi_signal
-  dir
-  vcs
-  newline
-  status
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs)
-# Add the custom Vim icon prompt segment
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_VIM="echo -n $'\uE7C5'"
-POWERLEVEL9K_CUSTOM_VIM_FOREGROUND="green"
-POWERLEVEL9K_CUSTOM_VIM_BACKGROUND="gray"
-
-# Add the custom Apple icon prompt segment
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
-POWERLEVEL9K_CUSTOM_APPLE="echo -n $'\uE711'"
-POWERLEVEL9K_CUSTOM_APPLE_FOREGROUND="white"
-POWERLEVEL9K_CUSTOM_APPLE_BACKGROUND="black"
-
-# Add the custom Javascript icon prompt segment
-POWERLEVEL9K_CUSTOM_JAVASCRIPT="echo -n $'\ue781'"
-POWERLEVEL9K_CUSTOM_JAVASCRIPT_FOREGROUND="black"
-POWERLEVEL9K_CUSTOM_JAVASCRIPT_BACKGROUND="yellow"
-
-# Add the custom Ruby icon prompt segment
-POWERLEVEL9K_CUSTOM_RUBY="echo -n $'\ue791'"
-POWERLEVEL9K_CUSTOM_RUBY_FOREGROUND="red"
-POWERLEVEL9K_CUSTOM_RUBY_BACKGROUND="black"
-
-# Add the custom NodeJs icon prompt segment
-POWERLEVEL9K_CUSTOM_NODE="echo -n $'\uf898'"
-POWERLEVEL9K_CUSTOM_NODE_FOREGROUND="green"
-POWERLEVEL9K_CUSTOM_NODE_BACKGROUND="black"
-
 # MacOS only
-# Add the custom WIFI icon prompt segment
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL="zsh_wifi_signal"
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_BACKGROUND="blue"
-POWERLEVEL9K_CUSTOM_WIFI_SIGNAL_FOREGROUND="yellow"
-POWERLEVEL9K_MODE='nerdfont-complete'
-# }}}
+zsh_wifi_signal(){
+  if [[ `uname` == 'Darwin' ]]; then
+    local output=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Resources/airport -I)
+    local airport=$(echo $output | grep 'AirPort' | awk -F': ' '{print $2}')
 
+    if [ "$airport" = "Off" ]; then
+      local color='%F{yellow}'
+      echo -n "%{$color%}Wifi Off"
+    else
+      local ssid=$(echo $output | grep ' SSID' | awk -F': ' '{print $2}')
+      local speed=$(echo $output | grep 'lastTxRate' | awk -F': ' '{print $2}')
+      local color='%F{yellow}'
 
-SPACESHIP_GIT_STATUS_COLOR=green
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
+      [[ $speed -gt 100 ]] && color='%F{green}'
+      [[ $speed -lt 50 ]] && color='%F{red}'
+
+      echo -n "%{$color%}$ssid $speed Mb/s%{%f%}" # removed char not in my PowerLine font
+    fi
+  else
+    echo -n ''
+  fi
+}
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -114,7 +92,8 @@ ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-
+HISTSIZE=5000
+SAVEHIST=5000
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -123,15 +102,22 @@ ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ruby node)
+plugins=(
+  tmux
+  git
+  npm
+  macos
+  docker
+  golang
+  gcloud
+  minikube
+  vagrant-prompt
+)
 
 source $ZSH/oh-my-zsh.sh
 if [[ -f $HOME/.aliases ]]; then
   source $HOME/.aliases
 fi
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh"  ] && \. "$NVM_DIR/nvm.sh"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -157,20 +143,28 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vm="vim"
-if type nvim > /dev/null 2>&1; then
-  alias vm="nvim"
-  alias vim="nvim"
-fi
-alias ll="ls -lGa"
-alias sl="sl | lolcat"
-if type curl > /dev/null 2>&1;
-then
-  alias wt="curl wttr.in"
-fi
+alias vim="nvim"
 
-if type ag > /dev/null 2>&1;
-then
-  # Setting ag as the default source for fzf
-  export FZF_DEFAULT_COMMAND='ag -g ""'
+alias dlog="docker logs -f"
+alias dnet="docker network"
+
+[ -f "/Users/macintosh/.ghcup/env" ] && source "/Users/macintosh/.ghcup/env" # ghcup-env
+
+# Cleaning up after profiling
+if [ "$_prof" -eq 1 ]; then
+  zmodload -u zsh/datetime
+  unsetopt xtrace
+  exec 2>&3 3>&-
 fi
-source /etc/profile.d/rvm.sh
+# [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+# complete -F __start_kubectl
+
+#. /usr/local/opt/asdf/libexec/asdf.sh
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+
+source "/home/khoahd/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
