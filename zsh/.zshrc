@@ -12,6 +12,7 @@ fi
 # zmodload zsh/zprof
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -41,9 +42,6 @@ zsh_wifi_signal(){
   fi
 }
 
-SPACESHIP_GIT_STATUS_COLOR=green
-# SPACESHIP_PROMPT_ADD_NEWLINE=false
-ZSH_THEME="spaceship" # powerlevel9k/powerlevel9k
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -110,7 +108,6 @@ plugins=(
   npm
   macos
   docker
-  yii2
   golang
   gcloud
   minikube
@@ -168,3 +165,6 @@ fi
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
+
+
+source "/home/khoahd/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
