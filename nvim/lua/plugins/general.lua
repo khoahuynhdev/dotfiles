@@ -277,6 +277,7 @@ return {
       ensure_installed = {
         "stylua",
         "shellcheck",
+        "hadolint",
         "shfmt",
         "flake8",
       },
@@ -343,7 +344,7 @@ return {
           nls.builtins.code_actions.gomodifytags,
           nls.builtins.code_actions.impl,
           nls.builtins.formatting.gofumpt,
-          nls.builtins.formatting.goimports_reviser,
+          -- nls.builtins.formatting.goimports_reviser,
           nls.builtins.diagnostics.hadolint,
         })
       end
