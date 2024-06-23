@@ -12,7 +12,7 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    opts = { style = "moon" },
+    opts = { style = "storm" },
   },
 
   -- Configure LazyVim to load gruvbox
@@ -318,16 +318,7 @@ return {
     end,
   },
   {
-    "scalameta/nvim-metals",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      local metals_config = require("metals").bare_config()
-      -- Example of settings
-      metals_config.settings = {
-        showImplicitArguments = true,
-        excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
-      }
-      -- metals_config.capabilities = require("cmp_nvim_lsp").default_capabilities()
-    end,
-  },
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+  }
 }
