@@ -12,6 +12,7 @@
         force: true
         path: zsh/.zshrc
     ~/.config/nvim: nvim
+    ~/.wezterm.lua: wezterm/.wezterm.lua
     ~/.config/spaceship.zsh: zsh/spaceship.zsh
 
 - shell:

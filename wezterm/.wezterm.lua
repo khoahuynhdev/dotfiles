@@ -11,13 +11,13 @@ if wezterm.config_builder then
 end
 
 config.enable_tab_bar = false
-config.color_scheme = "Dracula (Official)"
+config.color_scheme = "OneDark (base16)"
 config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 15
 
 config.keys = {
 	{
-		key = "f",
+		key = "0",
 		mods = "CTRL",
 		action = wezterm.action.ToggleFullScreen,
 	},
