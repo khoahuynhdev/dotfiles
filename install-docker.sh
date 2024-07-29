@@ -10,6 +10,8 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt-get update -y
 apt-cache policy docker-ce
 sudo apt install docker-ce
+# append current user to group docker
+sudo usermod -aG docker ${USER}
 
 # Limit log size to avoid running out of disk
 echo '{"log-driver":"json-file","log-opts":{"max-size":"10m","max-file":"5"}}' | sudo tee /etc/docker/daemon.json
