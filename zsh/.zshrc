@@ -103,6 +103,7 @@ SAVEHIST=5000
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
   tmux
   git
   npm
@@ -159,12 +160,5 @@ fi
 # [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 # complete -F __start_kubectl
 
-#. /usr/local/opt/asdf/libexec/asdf.sh
-. "$HOME/.asdf/asdf.sh"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-
-source "/home/khoahd/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
