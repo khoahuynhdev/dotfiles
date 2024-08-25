@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -e
 
 cat <<EOF >>"$HOME/.zlogin"
 export GOPATH=$HOME/go
