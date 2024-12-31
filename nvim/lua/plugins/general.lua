@@ -8,7 +8,11 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000
+  },
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -19,7 +23,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "catppuccin-frappe",
     },
   },
 
@@ -117,7 +121,7 @@ return {
                 compositeLiteralTypes = true,
                 constantValues = true,
                 functionTypeParameters = true,
-                parameterNames = true,
+                parameterNames = false,
                 rangeVariableTypes = true,
               },
               analyses = {
