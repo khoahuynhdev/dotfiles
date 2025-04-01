@@ -165,6 +165,6 @@ fi
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
-
-source "/home/khoahd/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+alias k=kubectl
+source <(kubectl completion zsh)
+compdef k='kubectl'
