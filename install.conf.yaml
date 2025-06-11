@@ -22,11 +22,11 @@
 - asdf:
   - plugin: nodejs
     url: https://github.com/asdf-vm/asdf-nodejs.git
-    global: 20.10.0
+    global: 22.14.0
     versions:
-     - 20.10.0
+     - 22.14.0
   - plugin: golang
     url: https://github.com/asdf-community/asdf-golang
-    global: 1.25.1
+    global: 1.24.1
     versions:
-     - 1.22.5
+     - 1.24.1
