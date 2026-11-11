@@ -1,6 +1,17 @@
 scan_timeout = 1000
 command_timeout=1000 #(1s)
 
+# Show "tmux session:window" at the start of the prompt only inside tmux
+# (the tmux status bar is off so Guacamole can keep wheel scrollback).
+format = "${custom.tmux}$all"
+
+[custom.tmux]
+when = 'test -n "$TMUX"'
+command = "tmux display-message -p '#S:#I'"
+shell = ["sh"]
+format = "[ tmux $output]($style) "
+style = "bold green"
+
 [cmd_duration]
 min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
 format = " took [$duration]($style)"
