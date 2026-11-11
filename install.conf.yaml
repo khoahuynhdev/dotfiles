@@ -14,6 +14,7 @@
     ~/.config/nvim: nvim
     ~/.wezterm.lua: wezterm/.wezterm.lua
     ~/.config/spaceship.zsh: zsh/spaceship.zsh
+    ~/.config/starship.toml: starship/starship.toml
 
 - shell:
   - [git submodule update --init --recursive, installing submodules]
